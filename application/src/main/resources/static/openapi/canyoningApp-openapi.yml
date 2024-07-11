@@ -1,0 +1,955 @@
+openapi: 3.0.3
+info:
+  title: Swagger CanyoningApp - OpenAPI 3.0
+  description: Swagger of canyoning app
+  contact:
+    email: delgadofernandez.luis@gmail.com
+  version: 0.0.1
+tags:
+  - name: User
+    description: User operations
+  - name: Canyon
+    description: Canyon operations
+  - name: Review
+    description: Review operations
+  - name: Activity
+    description: Activity operations
+paths:
+  /users:
+    post:
+      tags:
+        - User
+      summary: Create a new user
+      description: Create a new user
+      operationId: createUser
+      requestBody:
+        description: data from the user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        required: true
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserOut'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        409:
+          $ref: '#/components/responses/409Exists'
+    get:
+      tags:
+        - User
+      summary: Get all users
+      description: Get all users filtering bay differents fields
+      operationId: getUsers
+      parameters:
+        - name: email
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: location
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        201:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleUser'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /users/{userId}:
+    get:
+      tags:
+        - User
+      summary: Get an user
+      description: Get user by id
+      operationId: getUser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserOut'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    put:
+      tags:
+        - User
+      summary: Update your user
+      description: Update your user
+      operationId: updateUser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimpleUser'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimpleUser'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    delete:
+      tags:
+        - User
+      summary: Deletes a user
+      description: delete a user
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          description: User id to delete
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          description: 'Succesfull delete'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /updatePassword:
+    put:
+      tags:
+        - User
+      summary: Update a password
+      description: Return your password
+      operationId: updatePassword
+      parameters:
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /login:
+    get:
+      tags:
+        - User
+      summary: Login
+      description: Login
+      operationId: login
+      parameters:
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /users/{userId}/plan/{plan}:
+    put:
+      tags:
+        - User
+      summary: Update your plan
+      description: Update your plan
+      operationId: updatePlan
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+        - name: plan
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleUser'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /canyons:
+    post:
+      tags:
+        - Canyon
+      summary: Create a new canyon
+      description: Create a new canyon
+      operationId: createCanyon
+      requestBody:
+        description: data from the canyon
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Canyon'
+        required: true
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Canyon'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    get:
+      tags:
+        - Canyon
+      summary: Get all canyon
+      description: Get all canyon filtering by differents fields
+      operationId: getCanyons
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        201:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleCanyon'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /canyons/{canyonId}:
+    get:
+      tags:
+        - Canyon
+      summary: Get an canyon
+      description: Get canyon by id
+      operationId: getCanyon
+      parameters:
+        - name: canyonId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Canyon'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    put:
+      tags:
+        - Canyon
+      summary: Update your canyon
+      description: Update your canyon
+      operationId: updateCanyon
+      parameters:
+        - name: canyonId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Canyon'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Canyon'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    delete:
+      tags:
+        - Canyon
+      summary: Deletes a canyon
+      description: delete a canyon
+      operationId: deleteCanyon
+      parameters:
+        - name: canyonId
+          in: path
+          description: User id to delete
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          description: 'Succesfull delete'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /canyons/{canyonId}/download:
+    get:
+      tags:
+        - Canyon
+      summary: Download an canyon
+      description: Download canyon by id
+      operationId: downloadCanyon
+      parameters:
+        - name: canyonId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /reviews:
+    post:
+      tags:
+        - Review
+      summary: Create a new review
+      description: Create a new review
+      operationId: createReview
+      requestBody:
+        description: data from the review
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+        required: true
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    get:
+      tags:
+        - Review
+      summary: Get all review
+      description: Get all review filtering by differents fields
+      operationId: getReviews
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        201:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleReview'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /reviews/{reviewId}:
+    get:
+      tags:
+        - Review
+      summary: Get an review
+      description: Get review by id
+      operationId: getReview
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    put:
+      tags:
+        - Review
+      summary: Update your review
+      description: Update your review
+      operationId: updateReview
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    delete:
+      tags:
+        - Review
+      summary: Deletes a review
+      description: delete a review
+      operationId: deleteReview
+      parameters:
+        - name: reviewId
+          in: path
+          description: Review id to delete
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          description: 'Succesfull delete'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /reviews/{reviewId}/share:
+    get:
+      tags:
+        - Review
+      summary: Share your review qr
+      description: Share your review qr
+      operationId: shareReview
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /reviews/{reviewId}/share/{userId}:
+    post:
+      tags:
+        - Review
+      summary: Insert an user on your review
+      description: Insert an user on your review
+      operationId: insertReview
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /activities:
+    post:
+      tags:
+        - Activity
+      summary: Create a new activity
+      description: Create a new activity
+      operationId: createActivity
+      requestBody:
+        description: data from the activity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+        required: true
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    get:
+      tags:
+        - Activity
+      summary: Get all activity
+      description: Get all activity filtering by differents fields
+      operationId: getActivities
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        201:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleActivity'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /activities/{activityId}:
+    get:
+      tags:
+        - Activity
+      summary: Get an activity
+      description: Get activity by id
+      operationId: getActivity
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    put:
+      tags:
+        - Activity
+      summary: Update your activity
+      description: Update your activity
+      operationId: updateActivity
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    delete:
+      tags:
+        - Activity
+      summary: Deletes a activity
+      description: delete a activity
+      operationId: deleteActivity
+      parameters:
+        - name: activityId
+          in: path
+          description: Activity id to delete
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          description: 'Succesfull delete'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /activities/{activityId}/share:
+    get:
+      tags:
+        - Activity
+      summary: Share your activity qr
+      description: Share your activity qr
+      operationId: shareActivity
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /activities/{activityId}/share/{userId}:
+    post:
+      tags:
+        - Activity
+      summary: Insert an user on your activity
+      description: Insert an user on your activity
+      operationId: insertActivity
+      parameters:
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+        - name: userId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+components:
+  schemas:
+    SimpleActivity:
+      type: object
+      properties:
+        activityId:
+          $ref: '#/components/schemas/Id'
+        userId:
+          $ref: '#/components/schemas/Id'
+        date:
+          type: string
+          format: date-time
+        meetingPlace:
+          type: string
+        activityType:
+          type: string
+    Activity:
+      allOf:
+        - $ref: '#/components/schemas/SimpleActivity'
+        - properties:
+            capacity:
+              type: integer
+            meetingTime:
+              type: string
+            description:
+              type: string
+            qr:
+              type: string
+            participants:
+              type: array
+              items:
+                $ref: '#/components/schemas/SimpleUser'
+    SimpleCanyon:
+      type: object
+      properties:
+        canyonId:
+          $ref: '#/components/schemas/Id'
+        name:
+          type: string
+        season:
+          type: string
+        river:
+          type: string
+        population:
+          type: string
+    Canyon:
+      allOf:
+        - $ref: '#/components/schemas/SimpleCanyon'
+        - properties:
+            access:
+              type: string
+            approach:
+              type: string
+            descent:
+              type: string
+            return:
+              type: string
+            scape:
+              type: string
+            deleteAt:
+              type: string
+              format: date-time
+            canyonRappeling:
+              type: array
+              items:
+                $ref: '#/components/schemas/CanyonRappeling'
+            canyonDercent:
+              type: array
+              items:
+                $ref: '#/components/schemas/CanyonDescent'
+            canyonSchedule:
+              type: array
+              items:
+                $ref: '#/components/schemas/CanyonSchedule'
+            canyonLink:
+              type: array
+              items:
+                $ref: '#/components/schemas/CanyonLink'
+            cantonProhibition:
+              type: array
+              items:
+                $ref: '#/components/schemas/CanyonProhibition'
+            canyonDifficulty:
+              type: array
+              items:
+                $ref: '#/components/schemas/CayonDifficulty'
+            canyonCanyonNear:
+              type: array
+              items:
+                $ref: '#/components/schemas/CanyonCanyonNear'
+    CanyonCanyonNear:
+      type: object
+      properties:
+        principalCanyon:
+          $ref: '#/components/schemas/Id'
+        nearCanyon:
+          $ref: '#/components/schemas/Id'
+    CayonDifficulty:
+      type: object
+      properties:
+        canyonDifficultyId:
+          $ref: '#/components/schemas/Id'
+        canyonId:
+          $ref: '#/components/schemas/Id'
+        dificultDesc:
+          type: string
+    CanyonProhibition:
+      type: object
+      properties:
+        canyonProhibitionId:
+          $ref: '#/components/schemas/Id'
+        canyonId:
+          $ref: '#/components/schemas/Id'
+        description:
+          type: string
+    CanyonLink:
+      type: object
+      properties:
+        canyonIdLink:
+          $ref: '#/components/schemas/Id'
+        canyonId:
+          $ref: '#/components/schemas/Id'
+        link:
+          type: string
+        title:
+          type: string
+    CanyonSchedule:
+      type: object
+      properties:
+        canyonId:
+          $ref: '#/components/schemas/Id'
+        car:
+          type: integer
+        descentNumber:
+          type: integer
+        approach:
+          type: integer
+        descent:
+          type: integer
+        return:
+          type: integer
+    CanyonDescent:
+      type: object
+      properties:
+        canyonId:
+          $ref: '#/components/schemas/Id'
+        descentNumber:
+          type: integer
+        length:
+          type: integer
+        slope:
+          type: integer
+        rapelNum:
+          type: integer
+        maxLength:
+          type: integer
+        equipment:
+          type: string
+    CanyonRappeling:
+      type: object
+      properties:
+        canyonId:
+          $ref: '#/components/schemas/Id'
+        descentNumber:
+          type: integer
+        step:
+          type: integer
+        stepType:
+          type: string
+        length:
+          type: integer
+        location:
+          type: string
+        description:
+          type: string
+    SimpleReview:
+      type: object
+      properties:
+        review:
+          $ref: '#/components/schemas/Id'
+        canyon:
+          $ref: '#/components/schemas/SimpleCanyon'
+        user:
+          $ref: '#/components/schemas/SimpleUser'
+        date:
+          type: string
+          format: date-time
+    Review:
+      allOf:
+        - $ref: '#/components/schemas/SimpleReview'
+        - properties:
+            duration:
+              type: integer
+            combinedCar:
+              type: boolean
+            description:
+              type: string
+            qr:
+              type: string
+            caudal:
+              type: number
+    SimpleUser:
+      type: object
+      properties:
+        userId:
+          $ref: '#/components/schemas/Id'
+        email:
+          type: string
+          example: theUser
+        name:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: James
+        location:
+          type: string
+        description:
+          type: string
+        birthDay:
+          type: string
+          format: date
+    UserOut:
+      allOf:
+        - $ref: '#/components/schemas/SimpleUser'
+        - type: object
+          properties:
+            plan:
+              type: integer
+            guia:
+              type: boolean
+            age:
+              type: integer
+    UserCreate:
+      allOf:
+        - $ref: '#/components/schemas/SimpleUser'
+        - type: object
+          properties:
+            password:
+              type: string
+              example: '12345'
+    Id:
+      type: integer
+      format: int64
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: string
+        description:
+          type: string
+        cause:
+          type: string
+  #parameters:
+  #headers:
+  #requestBodies:
+  responses:
+    400BadRequest:
+      description: Bad Request. Check the parameters or body of the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    401Unauthenticated:
+      description: Unauthenticated. Check the credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    403Forbidden:
+      description: The user is not authorized for this operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    404NotFound:
+      description: The entity requested not exists.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    409Exists:
+      description: Entity already exists with the same ID or combination of unique properties.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    409Conflict:
+      description: The operation cannot be made because a conflict with the current state of the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

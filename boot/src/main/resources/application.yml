@@ -1,0 +1,26 @@
+properties:
+  plan: 1
+
+management.endpoints.web.exposure.include: "*"
+
+server:
+  servlet.contextPath: /
+  port: 8080
+  max-http-header-size: 64KB
+
+spring:
+  config.name: canyoningApp
+  jackson.serialization:
+    WRITE_DATES_AS_TIMESTAMPS: false
+  profiles.active: local
+
+springdoc:
+  api-docs:
+    enabled: false
+    path: /openapi/canyoningApp-openapi.json
+  swagger-ui:
+    enabled: false
+    operationsSorter: alpha
+    path: /swagger-ui.html
+    tagsSorter: alpha
+    url: /openapi/canyoningApp-openapi.yml

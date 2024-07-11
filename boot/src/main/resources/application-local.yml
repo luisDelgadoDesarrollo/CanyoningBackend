@@ -1,0 +1,25 @@
+properties:
+  plan: 1
+logging.level:
+  ROOT: DEBUG
+
+
+spring:
+  h2.console.enabled: false
+  datasource:
+    url: jdbc:mariadb://localhost:3306/canyoningapp
+    driverClassName: org.mariadb.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate.naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    #show-sql: true
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    displayOperationId: true
+    displayRequestDuration: true
+    enabled: true
