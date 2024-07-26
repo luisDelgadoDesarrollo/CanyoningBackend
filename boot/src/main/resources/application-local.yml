@@ -1,7 +1,8 @@
 properties:
   plan: 1
+  host: http://localhost:5173
 logging.level:
-  ROOT: DEBUG
+  ROOT: INFO
 
 
 spring:
@@ -14,7 +15,10 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
     hibernate.naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    #show-sql: true
+    #    properties:
+    #      hibernate:
+    #        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
 
 springdoc:
   api-docs:

@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>java_architecture-boot</artifactId>
+    <artifactId>canyoningApp-boot</artifactId>
 
     <properties>
         <maven.compiler.source>${java.version}</maven.compiler.source>

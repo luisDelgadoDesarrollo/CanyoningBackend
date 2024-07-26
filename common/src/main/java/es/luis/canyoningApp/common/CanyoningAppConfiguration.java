@@ -12,4 +12,6 @@ public class CanyoningAppConfiguration {
   private CanyoningAppConfiguration() {}
 
   private String plan;
+
+  private String host;
 }

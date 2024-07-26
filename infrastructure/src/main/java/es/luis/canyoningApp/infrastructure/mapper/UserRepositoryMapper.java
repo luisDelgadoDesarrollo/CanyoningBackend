@@ -5,7 +5,7 @@ import es.luis.canyoningApp.infrastructure.entity.UserEntity;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface UserEntityMapper extends BaseRepositoryMapper {
+public interface UserRepositoryMapper extends BaseRepositoryMapper {
 
   UserEntity userToUserEntity(User user);
 

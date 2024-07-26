@@ -6,7 +6,7 @@ import es.luis.canyoningApp.domain.util.AuthenticatedUserBase;
 
 public abstract class BaseService extends AuthenticatedUserBase {
 
-  CanyoningAppConfiguration getJavaArchitectureConfiguration() {
+  CanyoningAppConfiguration getCanyoningAppConfiguration() {
     return ApplicationContextHolder.getInstance().getBean(CanyoningAppConfiguration.class);
   }
 }

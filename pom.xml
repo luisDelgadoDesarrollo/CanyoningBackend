@@ -27,6 +27,7 @@
         <org.mapstruct.lombok-mapstruct-binding.version>0.2.0</org.mapstruct.lombok-mapstruct-binding.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <fmt-maven-plugin.version>2.21.1</fmt-maven-plugin.version>
+        <mail-sender.version>3.3.1</mail-sender.version>
     </properties>
     <dependencies>
         <!-- Spring Framework dependencies -->
@@ -44,6 +45,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>${mail-sender.version}</version>
         </dependency>
 
         <!-- Common dependencies for all modules-->

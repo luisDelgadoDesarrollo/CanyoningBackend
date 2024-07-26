@@ -18,22 +18,22 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
         </processorPath>
-        <module name="java_architecture-application" />
-        <module name="java_architecture-domain" />
-        <module name="java_architecture-boot" />
-        <module name="java_architecture-infrastructure" />
-        <module name="java_architecture-common" />
+        <module name="CanyoningApp-application" />
+        <module name="CanyoningApp-domain" />
+        <module name="CanyoningApp-common" />
+        <module name="CanyoningApp-boot" />
+        <module name="CanyoningApp-infrastructure" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="java_architecture" options="-parameters -Amapstruct.defaultComponentModel=spring" />
-      <module name="java_architecture-application" options="-parameters -Amapstruct.defaultComponentModel=spring" />
-      <module name="java_architecture-boot" options="-parameters -Amapstruct.defaultComponentModel=spring" />
-      <module name="java_architecture-common" options="-parameters -Amapstruct.defaultComponentModel=spring" />
-      <module name="java_architecture-domain" options="-parameters -Amapstruct.defaultComponentModel=spring" />
-      <module name="java_architecture-infrastructure" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="CanyoningApp" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="CanyoningApp-application" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="CanyoningApp-boot" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="CanyoningApp-common" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="CanyoningApp-domain" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="CanyoningApp-infrastructure" options="-parameters -Amapstruct.defaultComponentModel=spring" />
     </option>
   </component>
 </project>

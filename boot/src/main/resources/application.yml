@@ -13,7 +13,17 @@ spring:
   jackson.serialization:
     WRITE_DATES_AS_TIMESTAMPS: false
   profiles.active: local
-
+  mail:
+    host: smtp-mail.outlook.com
+    port: 587
+    username: canyoningApp@hotmail.com
+    password: Luis884994??
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 springdoc:
   api-docs:
     enabled: false

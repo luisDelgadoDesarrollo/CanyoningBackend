@@ -5,12 +5,16 @@ import es.luis.canyoningApp.canyoningApp_application.rest.api.UserApi;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.SimpleUserDto;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.UserCreateDto;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.UserOutDto;
+import es.luis.canyoningApp.domain.model.User;
 import es.luis.canyoningApp.domain.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Controller
 public class UserController extends BaseController implements UserApi {
@@ -39,11 +43,18 @@ public class UserController extends BaseController implements UserApi {
   }
 
   @Override
-  public ResponseEntity<List<SimpleUserDto>> getUsers(String email, String name, String location) {
+  public ResponseEntity<List<SimpleUserDto>> getUsers(
+      String email,
+      String name,
+      String location,
+      Integer page,
+      Integer size,
+      String sort,
+      Pageable pageable) {
+    Page<User> users = userService.getUsers(email, name, location, pageable);
+    addPaginationHeadersToResponse(users);
     return ResponseEntity.ok(
-        userService.getUsers(email, name, location).stream()
-            .map(userControllerMapper::userToSimpleUserDto)
-            .toList());
+        users.stream().map(userControllerMapper::userToSimpleUserDto).toList());
   }
 
   @Override
@@ -52,12 +63,21 @@ public class UserController extends BaseController implements UserApi {
   }
 
   @Override
-  public ResponseEntity<Void> updatePassword(String email, String token) {
-    return null;
+  public ResponseEntity<Void> requestUpdatePassword(String email) {
+    userService.requestUpdatePassword(email);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+  }
+
+  @Override
+  @CrossOrigin(origins = "http://localhost:5173")
+  public ResponseEntity<Void> updatePassword(String email, String token, String password) {
+    userService.updatePassword(email, token, password);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 
   @Override
   public ResponseEntity<List<SimpleUserDto>> updatePlan(Long userId, Integer plan) {
+    // todo cuando piense como se paga
     return null;
   }
 

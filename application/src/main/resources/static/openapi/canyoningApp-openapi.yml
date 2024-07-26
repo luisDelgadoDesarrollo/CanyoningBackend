@@ -14,8 +14,10 @@ tags:
     description: Review operations
   - name: Activity
     description: Activity operations
+  - name: Message
+    description: CanyonMessage operations
 paths:
-  /users:
+  /createUser:
     post:
       tags:
         - User
@@ -40,6 +42,7 @@ paths:
           $ref: '#/components/responses/400BadRequest'
         409:
           $ref: '#/components/responses/409Exists'
+  /users:
     get:
       tags:
         - User
@@ -62,8 +65,30 @@ paths:
           required: false
           schema:
             type: string
+        - name: page
+          in: query
+          description: Número de página (empezando desde 0)
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Número de elementos por página
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: Criterios de ordenación en el formato propiedad(,asc|desc). El orden por defecto es ascendente.
+          required: false
+          schema:
+            type: string
+            default: userId,asc
+      x-spring-paginated: true
       responses:
-        201:
+        200:
           description: Successful operation
           content:
             application/json:
@@ -71,6 +96,15 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SimpleUser'
+          headers:
+            Link:
+              $ref: '#/components/headers/Link'
+            X-Page-Number:
+              $ref: '#/components/headers/X-Page-Number'
+            X-Total-Elements:
+              $ref: '#/components/headers/X-Total-Elements'
+            X-Total-Pages:
+              $ref: '#/components/headers/X-Total-Pages'
         400:
           $ref: '#/components/responses/400BadRequest'
   /users/{userId}:
@@ -157,6 +191,28 @@ paths:
           required: true
           schema:
             type: string
+        - name: password
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    post:
+      tags:
+        - User
+      summary: Request update a password
+      description: Request update a password, it send an email and the user could change its password for an hour
+      operationId: requestUpdatePassword
+      parameters:
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Successful operation
@@ -231,7 +287,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Canyon'
-        required: true
+        required: false
       responses:
         200:
           description: Successful operation
@@ -253,6 +309,48 @@ paths:
           required: false
           schema:
             type: string
+        - name: season
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: river
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: location
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: population
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Número de página (empezando desde 0)
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Número de elementos por página
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: Criterios de ordenación en el formato propiedad(,asc|desc). El orden por defecto es ascendente.
+          required: false
+          schema:
+            type: string
+            default: "canyonId,asc"
+      x-spring-paginated: true
       responses:
         201:
           description: Successful operation
@@ -262,6 +360,15 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SimpleCanyon'
+          headers:
+            Link:
+              $ref: '#/components/headers/Link'
+            X-Page-Number:
+              $ref: '#/components/headers/X-Page-Number'
+            X-Total-Elements:
+              $ref: '#/components/headers/X-Total-Elements'
+            X-Total-Pages:
+              $ref: '#/components/headers/X-Total-Pages'
         400:
           $ref: '#/components/responses/400BadRequest'
   /canyons/{canyonId}:
@@ -283,9 +390,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Canyon'
+                $ref: '#/components/schemas/Canyon'
         400:
           $ref: '#/components/responses/400BadRequest'
     put:
@@ -350,19 +455,19 @@ paths:
           description: Successful operation
         400:
           $ref: '#/components/responses/400BadRequest'
-  /reviews:
+  /reviews/canyon:
     post:
       tags:
         - Review
       summary: Create a new review
       description: Create a new review
-      operationId: createReview
+      operationId: createCanyonReview
       requestBody:
         description: data from the review
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Review'
+              $ref: '#/components/schemas/CanyonReview'
         required: true
       responses:
         200:
@@ -370,7 +475,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Review'
+                $ref: '#/components/schemas/CanyonReviewResponse'
         400:
           $ref: '#/components/responses/400BadRequest'
     get:
@@ -378,33 +483,64 @@ paths:
         - Review
       summary: Get all review
       description: Get all review filtering by differents fields
-      operationId: getReviews
+      operationId: getCanyonReviews
       parameters:
-        - name: name
+        - name: canyonId
           in: query
           required: false
           schema:
+            $ref: '#/components/schemas/Id'
+        - name: page
+          in: query
+          description: Número de página (empezando desde 0)
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Número de elementos por página
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: Criterios de ordenación en el formato propiedad(,asc|desc). El orden por defecto es ascendente.
+          required: false
+          schema:
             type: string
+            default: "reviewId,asc"
+      x-spring-paginated: true
       responses:
-        201:
+        200:
           description: Successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SimpleReview'
+                  $ref: '#/components/schemas/SimpleCanyonReview'
+          headers:
+            Link:
+              $ref: '#/components/headers/Link'
+            X-Page-Number:
+              $ref: '#/components/headers/X-Page-Number'
+            X-Total-Elements:
+              $ref: '#/components/headers/X-Total-Elements'
+            X-Total-Pages:
+              $ref: '#/components/headers/X-Total-Pages'
         400:
           $ref: '#/components/responses/400BadRequest'
-  /reviews/{reviewId}:
+  /reviews/canyon/{canyonReviewId}:
     get:
       tags:
         - Review
-      summary: Get an review
+      summary: Get a review
       description: Get review by id
-      operationId: getReview
+      operationId: getCanyonReview
       parameters:
-        - name: reviewId
+        - name: canyonReviewId
           in: path
           required: true
           schema:
@@ -415,9 +551,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Review'
+                $ref: '#/components/schemas/CanyonReviewResponse'
         400:
           $ref: '#/components/responses/400BadRequest'
     put:
@@ -425,9 +559,9 @@ paths:
         - Review
       summary: Update your review
       description: Update your review
-      operationId: updateReview
+      operationId: updateCanyonReview
       parameters:
-        - name: reviewId
+        - name: canyonReviewId
           in: path
           required: true
           schema:
@@ -436,14 +570,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Review'
+              $ref: '#/components/schemas/CanyonReview'
       responses:
         200:
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Review'
+                $ref: '#/components/schemas/CanyonReviewResponse'
         400:
           $ref: '#/components/responses/400BadRequest'
     delete:
@@ -451,9 +585,9 @@ paths:
         - Review
       summary: Deletes a review
       description: delete a review
-      operationId: deleteReview
+      operationId: deleteCanyonReview
       parameters:
-        - name: reviewId
+        - name: canyonReviewId
           in: path
           description: Review id to delete
           required: true
@@ -464,15 +598,15 @@ paths:
           description: 'Succesfull delete'
         400:
           $ref: '#/components/responses/400BadRequest'
-  /reviews/{reviewId}/share:
+  /reviews/canyon/{canyonReviewId}/share:
     get:
       tags:
         - Review
       summary: Share your review qr
       description: Share your review qr
-      operationId: shareReview
+      operationId: shareCanyonReview
       parameters:
-        - name: reviewId
+        - name: canyonReviewId
           in: path
           required: true
           schema:
@@ -482,24 +616,24 @@ paths:
           description: Successful operation
         400:
           $ref: '#/components/responses/400BadRequest'
-  /reviews/{reviewId}/share/{userId}:
     post:
       tags:
         - Review
       summary: Insert an user on your review
       description: Insert an user on your review
-      operationId: insertReview
+      operationId: insertUserIntoCanyonReview
       parameters:
-        - name: reviewId
+        - name: canyonReviewId
           in: path
           required: true
           schema:
             $ref: '#/components/schemas/Id'
-        - name: userId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserIdsRequest'
       responses:
         200:
           description: Successful operation
@@ -535,13 +669,41 @@ paths:
       description: Get all activity filtering by differents fields
       operationId: getActivities
       parameters:
-        - name: name
+        - name: date
           in: query
           required: false
           schema:
             type: string
+            format: date
+        - name: meetingPlace
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Número de página (empezando desde 0)
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Número de elementos por página
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: Criterios de ordenación en el formato propiedad(,asc|desc). El orden por defecto es ascendente.
+          required: false
+          schema:
+            type: string
+            default: "activityId,asc"
+      x-spring-paginated: true
       responses:
-        201:
+        200:
           description: Successful operation
           content:
             application/json:
@@ -549,6 +711,15 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SimpleActivity'
+          headers:
+            Link:
+              $ref: '#/components/headers/Link'
+            X-Page-Number:
+              $ref: '#/components/headers/X-Page-Number'
+            X-Total-Elements:
+              $ref: '#/components/headers/X-Total-Elements'
+            X-Total-Pages:
+              $ref: '#/components/headers/X-Total-Pages'
         400:
           $ref: '#/components/responses/400BadRequest'
   /activities/{activityId}:
@@ -570,9 +741,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Activity'
+                $ref: '#/components/schemas/Activity'
         400:
           $ref: '#/components/responses/400BadRequest'
     put:
@@ -660,18 +829,165 @@ paths:
           description: Successful operation
         400:
           $ref: '#/components/responses/400BadRequest'
+  /messages:
+    post:
+      tags:
+        - Message
+      summary: Post a new message
+      description: Post a new message
+      operationId: postMessage
+      requestBody:
+        description: data from the message
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageIn'
+        required: true
+      responses:
+        201:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /messages/{activityType}/activity/{activityId}:
+    get:
+      tags:
+        - Message
+      summary: Get all message about an activity
+      description: Get all message about an activity
+      operationId: getMessages
+      parameters:
+        - name: activityType
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ActivityType'
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+        - name: page
+          in: query
+          description: Número de página (empezando desde 0)
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Número de elementos por página
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: Criterios de ordenación en el formato propiedad(,asc|desc). El orden por defecto es messageId desc.
+          required: false
+          schema:
+            type: string
+            default: "messageId,desc"
+      x-spring-paginated: true
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MessageOut'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /messages/{messageId}:
+    put:
+      tags:
+        - Message
+      summary: Update a meesage
+      description: Update a message
+      operationId: updateMessage
+      parameters:
+        - name: messageId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      requestBody:
+        description: data from the message
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageIn'
+        required: true
+      responses:
+        200:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /message/{messageId}/activityType/{activityType}:
+    delete:
+      tags:
+        - Message
+      summary: Delete a message
+      description: Delete a message
+      operationId: deleteMessage
+      parameters:
+        - name: messageId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+        - name: activityType
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ActivityType'
+      responses:
+        204:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
 components:
   schemas:
+    UserIdsRequest:
+      type: array
+      items:
+        $ref: '#/components/schemas/Id'
+    Message:
+      type: object
+      properties:
+        messageId:
+          $ref: '#/components/schemas/Id'
+        placeId:
+          $ref: '#/components/schemas/Id'
+        message:
+          type: string
+    MessageIn:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+        - properties:
+            typePlace:
+              $ref: '#/components/schemas/ActivityType'
+    MessageOut:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+        - properties:
+            user:
+              $ref: '#/components/schemas/SimpleUser'
+    ActivityType:
+      type: string
+      enum:
+        - canyon
     SimpleActivity:
       type: object
       properties:
         activityId:
           $ref: '#/components/schemas/Id'
-        userId:
-          $ref: '#/components/schemas/Id'
+        user:
+          $ref: '#/components/schemas/SimpleUser'
         date:
           type: string
-          format: date-time
+          format: date
         meetingPlace:
           type: string
         activityType:
@@ -691,7 +1007,7 @@ components:
             participants:
               type: array
               items:
-                $ref: '#/components/schemas/SimpleUser'
+                $ref: '#/components/schemas/Id'
     SimpleCanyon:
       type: object
       properties:
@@ -709,24 +1025,25 @@ components:
       allOf:
         - $ref: '#/components/schemas/SimpleCanyon'
         - properties:
+            description:
+              type: string
+            croquis:
+              type: string
             access:
               type: string
             approach:
               type: string
             descent:
               type: string
-            return:
+            _return:
               type: string
             scape:
               type: string
-            deleteAt:
-              type: string
-              format: date-time
             canyonRappeling:
               type: array
               items:
                 $ref: '#/components/schemas/CanyonRappeling'
-            canyonDercent:
+            canyonDescent:
               type: array
               items:
                 $ref: '#/components/schemas/CanyonDescent'
@@ -738,14 +1055,14 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/CanyonLink'
-            cantonProhibition:
+            canyonProhibition:
               type: array
               items:
                 $ref: '#/components/schemas/CanyonProhibition'
             canyonDifficulty:
               type: array
               items:
-                $ref: '#/components/schemas/CayonDifficulty'
+                $ref: '#/components/schemas/CanyonDifficulty'
             canyonCanyonNear:
               type: array
               items:
@@ -756,15 +1073,15 @@ components:
         principalCanyon:
           $ref: '#/components/schemas/Id'
         nearCanyon:
-          $ref: '#/components/schemas/Id'
-    CayonDifficulty:
+          type: string
+    CanyonDifficulty:
       type: object
       properties:
-        canyonDifficultyId:
-          $ref: '#/components/schemas/Id'
+        descentNumber:
+          type: integer
         canyonId:
           $ref: '#/components/schemas/Id'
-        dificultDesc:
+        difficultyDesc:
           type: string
     CanyonProhibition:
       type: object
@@ -778,7 +1095,7 @@ components:
     CanyonLink:
       type: object
       properties:
-        canyonIdLink:
+        canyonLinkId:
           $ref: '#/components/schemas/Id'
         canyonId:
           $ref: '#/components/schemas/Id'
@@ -796,11 +1113,11 @@ components:
         descentNumber:
           type: integer
         approach:
-          type: integer
+          type: string
         descent:
-          type: integer
+          type: string
         return:
-          type: integer
+          type: string
     CanyonDescent:
       type: object
       properties:
@@ -809,13 +1126,13 @@ components:
         descentNumber:
           type: integer
         length:
-          type: integer
+          type: string
         slope:
-          type: integer
+          type: string
         rapelNum:
-          type: integer
+          type: string
         maxLength:
-          type: integer
+          type: string
         equipment:
           type: string
     CanyonRappeling:
@@ -826,41 +1143,48 @@ components:
         descentNumber:
           type: integer
         step:
-          type: integer
+          type: string
         stepType:
           type: string
         length:
-          type: integer
+          type: string
         location:
           type: string
         description:
           type: string
-    SimpleReview:
-      type: object
+    SimpleCanyonReview:
       properties:
-        review:
+        canyonReviewId:
           $ref: '#/components/schemas/Id'
         canyon:
           $ref: '#/components/schemas/SimpleCanyon'
         user:
           $ref: '#/components/schemas/SimpleUser'
-        date:
-          type: string
-          format: date-time
-    Review:
+    CanyonReview:
       allOf:
-        - $ref: '#/components/schemas/SimpleReview'
+        - $ref: '#/components/schemas/SimpleCanyonReview'
         - properties:
+            date:
+              type: string
+              format: date
             duration:
               type: integer
             combinedCar:
               type: boolean
+            caudal:
+              type: integer
             description:
               type: string
+            users:
+              type: array
+              items:
+                $ref: '#/components/schemas/SimpleUser'
+    CanyonReviewResponse:
+      allOf:
+        - $ref: '#/components/schemas/CanyonReview'
+        - properties:
             qr:
               type: string
-            caudal:
-              type: number
     SimpleUser:
       type: object
       properties:
@@ -913,9 +1237,6 @@ components:
           type: string
         cause:
           type: string
-  #parameters:
-  #headers:
-  #requestBodies:
   responses:
     400BadRequest:
       description: Bad Request. Check the parameters or body of the request.
@@ -953,3 +1274,24 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  headers:
+    Link:
+      description: >-
+        The Link header provides information about the pagination of the response.
+      schema:
+        type: string
+    X-Page-Number:
+      description: >-
+        The current page number of the response.
+      schema:
+        type: integer
+    X-Total-Elements:
+      description: >-
+        The total number of elements available in the response.
+      schema:
+        type: integer
+    X-Total-Pages:
+      description: >-
+        The total number of pages available in the response.
+      schema:
+        type: integer

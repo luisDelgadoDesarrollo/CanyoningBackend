@@ -1,41 +1,77 @@
 package es.luis.canyoningApp.application.rest.controller;
 
+import es.luis.canyoningApp.application.rest.mapper.CanyonControllerMapper;
 import es.luis.canyoningApp.canyoningApp_application.rest.api.CanyonApi;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.CanyonDto;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.SimpleCanyonDto;
-import java.util.List;
+import es.luis.canyoningApp.domain.model.SimpleCanyon;
+import es.luis.canyoningApp.domain.service.CanyonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 @Controller
-public class CanyonController implements CanyonApi {
-  @Override
-  public ResponseEntity<CanyonDto> createCanyon(CanyonDto canyonDto) {
-    return null;
-  }
+public class CanyonController extends BaseController implements CanyonApi {
 
-  @Override
-  public ResponseEntity<Void> deleteCanyon(Long canyonId) {
-    return null;
-  }
+    @Autowired
+    private CanyonService canyonService;
+    @Autowired
+    private CanyonControllerMapper canyonControllerMapper;
 
-  @Override
-  public ResponseEntity<Void> downloadCanyon(Long canyonId) {
-    return null;
-  }
+    @Override
+    public ResponseEntity<CanyonDto> createCanyon(CanyonDto canyonDto) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(
+                        canyonControllerMapper.canyonToCanyonDto(
+                                canyonService.createCanyon(canyonControllerMapper.canyonDtoToCanyon(canyonDto))));
+    }
 
-  @Override
-  public ResponseEntity<List<CanyonDto>> getCanyon(Long canyonId) {
-    return null;
-  }
+    @Override
+    public ResponseEntity<Void> deleteCanyon(Long canyonId) {
+        canyonService.deleteCanyon(canyonId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
-  @Override
-  public ResponseEntity<List<SimpleCanyonDto>> getCanyons(String name) {
-    return null;
-  }
+    @Override
+    public ResponseEntity<Void> downloadCanyon(Long canyonId) {
+        canyonService.downloadCanyon(canyonId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
-  @Override
-  public ResponseEntity<CanyonDto> updateCanyon(Long canyonId, CanyonDto canyonDto) {
-    return null;
-  }
+    @Override
+    public ResponseEntity<CanyonDto> getCanyon(Long canyonId) {
+        return ResponseEntity.ok(
+                canyonControllerMapper.canyonToCanyonDto(canyonService.getCanyonById(canyonId)));
+    }
+
+    @Override
+    public ResponseEntity<List<SimpleCanyonDto>> getCanyons(
+            String name,
+            String season,
+            String river,
+            String location,
+            String population,
+            Integer page,
+            Integer size,
+            String sort,
+            Pageable pageable) {
+        Page<SimpleCanyon> canyons =
+                canyonService.getCanyons(name, season, river, population, pageable);
+        addPaginationHeadersToResponse(canyons);
+        return ResponseEntity.ok(
+                canyons.stream().map(canyonControllerMapper::simpleCanyonToSimpleCanyon).toList());
+    }
+
+    @Override
+    public ResponseEntity<CanyonDto> updateCanyon(Long canyonId, CanyonDto canyonDto) {
+        return ResponseEntity.ok(
+                canyonControllerMapper.canyonToCanyonDto(
+                        canyonService.updateCanyon(
+                                canyonId, canyonControllerMapper.canyonDtoToCanyon(canyonDto))));
+    }
 }

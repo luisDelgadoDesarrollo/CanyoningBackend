@@ -1,8 +1,9 @@
 package es.luis.canyoningApp.application.rest.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.MapperConfig;
+import es.luis.canyoningApp.canyoningApp_application.rest.model.ActivityTypeDto;
+import es.luis.canyoningApp.domain.model.ActivityType;
 
-@Mapper
-@MapperConfig(componentModel = "spring")
-interface BaseControllerMapper {}
+public interface BaseControllerMapper {
+
+  ActivityType activityTypeDtoToActivityType(ActivityTypeDto activityTypeDto);
+}
