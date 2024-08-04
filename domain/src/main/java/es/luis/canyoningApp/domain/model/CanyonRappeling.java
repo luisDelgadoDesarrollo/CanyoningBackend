@@ -1,6 +1,5 @@
 package es.luis.canyoningApp.domain.model;
 
-import es.luis.canyoningApp.domain.Annotations.DocField;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,23 +11,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CanyonRappeling {
 
-    private Long canyonId;
+  private Long canyonId;
 
-    @DocField
-    private Integer descentNumber;
+  private Integer descentNumber;
 
-    @DocField
-    private String step;
+  private String step;
 
-    @DocField
-    private String stepType;
+  private String stepType;
 
-    @DocField
-    private String length;
+  private String length;
 
-    @DocField
-    private String location;
+  private String location;
 
-    @DocField(isString = true)
-    private String description;
+  private String description;
 }

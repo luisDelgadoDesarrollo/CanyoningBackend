@@ -1,6 +1,5 @@
 package es.luis.canyoningApp.domain.model;
 
-import es.luis.canyoningApp.domain.Annotations.DocField;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,20 +10,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CanyonSchedule {
-    private Long canyonId;
+  private Long canyonId;
 
-    @DocField
-    private Integer car;
+  private Integer car;
 
-    @DocField
-    private Integer descentNumber;
+  private Integer descentNumber;
 
-    @DocField
-    private String approach;
+  private String approach;
 
-    @DocField
-    private String descent;
+  private String descent;
 
-    @DocField
-    private String _return;
+  private String _return;
 }

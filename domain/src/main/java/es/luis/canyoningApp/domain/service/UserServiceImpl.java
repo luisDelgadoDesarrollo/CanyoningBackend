@@ -96,10 +96,12 @@ public class UserServiceImpl extends BaseService implements UserService {
   @Override
   public void requestUpdatePassword(String email) {
     User user = getUserByEmail(email);
-    String token = ServiceUtils.generateToken();
-    sendEmail.sendPasswordEmail(email, token);
-    userRepository.createTokenUpdatePassword(
-        user.getUserId(), token, ServiceUtils.calculateExpiration());
+    if (!ObjectUtils.isEmpty(user)) {
+      String token = ServiceUtils.generateToken();
+      sendEmail.sendPasswordEmail(email, token);
+      userRepository.createTokenUpdatePassword(
+          user.getUserId(), token, ServiceUtils.calculateExpiration());
+    }
   }
 
   @Override

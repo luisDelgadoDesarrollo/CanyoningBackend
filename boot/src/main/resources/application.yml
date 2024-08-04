@@ -17,7 +17,7 @@ spring:
     host: smtp-mail.outlook.com
     port: 587
     username: canyoningApp@hotmail.com
-    password: Luis884994??
+    password: puknzubgbnaqlgld
     properties:
       mail:
         smtp:

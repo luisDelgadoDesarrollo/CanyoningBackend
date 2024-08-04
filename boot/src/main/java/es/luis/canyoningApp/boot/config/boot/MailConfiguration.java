@@ -17,7 +17,7 @@ public class MailConfiguration {
     mailSender.setPort(587);
 
     mailSender.setUsername("canyoningApp@hotmail.com");
-    mailSender.setPassword("Luis884994??");
+    mailSender.setPassword("puknzubgbnaqlgld");
 
     Properties props = mailSender.getJavaMailProperties();
     props.put("mail.transport.protocol", "smtp");
