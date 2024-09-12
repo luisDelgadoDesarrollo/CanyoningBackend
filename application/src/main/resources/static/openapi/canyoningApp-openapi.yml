@@ -6,7 +6,7 @@ info:
     email: delgadofernandez.luis@gmail.com
   version: 0.0.1
 servers:
-  - url: http://10.0.2.2:8080
+  - url: https://10.0.2.2:8080
 tags:
   - name: User
     description: User operations
