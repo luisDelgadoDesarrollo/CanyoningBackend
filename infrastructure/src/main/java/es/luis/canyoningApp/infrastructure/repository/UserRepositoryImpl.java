@@ -8,7 +8,6 @@ import es.luis.canyoningApp.infrastructure.jpaRepository.UserEntityRepository;
 import es.luis.canyoningApp.infrastructure.mapper.UserRepositoryMapper;
 import jakarta.transaction.Transactional;
 import java.time.OffsetDateTime;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,12 +32,6 @@ public class UserRepositoryImpl extends BaseRepository implements UserRepository
   @Override
   public User findUserByEmail(String email) {
     return userRepositoryMapper.userEntityToUser(userEntityRepository.findUserByEmail(email));
-  }
-
-  @Override
-  public User getUserById(Long userId) {
-    return userRepositoryMapper.userEntityToUser(
-        Optional.of(userEntityRepository.findById(userId)).get().orElseThrow());
   }
 
   @Override
@@ -80,5 +73,11 @@ public class UserRepositoryImpl extends BaseRepository implements UserRepository
   public void setUsedToken(Long userId, String token, Boolean used) {
     tokenUpdatePasswordEntityRepository.save(
         TokenUpdatePasswordEntity.builder().userId(userId).token(token).used(used).build());
+  }
+
+  @Override
+  public User findUserById(Long userId) {
+    return userRepositoryMapper.userEntityToUser(
+        userEntityRepository.findById(userId).orElseThrow());
   }
 }

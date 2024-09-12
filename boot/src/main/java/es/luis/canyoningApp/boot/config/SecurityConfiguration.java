@@ -25,15 +25,15 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(
                         (authorizeHttpRequests) ->
                                 authorizeHttpRequests
-                                        .requestMatchers("/login", "/updatePassword", "/createUser")
+                                        .requestMatchers("/login", "/updatePassword", "/createUser", "/")
                                         .permitAll()
                                         .anyRequest()
                                         .hasAuthority(RoleUtils.ROLE_AUTHENTICATED))
                 .csrf(AbstractHttpConfigurer::disable)
-                .httpBasic(Customizer.withDefaults()).cors(Customizer.withDefaults());
+                .httpBasic(Customizer.withDefaults())
+                .cors(Customizer.withDefaults());
         return http.build();
     }
-
 
     @Bean
     public AuthenticationManager authenticationManager(

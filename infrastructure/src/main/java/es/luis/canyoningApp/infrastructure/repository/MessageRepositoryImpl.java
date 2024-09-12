@@ -38,7 +38,7 @@ public class MessageRepositoryImpl extends AuthenticatedUserBase implements Mess
     CanyonMessageEntity canyonMessageEntity =
         messageRepositoryMapper.messageToCanyonMessageEntity(message);
     canyonMessageEntity.setUser(
-        userRepositoryMapper.userToUserEntity(userService.getUser(getAuthenticatedUserId())));
+        userRepositoryMapper.userToUserEntity(userService.getUserById(getAuthenticatedUserId())));
     canyonMessageEntity.setCanyon(
         simpleCanyonRepositoryMapper.simpleCanyonToSimpleCanyonEntity(
             canyonService.getCanyonById(message.getPlaceId())));

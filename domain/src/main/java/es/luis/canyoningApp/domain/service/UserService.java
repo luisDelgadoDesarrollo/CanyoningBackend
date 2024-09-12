@@ -8,15 +8,13 @@ import org.springframework.data.domain.Pageable;
 public interface UserService {
   User createUser(User user);
 
-  User getUser(Long userId);
-
   User getUserByEmail(String email);
 
   Page<User> getUsers(String email, String name, String location, Pageable pageable);
 
-  void deleteUser(Long userId);
+  void deleteUser(String email);
 
-  User updateUser(Long userId, User user);
+  User updateUser(String email, User user);
 
   Boolean login(String email, String password);
 
@@ -25,4 +23,6 @@ public interface UserService {
   void requestUpdatePassword(String email);
 
   List<User> getUsersFromReview(Long reviewId);
+
+  User getUserById(Long userId);
 }

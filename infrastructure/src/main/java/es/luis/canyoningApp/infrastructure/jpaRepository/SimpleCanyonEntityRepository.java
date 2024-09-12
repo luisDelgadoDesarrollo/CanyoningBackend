@@ -12,7 +12,12 @@ public interface SimpleCanyonEntityRepository
         PagingAndSortingRepository<SimpleCanyonEntity, Long> {
 
   @Query(
-      "SELECT sce FROM SimpleCanyonEntity sce WHERE (sce.name like :name or :name is null) and(sce.season like :season or :season is null) and (sce.river like :river or :river is null) and(sce.population like :population or :population is null)")
+      "SELECT sce FROM SimpleCanyonEntity sce "
+          + "WHERE "
+          + "    (LOWER(sce.name) LIKE LOWER(CONCAT('%', :name, '%')) OR :name IS NULL) "
+          + "    AND (LOWER(sce.season) LIKE LOWER(CONCAT('%', :season, '%')) OR :season IS NULL) "
+          + "    AND (LOWER(sce.river) LIKE LOWER(CONCAT('%', :river, '%')) OR :river IS NULL) "
+          + "    AND (LOWER(sce.population) LIKE LOWER(CONCAT('%', :population, '%')) OR :population IS NULL) ")
   Page<SimpleCanyonEntity> getCanyons(
       String name, String season, String river, String population, Pageable pageable);
 }

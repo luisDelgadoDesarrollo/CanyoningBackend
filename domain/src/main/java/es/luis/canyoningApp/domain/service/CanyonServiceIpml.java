@@ -1,5 +1,6 @@
 package es.luis.canyoningApp.domain.service;
 
+import es.luis.canyoningApp.domain.exception.BadRequestException;
 import es.luis.canyoningApp.domain.model.Canyon;
 import es.luis.canyoningApp.domain.model.SimpleCanyon;
 import es.luis.canyoningApp.domain.repository.CanyonRepository;
@@ -31,6 +32,11 @@ public class CanyonServiceIpml implements CanyonService {
 
   @Override
   public Canyon createCanyon(Canyon canyon) {
+    if (ObjectUtils.isEmpty(canyon.getName())) {
+      throw new BadRequestException(
+          "Campo faltante", new Throwable("Falta el nombre del barranco"));
+    }
+    canyon.setCroquis(canyon.getCroquis().replace(" ", "_") + "_map.png");
     return canyonRepository.createCanyon(canyon);
   }
 
@@ -57,7 +63,7 @@ public class CanyonServiceIpml implements CanyonService {
     Canyon canyonSaved = getCanyonById(canyonId);
     canyon.setCanyonId(canyonSaved.getCanyonId());
     canyon.setName(canyonSaved.getName());
-    canyon.setCroquis(canyonSaved.getCroquis());
+    canyon.setCroquis(canyon.getCroquis().replace(" ", "_") + ".png");
     return canyonRepository.updateCanyon(canyon);
   }
 

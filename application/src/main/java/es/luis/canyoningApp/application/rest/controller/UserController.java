@@ -7,7 +7,6 @@ import es.luis.canyoningApp.canyoningApp_application.rest.model.UserCreateDto;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.UserOutDto;
 import es.luis.canyoningApp.domain.model.User;
 import es.luis.canyoningApp.domain.service.UserService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,77 +14,88 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Controller
 public class UserController extends BaseController implements UserApi {
 
-  @Autowired private UserService userService;
+    @Autowired
+    private UserService userService;
 
-  @Autowired private UserControllerMapper userControllerMapper;
+    @Autowired
+    private UserControllerMapper userControllerMapper;
 
-  @Override
-  public ResponseEntity<UserOutDto> createUser(UserCreateDto userCreateDto) {
-    return ResponseEntity.status(HttpStatus.CREATED)
-        .body(
-            userControllerMapper.userToUserOutDto(
-                userService.createUser(userControllerMapper.userCreateDtoTuUser(userCreateDto))));
-  }
+    @Override
+    public ResponseEntity<UserOutDto> createUser(UserCreateDto userCreateDto) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(
+                        userControllerMapper.userToUserOutDto(
+                                userService.createUser(userControllerMapper.userCreateDtoTuUser(userCreateDto))));
+    }
 
-  @Override
-  public ResponseEntity<Void> deleteUser(Long userId) {
-    userService.deleteUser(userId);
-    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-  }
+    @Override
+    public ResponseEntity<Void> deleteUser(String email) {
+        userService.deleteUser(email);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
-  @Override
-  public ResponseEntity<UserOutDto> getUser(Long userId) {
-    return ResponseEntity.ok(userControllerMapper.userToUserOutDto(userService.getUser(userId)));
-  }
+    @Override
+    public ResponseEntity<UserOutDto> getUser(String email) {
+        return ResponseEntity.ok(
+                userControllerMapper.userToUserOutDto(userService.getUserByEmail(email)));
+    }
 
-  @Override
-  public ResponseEntity<List<SimpleUserDto>> getUsers(
-      String email,
-      String name,
-      String location,
-      Integer page,
-      Integer size,
-      String sort,
-      Pageable pageable) {
-    Page<User> users = userService.getUsers(email, name, location, pageable);
-    addPaginationHeadersToResponse(users);
-    return ResponseEntity.ok(
-        users.stream().map(userControllerMapper::userToSimpleUserDto).toList());
-  }
+    @Override
+    public ResponseEntity<List<SimpleUserDto>> getUsers(
+            String email,
+            String name,
+            String location,
+            Integer page,
+            Integer size,
+            String sort,
+            Pageable pageable) {
+        Page<User> users = userService.getUsers(email, name, location, pageable);
+        addPaginationHeadersToResponse(users);
+        return ResponseEntity.ok(
+                users.stream().map(userControllerMapper::userToSimpleUserDto).toList());
+    }
 
-  @Override
-  public ResponseEntity<Boolean> login(String email, String password) {
-    return ResponseEntity.ok(userService.login(email, password));
-  }
+    @Override
+    public ResponseEntity<Boolean> login(String email, String password) {
+        return ResponseEntity.ok(userService.login(email, password));
+    }
 
-  @Override
-  public ResponseEntity<Void> requestUpdatePassword(String email) {
-    userService.requestUpdatePassword(email);
-    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-  }
+    @Override
+    public ResponseEntity<Void> requestUpdatePassword(String email) {
+        userService.requestUpdatePassword(email);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
-  @Override
-  @CrossOrigin(origins = "http://localhost:5173")
-  public ResponseEntity<Void> updatePassword(String email, String token, String password) {
-    userService.updatePassword(email, token, password);
-    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-  }
+    @Override
+    @CrossOrigin(origins = "http://localhost:5173")
+    public ResponseEntity<Void> updatePassword(String email, String token, String password) {
+        userService.updatePassword(email, token, password);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
-  @Override
-  public ResponseEntity<List<SimpleUserDto>> updatePlan(Long userId, Integer plan) {
-    // todo cuando piense como se paga
-    return null;
-  }
+    @Override
+    public ResponseEntity<List<SimpleUserDto>> updatePlan(String email, Integer plan) {
+        // todo cuando piense como se paga
+        return null;
+    }
 
-  @Override
-  public ResponseEntity<SimpleUserDto> updateUser(Long userId, SimpleUserDto simpleUserDto) {
-    return ResponseEntity.ok(
-        userControllerMapper.userToSimpleUserDto(
-            userService.updateUser(
-                userId, userControllerMapper.simpleUserDtoToUser(simpleUserDto))));
-  }
+    @Override
+    public ResponseEntity<SimpleUserDto> updateUser(String email, SimpleUserDto simpleUserDto) {
+        return ResponseEntity.ok(
+                userControllerMapper.userToSimpleUserDto(
+                        userService.updateUser(
+                                email, userControllerMapper.simpleUserDtoToUser(simpleUserDto))));
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<Boolean> check() {
+        return new ResponseEntity<>(true, HttpStatus.OK);
+    }
 }

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ActivityType {
-  CANYON("canyon");
+  CANYON("CANYON");
 
   private String value;
 

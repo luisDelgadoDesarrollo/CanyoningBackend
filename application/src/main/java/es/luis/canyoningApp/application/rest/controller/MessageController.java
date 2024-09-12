@@ -37,7 +37,6 @@ public class MessageController extends BaseController implements MessageApi {
       Integer size,
       String sort,
       Pageable pageable) {
-    // todo fix this pageable i dont like it
     Page<Message> messages =
         messageService.getMessage(
             messageControllerMapper.activityTypeDtoToActivityType(activityType),

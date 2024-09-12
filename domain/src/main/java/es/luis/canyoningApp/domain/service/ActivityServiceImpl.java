@@ -35,7 +35,7 @@ public class ActivityServiceImpl extends BaseService implements ActivityService 
         .forEach(
             participante ->
                 activityRepository.insertActivityUser(
-                    activitySaved.getActivityId(), userService.getUser(participante)));
+                    activitySaved.getActivityId(), userService.getUserById(participante)));
 
     return activitySaved;
   }

@@ -6,7 +6,7 @@ info:
     email: delgadofernandez.luis@gmail.com
   version: 0.0.1
 servers:
-  - url: http://localhost:8080
+  - url: http://10.0.2.2:8080
 tags:
   - name: User
     description: User operations
@@ -18,6 +18,8 @@ tags:
     description: Activity operations
   - name: Message
     description: CanyonMessage operations
+  - name: Image
+    description: Image operations
 paths:
   /createUser:
     post:
@@ -110,7 +112,7 @@ paths:
               $ref: '#/components/headers/X-Total-Pages'
         400:
           $ref: '#/components/responses/400BadRequest'
-  /users/{userId}:
+  /users/{email}:
     get:
       tags:
         - User
@@ -118,11 +120,11 @@ paths:
       description: Get user by id
       operationId: getUser
       parameters:
-        - name: userId
+        - name: email
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/Id'
+            type: string
       responses:
         200:
           description: Successful operation
@@ -139,11 +141,11 @@ paths:
       description: Update your user
       operationId: updateUser
       parameters:
-        - name: userId
+        - name: email
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/Id'
+            type: string
       requestBody:
         content:
           application/json:
@@ -165,12 +167,11 @@ paths:
       description: delete a user
       operationId: deleteUser
       parameters:
-        - name: userId
+        - name: email
           in: path
-          description: User id to delete
           required: true
           schema:
-            $ref: '#/components/schemas/Id'
+            type: string
       responses:
         204:
           description: 'Succesfull delete'
@@ -250,7 +251,7 @@ paths:
                 type: boolean
         400:
           $ref: '#/components/responses/400BadRequest'
-  /users/{userId}/plan/{plan}:
+  /users/{email}/plan/{plan}:
     put:
       tags:
         - User
@@ -258,11 +259,11 @@ paths:
       description: Update your plan
       operationId: updatePlan
       parameters:
-        - name: userId
+        - name: email
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/Id'
+            type: string
         - name: plan
           in: path
           required: true
@@ -380,7 +381,7 @@ paths:
     get:
       tags:
         - Canyon
-      summary: Get an canyon
+      summary: Get one canyon
       description: Get canyon by id
       operationId: getCanyon
       parameters:
@@ -957,6 +958,73 @@ paths:
           description: Successful operation
         400:
           $ref: '#/components/responses/400BadRequest'
+  /images:
+    post:
+      tags:
+        - Image
+      summary: Post an image
+      description: Post an image
+      operationId: postImage
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+                dir:
+                  type: string
+              required:
+                - file
+      responses:
+        201:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /images/{image}/{dir}:
+    get:
+      tags:
+        - Image
+      summary: Obtener una imagen por su nombre
+      description: Recupera una imagen desde el servidor utilizando su ID
+      parameters:
+        - name: image
+          in: path
+          required: true
+          schema:
+            type: string
+          description: El nombre de la imagen a recuperar
+        - name: dir
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Imagen recuperada exitosamente
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Imagen no encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
 components:
   schemas:
     UserIdsRequest:
@@ -972,6 +1040,9 @@ components:
           $ref: '#/components/schemas/Id'
         message:
           type: string
+        date:
+          type: string
+          format: date-time
     MessageIn:
       allOf:
         - $ref: '#/components/schemas/Message'
@@ -987,7 +1058,7 @@ components:
     ActivityType:
       type: string
       enum:
-        - canyon
+        - CANYON
     SimpleActivity:
       type: object
       properties:
@@ -1126,7 +1197,7 @@ components:
           type: string
         descent:
           type: string
-        return:
+        _return:
           type: string
     CanyonDescent:
       type: object

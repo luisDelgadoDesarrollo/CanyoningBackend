@@ -1,5 +1,6 @@
 package es.luis.canyoningApp.domain.service;
 
+import es.luis.canyoningApp.domain.exception.BadRequestException;
 import es.luis.canyoningApp.domain.exception.ConflictException;
 import es.luis.canyoningApp.domain.exception.ExistsException;
 import es.luis.canyoningApp.domain.model.User;
@@ -29,7 +30,12 @@ public class UserServiceImpl extends BaseService implements UserService {
 
   @Override
   public User createUser(User user) {
-
+    if (ObjectUtils.isEmpty(user.getEmail())
+        || ObjectUtils.isEmpty(user.getPassword())
+        || ObjectUtils.isEmpty(user.getName())) {
+      throw new BadRequestException(
+          "Campo faltante", new Throwable("Falta el email, contrasena o nombre"));
+    }
     user.setEmail(user.getEmail().toLowerCase(Locale.ROOT));
     if (ObjectUtils.isEmpty(getUserByEmail(user.getEmail().toLowerCase(Locale.ROOT)))) {
       user.setPlan(0);
@@ -38,11 +44,6 @@ public class UserServiceImpl extends BaseService implements UserService {
       return userRepository.createUser(user);
     }
     throw new ExistsException("Usuario existente", new Throwable("El usuario ya esta registrado"));
-  }
-
-  @Override
-  public User getUser(Long userId) {
-    return userRepository.getUserById(userId);
   }
 
   @Override
@@ -56,16 +57,19 @@ public class UserServiceImpl extends BaseService implements UserService {
   }
 
   @Override
-  public void deleteUser(Long userId) {
-    User user = getUser(userId);
+  public void deleteUser(String email) {
+    User user = userRepository.findUserByEmail(email);
     user.setDeleteAt(OffsetDateTime.now());
     user.setPassword("");
     userRepository.deleteUser(user);
   }
 
   @Override
-  public User updateUser(Long userId, User user) {
-    User databaseUser = userRepository.getUserById(userId);
+  public User updateUser(String email, User user) {
+    if (ObjectUtils.isEmpty(user.getName())) {
+      throw new BadRequestException("Campo faltante", new Throwable("Falta el nombre"));
+    }
+    User databaseUser = userRepository.findUserByEmail(email);
     databaseUser.setName(user.getName());
     databaseUser.setLastName(user.getLastName());
     databaseUser.setLocation(user.getLocation());
@@ -107,5 +111,10 @@ public class UserServiceImpl extends BaseService implements UserService {
   @Override
   public List<User> getUsersFromReview(Long reviewId) {
     return canyonReviewRepository.getUsers(reviewId);
+  }
+
+  @Override
+  public User getUserById(Long userId) {
+    return userRepository.findUserById(userId);
   }
 }

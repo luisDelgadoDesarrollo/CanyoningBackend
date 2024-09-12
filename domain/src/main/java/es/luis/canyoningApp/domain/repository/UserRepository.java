@@ -10,8 +10,6 @@ public interface UserRepository {
 
   User findUserByEmail(String email);
 
-  User getUserById(Long userId);
-
   Page<User> getUsers(String email, String name, String location, Pageable pageable);
 
   void deleteUser(User user);
@@ -23,4 +21,6 @@ public interface UserRepository {
   void createTokenUpdatePassword(Long userId, String token, OffsetDateTime localDateTime);
 
   void setUsedToken(Long userId, String token, Boolean used);
+
+  User findUserById(Long userId);
 }

@@ -1,5 +1,6 @@
 package es.luis.canyoningApp.domain.model;
 
+import java.time.OffsetDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +20,6 @@ public class Message {
   private User user;
 
   private String message;
+
+  private OffsetDateTime date;
 }
