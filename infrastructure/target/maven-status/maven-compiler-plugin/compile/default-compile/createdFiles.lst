@@ -20,6 +20,7 @@ es\luis\canyoningApp\infrastructure\jpaRepository\CanyonDescentEntityRepository.
 es\luis\canyoningApp\infrastructure\entity\CanyonCanyonNearEntity$PrimaryKeys.class
 es\luis\canyoningApp\infrastructure\entity\CanyonDifficultyEntity.class
 es\luis\canyoningApp\infrastructure\jpaRepository\CanyonReviewEntityRepository.class
+es\luis\canyoningApp\infrastructure\entity\CanyonControlLevelEntity$CanyonControlLevelEntityBuilder.class
 es\luis\canyoningApp\infrastructure\jpaRepository\CanyonProhibitionEntityRepository.class
 es\luis\canyoningApp\infrastructure\entity\ActivityEntity.class
 es\luis\canyoningApp\infrastructure\entity\CanyonRappelingEntity$PrimaryKeys.class
@@ -36,6 +37,7 @@ es\luis\canyoningApp\infrastructure\mapper\SimpleCanyonRepositoryMapper.class
 es\luis\canyoningApp\infrastructure\mapper\UserRepositoryMapperImpl.class
 es\luis\canyoningApp\infrastructure\entity\ActivityUserEntity$ActivityUserEntityBuilder.class
 es\luis\canyoningApp\infrastructure\entity\CanyonDescentEntity$CanyonDescentEntityBuilder.class
+es\luis\canyoningApp\infrastructure\entity\CanyonControlLevelEntity$PrimaryKeys.class
 es\luis\canyoningApp\infrastructure\entity\CanyonReviewUserEntity.class
 es\luis\canyoningApp\infrastructure\entity\ActivityUserEntity.class
 es\luis\canyoningApp\infrastructure\entity\CanyonEntity.class
@@ -47,6 +49,7 @@ es\luis\canyoningApp\infrastructure\util\LocalizedEntity.class
 es\luis\canyoningApp\infrastructure\jpaRepository\SimpleCanyonEntityRepository.class
 es\luis\canyoningApp\infrastructure\entity\CanyonDifficultyEntity$CanyonDifficultyEntityBuilder.class
 es\luis\canyoningApp\infrastructure\entity\CanyonMessageEntity.class
+es\luis\canyoningApp\infrastructure\entity\CanyonControlLevelEntity.class
 es\luis\canyoningApp\infrastructure\entity\TokenUpdatePasswordEntity$TokenUpdatePasswordEntityBuilder.class
 es\luis\canyoningApp\infrastructure\mapper\ReviewRepositoryMapperImpl.class
 es\luis\canyoningApp\infrastructure\mapper\UserRepositoryMapper.class

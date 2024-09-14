@@ -51,4 +51,5 @@ C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\inf
 C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\util\JsonConverter.java
 C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\mapper\ReviewRepositoryMapper.java
 C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\jpaRepository\CanyonLinkEntityRepository.java
+C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\entity\CanyonControlLevelEntity.java
 C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\jpaRepository\ActivityEntityRepository.java

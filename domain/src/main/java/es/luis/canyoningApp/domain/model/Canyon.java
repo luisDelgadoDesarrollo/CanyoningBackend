@@ -26,4 +26,6 @@ public class Canyon extends SimpleCanyon {
   private List<CanyonDifficulty> canyonDifficulty = new ArrayList<>();
 
   private List<CanyonCanyonNear> canyonCanyonNear = new ArrayList<>();
+
+  private List<CanyonControlLevel> canyonControlLevel = new ArrayList<>();
 }

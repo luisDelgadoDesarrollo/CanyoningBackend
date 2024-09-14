@@ -2,6 +2,7 @@ package es.luis.canyoningApp.infrastructure.mapper;
 
 import es.luis.canyoningApp.domain.model.Canyon;
 import es.luis.canyoningApp.domain.model.CanyonCanyonNear;
+import es.luis.canyoningApp.domain.model.CanyonControlLevel;
 import es.luis.canyoningApp.domain.model.CanyonDescent;
 import es.luis.canyoningApp.domain.model.CanyonDifficulty;
 import es.luis.canyoningApp.domain.model.CanyonLink;
@@ -10,6 +11,7 @@ import es.luis.canyoningApp.domain.model.CanyonRappeling;
 import es.luis.canyoningApp.domain.model.CanyonSchedule;
 import es.luis.canyoningApp.domain.model.SimpleCanyon;
 import es.luis.canyoningApp.infrastructure.entity.CanyonCanyonNearEntity;
+import es.luis.canyoningApp.infrastructure.entity.CanyonControlLevelEntity;
 import es.luis.canyoningApp.infrastructure.entity.CanyonDescentEntity;
 import es.luis.canyoningApp.infrastructure.entity.CanyonDifficultyEntity;
 import es.luis.canyoningApp.infrastructure.entity.CanyonEntity;
@@ -25,7 +27,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-09-12T13:27:17+0200",
+    date = "2024-09-13T16:12:36+0200",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.1 (Amazon.com Inc.)"
 )
 @Component
@@ -59,6 +61,7 @@ public class CanyonRepositoryMapperImpl implements CanyonRepositoryMapper {
         canyon.canyonProhibition( canyonProhibitionEntityListToCanyonProhibitionList( canyonEntity.getCanyonProhibition() ) );
         canyon.canyonDifficulty( canyonDifficultyEntityListToCanyonDifficultyList( canyonEntity.getCanyonDifficulty() ) );
         canyon.canyonCanyonNear( canyonCanyonNearEntityListToCanyonCanyonNearList( canyonEntity.getCanyonCanyonNear() ) );
+        canyon.canyonControlLevel( canyonControlLevelEntityListToCanyonControlLevelList( canyonEntity.getCanyonControlLevel() ) );
 
         return canyon.build();
     }
@@ -346,6 +349,7 @@ public class CanyonRepositoryMapperImpl implements CanyonRepositoryMapper {
         canyonEntity.setCanyonProhibition( canyonProhibitionListToCanyonProhibitionEntityList( canyon.getCanyonProhibition() ) );
         canyonEntity.setCanyonDifficulty( canyonDifficultyListToCanyonDifficultyEntityList( canyon.getCanyonDifficulty() ) );
         canyonEntity.setCanyonCanyonNear( canyonCanyonNearListToCanyonCanyonNearEntityList( canyon.getCanyonCanyonNear() ) );
+        canyonEntity.setCanyonControlLevel( canyonControlLevelListToCanyonControlLevelEntityList( canyon.getCanyonControlLevel() ) );
 
         return canyonEntity;
     }
@@ -461,6 +465,34 @@ public class CanyonRepositoryMapperImpl implements CanyonRepositoryMapper {
         List<CanyonCanyonNear> list1 = new ArrayList<CanyonCanyonNear>( list.size() );
         for ( CanyonCanyonNearEntity canyonCanyonNearEntity : list ) {
             list1.add( canyonCanyonNearEntityToCanyonCanyonNear( canyonCanyonNearEntity ) );
+        }
+
+        return list1;
+    }
+
+    protected CanyonControlLevel canyonControlLevelEntityToCanyonControlLevel(CanyonControlLevelEntity canyonControlLevelEntity) {
+        if ( canyonControlLevelEntity == null ) {
+            return null;
+        }
+
+        CanyonControlLevel.CanyonControlLevelBuilder canyonControlLevel = CanyonControlLevel.builder();
+
+        canyonControlLevel.canyonId( canyonControlLevelEntity.getCanyonId() );
+        canyonControlLevel.caudalLevel( canyonControlLevelEntity.getCaudalLevel() );
+        canyonControlLevel.name( canyonControlLevelEntity.getName() );
+        canyonControlLevel.controlPoint( canyonControlLevelEntity.getControlPoint() );
+
+        return canyonControlLevel.build();
+    }
+
+    protected List<CanyonControlLevel> canyonControlLevelEntityListToCanyonControlLevelList(List<CanyonControlLevelEntity> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<CanyonControlLevel> list1 = new ArrayList<CanyonControlLevel>( list.size() );
+        for ( CanyonControlLevelEntity canyonControlLevelEntity : list ) {
+            list1.add( canyonControlLevelEntityToCanyonControlLevel( canyonControlLevelEntity ) );
         }
 
         return list1;
@@ -582,6 +614,34 @@ public class CanyonRepositoryMapperImpl implements CanyonRepositoryMapper {
         List<CanyonCanyonNearEntity> list1 = new ArrayList<CanyonCanyonNearEntity>( list.size() );
         for ( CanyonCanyonNear canyonCanyonNear : list ) {
             list1.add( canyonCanyonNearToCanyonCanyonNearEntity( canyonCanyonNear ) );
+        }
+
+        return list1;
+    }
+
+    protected CanyonControlLevelEntity canyonControlLevelToCanyonControlLevelEntity(CanyonControlLevel canyonControlLevel) {
+        if ( canyonControlLevel == null ) {
+            return null;
+        }
+
+        CanyonControlLevelEntity.CanyonControlLevelEntityBuilder canyonControlLevelEntity = CanyonControlLevelEntity.builder();
+
+        canyonControlLevelEntity.canyonId( canyonControlLevel.getCanyonId() );
+        canyonControlLevelEntity.caudalLevel( canyonControlLevel.getCaudalLevel() );
+        canyonControlLevelEntity.name( canyonControlLevel.getName() );
+        canyonControlLevelEntity.controlPoint( canyonControlLevel.getControlPoint() );
+
+        return canyonControlLevelEntity.build();
+    }
+
+    protected List<CanyonControlLevelEntity> canyonControlLevelListToCanyonControlLevelEntityList(List<CanyonControlLevel> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<CanyonControlLevelEntity> list1 = new ArrayList<CanyonControlLevelEntity>( list.size() );
+        for ( CanyonControlLevel canyonControlLevel : list ) {
+            list1.add( canyonControlLevelToCanyonControlLevelEntity( canyonControlLevel ) );
         }
 
         return list1;

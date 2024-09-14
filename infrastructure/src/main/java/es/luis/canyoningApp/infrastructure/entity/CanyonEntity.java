@@ -73,4 +73,7 @@ public class CanyonEntity {
 
   @OneToMany(mappedBy = "canyon")
   private List<CanyonCanyonNearEntity> canyonCanyonNear;
+
+  @OneToMany(mappedBy = "canyon")
+  private List<CanyonControlLevelEntity> canyonControlLevel;
 }

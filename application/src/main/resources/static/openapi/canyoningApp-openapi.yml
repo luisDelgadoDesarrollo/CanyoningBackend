@@ -6,7 +6,7 @@ info:
     email: delgadofernandez.luis@gmail.com
   version: 0.0.1
 servers:
-  - url: https://10.0.2.2:8080
+  - url: http://localhost:8080
 tags:
   - name: User
     description: User operations
@@ -1148,12 +1148,27 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/CanyonCanyonNear'
+            canyonControlLevel:
+              type: array
+              items:
+                $ref: '#/components/schemas/CanyonControlLevel'
     CanyonCanyonNear:
       type: object
       properties:
         principalCanyon:
           $ref: '#/components/schemas/Id'
         nearCanyon:
+          type: string
+    CanyonControlLevel:
+      type: object
+      properties:
+        canyonId:
+          $ref: '#/components/schemas/Id'
+        caudalLevel:
+          type: string
+        name:
+          type: string
+        controlPoint:
           type: string
     CanyonDifficulty:
       type: object
