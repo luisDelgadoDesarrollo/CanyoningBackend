@@ -1,5 +1,8 @@
 properties:
   plan: 1
+  basePath: ${BASE_PATH}
+  croquis: ${CROQUIS}
+  controlPoint: ${CONTROL_POINT}
 
 management.endpoints.web.exposure.include: "*"
 
@@ -17,7 +20,7 @@ spring:
     host: smtp-mail.outlook.com
     port: 587
     username: canyoningApp@hotmail.com
-    password: puknzubgbnaqlgld
+    password: ${PASSWORD}
     properties:
       mail:
         smtp:

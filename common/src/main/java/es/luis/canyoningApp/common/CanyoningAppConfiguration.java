@@ -9,9 +9,16 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("properties")
 public class CanyoningAppConfiguration {
 
-  private CanyoningAppConfiguration() {}
+    public CanyoningAppConfiguration() {
+    }
 
-  private String plan;
+    private String plan;
 
-  private String host;
+    private String host;
+
+    private String basePath;
+
+    private String croquis;
+
+    private String controlPoint;
 }

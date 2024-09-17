@@ -1,5 +1,7 @@
 package es.luis.canyoningApp.domain.service;
 
+import es.luis.canyoningApp.common.CanyoningAppConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -12,10 +14,14 @@ import java.nio.file.Paths;
 
 @Service
 public class ImageServiceImpl implements ImageService {
+
+    @Autowired
+    private CanyoningAppConfiguration canyoningAppConfiguration;
+
     @Override
     public void postImage(MultipartFile file, String name, String dir) {
         try {
-            File directory = new File("C:\\Canyoning_App\\webScrap\\" + dir + "\\");
+            File directory = new File(canyoningAppConfiguration.getBasePath() + dir + "\\");
             if (!directory.exists()) {
                 directory.mkdirs();
             }
@@ -32,7 +38,7 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public Resource getImage(String image, String dir) {
-        File directory = new File("C:\\Canyoning_App\\webScrap\\" + dir + "\\");
+        File directory = new File(canyoningAppConfiguration.getBasePath() + dir + "\\");
         File imageFile = new File(directory, image + ".png");
         if (imageFile.exists() && imageFile.isFile()) {
             // Devuelve el Resource usando FileSystemResource

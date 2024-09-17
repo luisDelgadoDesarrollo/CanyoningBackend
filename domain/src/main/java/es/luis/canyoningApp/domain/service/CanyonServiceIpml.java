@@ -1,5 +1,6 @@
 package es.luis.canyoningApp.domain.service;
 
+import es.luis.canyoningApp.common.CanyoningAppConfiguration;
 import es.luis.canyoningApp.domain.exception.BadRequestException;
 import es.luis.canyoningApp.domain.model.Canyon;
 import es.luis.canyoningApp.domain.model.CanyonControlLevel;
@@ -35,6 +36,10 @@ public class CanyonServiceIpml implements CanyonService {
 
     @Autowired
     private SendEmail sendEmail;
+
+
+    @Autowired
+    private CanyoningAppConfiguration canyoningAppConfiguration;
 
     @Override
     public Canyon createCanyon(Canyon canyon) {
@@ -279,12 +284,12 @@ public class CanyonServiceIpml implements CanyonService {
             }
 
             PDPage page3 = new PDPage();
-            document.addPage(page3);
 
-            String baseImgPath = "C:\\Canyoning_App\\webScrap\\croquis\\";
-            String pathname = baseImgPath + canyon.getCroquis();
+            String baseImgPath = canyoningAppConfiguration.getBasePath() + canyoningAppConfiguration.getCroquis();
+            String pathname = baseImgPath + "\\" + canyon.getCroquis();
             File imageFile = new File(pathname);
             if (imageFile.exists()) {
+                document.addPage(page3);
                 try (PDPageContentStream contentStream = new PDPageContentStream(document, page3)) {
                     contentStream.beginText();
                     contentStream.newLineAtOffset(50, 750);
@@ -325,11 +330,11 @@ public class CanyonServiceIpml implements CanyonService {
             List<CanyonControlLevel> canyonControlLevel = canyon.getCanyonControlLevel();
             for (CanyonControlLevel controlLevel : canyonControlLevel) {
                 PDPage pageExtra = new PDPage();
-                document.addPage(pageExtra);
-                baseImgPath = "C:\\Canyoning_App\\webScrap\\controlPoints\\";
+                baseImgPath = canyoningAppConfiguration.getBasePath() + canyoningAppConfiguration.getControlPoint();
                 pathname = baseImgPath + controlLevel.getName();
                 imageFile = new File(pathname);
                 if (imageFile.exists()) {
+                    document.addPage(pageExtra);
                     try (PDPageContentStream contentStream = new PDPageContentStream(document, pageExtra)) {
                         contentStream.beginText();
                         contentStream.newLineAtOffset(50, 750);
