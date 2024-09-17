@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CanyonLinkEntityRepository extends CrudRepository<CanyonLinkEntity, Long> {
-    @Modifying
-    @Query("DELETE FROM CanyonLinkEntity cle where cle.canyon.canyonId = :canyonId")
-    void deleteByCanyonId(Long canyonId);
+  @Modifying
+  @Query("DELETE FROM CanyonLinkEntity cle where cle.canyon.canyonId = :canyonId")
+  void deleteByCanyonId(Long canyonId);
 }

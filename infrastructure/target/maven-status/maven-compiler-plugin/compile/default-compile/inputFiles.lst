@@ -46,6 +46,7 @@ C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\inf
 C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\mapper\SimpleCanyonRepositoryMapper.java
 C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\repository\BaseRepository.java
 C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\entity\SimpleCanyonEntity.java
+C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\jpaRepository\CanyonControlLevelEntityRepository.java
 C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\jpaRepository\CanyonDifficultyEntityRepository.java
 C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\entity\CanyonMessageEntity.java
 C:\Canyoning_App\Canyoning\infrastructure\src\main\java\es\luis\canyoningApp\infrastructure\util\JsonConverter.java

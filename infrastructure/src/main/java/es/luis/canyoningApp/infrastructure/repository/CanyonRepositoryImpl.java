@@ -18,173 +18,160 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CanyonRepositoryImpl implements CanyonRepository {
 
-    @Autowired
-    private CanyonEntityRepository canyonEntityRepository;
-    @Autowired
-    private SimpleCanyonEntityRepository simpleCanyonEntityRepository;
+  @Autowired private CanyonEntityRepository canyonEntityRepository;
+  @Autowired private SimpleCanyonEntityRepository simpleCanyonEntityRepository;
 
-    @Autowired
-    private CanyonRepositoryMapper canyonRepositoryMapper;
+  @Autowired private CanyonRepositoryMapper canyonRepositoryMapper;
 
-    @Autowired
-    private SimpleCanyonRepositoryMapper simpleCanyonRepositoryMapper;
+  @Autowired private SimpleCanyonRepositoryMapper simpleCanyonRepositoryMapper;
 
-    @Autowired
-    private CanyonDescentEntityRepository canyonDescentEntityRepository;
+  @Autowired private CanyonDescentEntityRepository canyonDescentEntityRepository;
 
-    @Autowired
-    private CanyonDifficultyEntityRepository canyonDifficultyEntityRepository;
+  @Autowired private CanyonDifficultyEntityRepository canyonDifficultyEntityRepository;
 
-    @Autowired
-    private CanyonLinkEntityRepository canyonLinkEntityRepository;
+  @Autowired private CanyonLinkEntityRepository canyonLinkEntityRepository;
 
-    @Autowired
-    private CanyonProhibitionEntityRepository canyonProhibitionEntityRepository;
+  @Autowired private CanyonProhibitionEntityRepository canyonProhibitionEntityRepository;
 
-    @Autowired
-    private CanyonRappelingEntityRepository canyonRappelingEntityRepository;
+  @Autowired private CanyonRappelingEntityRepository canyonRappelingEntityRepository;
 
-    @Autowired
-    private CanyonScheduleEntityRepository canyonScheduleEntityRepository;
+  @Autowired private CanyonScheduleEntityRepository canyonScheduleEntityRepository;
 
-    @Autowired
-    private CanyonCanyonNearEntityRepository canyonCanyonNearEntityRepository;
+  @Autowired private CanyonCanyonNearEntityRepository canyonCanyonNearEntityRepository;
 
+  @Autowired private CanyonControlLevelEntityRepository canyonControlLevelEntityRepository;
 
-    @Autowired
-    private CanyonControlLevelEntityRepository canyonControlLevelEntityRepository;
+  @Override
+  public Canyon getCanyonById(Long canyonId) {
+    return canyonRepositoryMapper.canyonEntityToCanyon(
+        canyonEntityRepository.findById(canyonId).orElseThrow());
+  }
 
-    @Override
-    public Canyon getCanyonById(Long canyonId) {
-        return canyonRepositoryMapper.canyonEntityToCanyon(
-                canyonEntityRepository.findById(canyonId).orElseThrow());
-    }
+  @Override
+  public Page<SimpleCanyon> getCanyons(
+      String name, String season, String river, String population, Pageable pageable) {
+    // todo revisar filtros
+    return simpleCanyonEntityRepository
+        .getCanyons(name, season, river, population, pageable)
+        .map(simpleCanyonRepositoryMapper::simpleCanyonEntityToSimpleCanyon);
+  }
 
-    @Override
-    public Page<SimpleCanyon> getCanyons(
-            String name, String season, String river, String population, Pageable pageable) {
-        // todo revisar filtros
-        return simpleCanyonEntityRepository
-                .getCanyons(name, season, river, population, pageable)
-                .map(simpleCanyonRepositoryMapper::simpleCanyonEntityToSimpleCanyon);
-    }
+  @Override
+  public void deleteCanyon(SimpleCanyon simpleCanyon) {
+    deleteAllListFromCanyon(simpleCanyon.getCanyonId());
+    simpleCanyonEntityRepository.save(
+        canyonRepositoryMapper.simpleCanyonToSimpleCanyonEntity(simpleCanyon));
+  }
 
-    @Override
-    public void deleteCanyon(SimpleCanyon simpleCanyon) {
-        deleteAllListFromCanyon(simpleCanyon.getCanyonId());
+  @Transactional
+  @Override
+  public Canyon createCanyon(Canyon canyon) {
+    CanyonEntity canyonEntity = saveSimpleCanyonAndPrepareCanyonEntityFeatures(canyon);
+    saveAllFeatures(canyonEntity);
+    return canyonRepositoryMapper.canyonEntityToCanyon(canyonEntity);
+  }
+
+  private void saveAllFeatures(CanyonEntity canyonEntity) {
+    canyonDescentEntityRepository.saveAll(canyonEntity.getCanyonDescent());
+    canyonDifficultyEntityRepository.saveAll(canyonEntity.getCanyonDifficulty());
+    canyonLinkEntityRepository.saveAll(canyonEntity.getCanyonLink());
+    canyonProhibitionEntityRepository.saveAll(canyonEntity.getCanyonProhibition());
+    canyonRappelingEntityRepository.saveAll(canyonEntity.getCanyonRappeling());
+    canyonScheduleEntityRepository.saveAll(canyonEntity.getCanyonSchedule());
+    canyonCanyonNearEntityRepository.saveAll(canyonEntity.getCanyonCanyonNear());
+    canyonControlLevelEntityRepository.saveAll(canyonEntity.getCanyonControlLevel());
+  }
+
+  @Override
+  public Canyon updateCanyon(Canyon canyon) {
+    deleteAllListFromCanyon(canyon.getCanyonId());
+    CanyonEntity canyonEntity = saveSimpleCanyonAndPrepareCanyonEntityFeatures(canyon);
+    saveAllFeatures(canyonEntity);
+    return canyonRepositoryMapper.canyonEntityToCanyon(canyonEntity);
+  }
+
+  private void deleteAllListFromCanyon(Long canyonId) {
+
+    canyonRappelingEntityRepository.deleteByCanyonId(canyonId);
+    canyonDescentEntityRepository.deleteByCanyonId(canyonId);
+    canyonScheduleEntityRepository.deleteByCanyonId(canyonId);
+    canyonLinkEntityRepository.deleteByCanyonId(canyonId);
+    canyonProhibitionEntityRepository.deleteByCanyonId(canyonId);
+    canyonDifficultyEntityRepository.deleteByCanyonId(canyonId);
+    canyonCanyonNearEntityRepository.deleteByCanyonId(canyonId);
+    canyonControlLevelEntityRepository.deleteByCanyonId(canyonId);
+  }
+
+  private CanyonEntity saveSimpleCanyonAndPrepareCanyonEntityFeatures(Canyon canyon) {
+    SimpleCanyonEntity save =
         simpleCanyonEntityRepository.save(
-                canyonRepositoryMapper.simpleCanyonToSimpleCanyonEntity(simpleCanyon));
-    }
+            simpleCanyonRepositoryMapper.simpleCanyonToSimpleCanyonEntity(canyon));
 
-    @Transactional
-    @Override
-    public Canyon createCanyon(Canyon canyon) {
-        CanyonEntity canyonEntity = saveSimpleCanyonAndPrepareCanyonEntityFeatures(canyon);
-        saveAllFeatures(canyonEntity);
-        return canyonRepositoryMapper.canyonEntityToCanyon(canyonEntity);
-    }
+    Long canyonId = save.getCanyonId();
+    canyon.setCanyonId(canyonId);
+    CanyonEntity canyonEntity = canyonRepositoryMapper.canyonToCanyonEntity(canyon);
 
-    private void saveAllFeatures(CanyonEntity canyonEntity) {
-        canyonDescentEntityRepository.saveAll(canyonEntity.getCanyonDescent());
-        canyonDifficultyEntityRepository.saveAll(canyonEntity.getCanyonDifficulty());
-        canyonLinkEntityRepository.saveAll(canyonEntity.getCanyonLink());
-        canyonProhibitionEntityRepository.saveAll(canyonEntity.getCanyonProhibition());
-        canyonRappelingEntityRepository.saveAll(canyonEntity.getCanyonRappeling());
-        canyonScheduleEntityRepository.saveAll(canyonEntity.getCanyonSchedule());
-        canyonCanyonNearEntityRepository.saveAll(canyonEntity.getCanyonCanyonNear());
-        canyonControlLevelEntityRepository.saveAll(canyonEntity.getCanyonControlLevel());
-    }
-
-    @Override
-    public Canyon updateCanyon(Canyon canyon) {
-        deleteAllListFromCanyon(canyon.getCanyonId());
-        CanyonEntity canyonEntity = saveSimpleCanyonAndPrepareCanyonEntityFeatures(canyon);
-        saveAllFeatures(canyonEntity);
-        return canyonRepositoryMapper.canyonEntityToCanyon(canyonEntity);
-    }
-
-    private void deleteAllListFromCanyon(Long canyonId) {
-
-        canyonRappelingEntityRepository.deleteByCanyonId(canyonId);
-        canyonDescentEntityRepository.deleteByCanyonId(canyonId);
-        canyonScheduleEntityRepository.deleteByCanyonId(canyonId);
-        canyonLinkEntityRepository.deleteByCanyonId(canyonId);
-        canyonProhibitionEntityRepository.deleteByCanyonId(canyonId);
-        canyonDifficultyEntityRepository.deleteByCanyonId(canyonId);
-        canyonCanyonNearEntityRepository.deleteByCanyonId(canyonId);
-        canyonControlLevelEntityRepository.deleteByCanyonId(canyonId);
-    }
-
-    private CanyonEntity saveSimpleCanyonAndPrepareCanyonEntityFeatures(Canyon canyon) {
-        SimpleCanyonEntity save =
-                simpleCanyonEntityRepository.save(
-                        simpleCanyonRepositoryMapper.simpleCanyonToSimpleCanyonEntity(canyon));
-
-        Long canyonId = save.getCanyonId();
-        canyon.setCanyonId(canyonId);
-        CanyonEntity canyonEntity = canyonRepositoryMapper.canyonToCanyonEntity(canyon);
-
-        canyonEntity
-                .getCanyonRappeling()
-                .forEach(
-                        canyonRappeling -> {
-                            canyonRappeling.setCanyonId(canyonId);
-                            canyonRappeling.setCanyon(
-                                    canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity));
-                        });
-        canyonEntity
-                .getCanyonDescent()
-                .forEach(
-                        canyonDescent -> {
-                            canyonDescent.setCanyonId(canyonId);
-                            canyonDescent.setCanyon(
-                                    canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity));
-                        });
-        canyonEntity
-                .getCanyonSchedule()
-                .forEach(
-                        canyonSchedule -> {
-                            canyonSchedule.setCanyonId(canyonId);
-                            canyonSchedule.setCanyon(
-                                    canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity));
-                        });
-        canyonEntity
-                .getCanyonLink()
-                .forEach(
-                        canyonLink ->
-                                canyonLink.setCanyon(
-                                        canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity)));
-        canyonEntity
-                .getCanyonProhibition()
-                .forEach(
-                        canyonProhibition ->
-                                canyonProhibition.setCanyon(
-                                        canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity)));
-        canyonEntity
-                .getCanyonDifficulty()
-                .forEach(
-                        canyonDifficulty -> {
-                            canyonDifficulty.setCanyonId(canyonId);
-                            canyonDifficulty.setCanyon(
-                                    canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity));
-                        });
-        canyonEntity
-                .getCanyonCanyonNear()
-                .forEach(
-                        canyonCanyonNear -> {
-                            canyonCanyonNear.setPrincipalCanyon(canyonId);
-                            canyonCanyonNear.setCanyon(
-                                    canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity));
-                        });
-        canyonEntity
-                .getCanyonControlLevel()
-                .forEach(
-                        canyonControlLevel -> {
-                            canyonControlLevel.setCanyonId(canyonId);
-                            if (!canyonControlLevel.getName().endsWith(".png")) {
-                                canyonControlLevel.setName(canyonControlLevel.getName() + ".png");
-                            }
-                        });
-        return canyonEntity;
-    }
+    canyonEntity
+        .getCanyonRappeling()
+        .forEach(
+            canyonRappeling -> {
+              canyonRappeling.setCanyonId(canyonId);
+              canyonRappeling.setCanyon(
+                  canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity));
+            });
+    canyonEntity
+        .getCanyonDescent()
+        .forEach(
+            canyonDescent -> {
+              canyonDescent.setCanyonId(canyonId);
+              canyonDescent.setCanyon(
+                  canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity));
+            });
+    canyonEntity
+        .getCanyonSchedule()
+        .forEach(
+            canyonSchedule -> {
+              canyonSchedule.setCanyonId(canyonId);
+              canyonSchedule.setCanyon(
+                  canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity));
+            });
+    canyonEntity
+        .getCanyonLink()
+        .forEach(
+            canyonLink ->
+                canyonLink.setCanyon(
+                    canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity)));
+    canyonEntity
+        .getCanyonProhibition()
+        .forEach(
+            canyonProhibition ->
+                canyonProhibition.setCanyon(
+                    canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity)));
+    canyonEntity
+        .getCanyonDifficulty()
+        .forEach(
+            canyonDifficulty -> {
+              canyonDifficulty.setCanyonId(canyonId);
+              canyonDifficulty.setCanyon(
+                  canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity));
+            });
+    canyonEntity
+        .getCanyonCanyonNear()
+        .forEach(
+            canyonCanyonNear -> {
+              canyonCanyonNear.setPrincipalCanyon(canyonId);
+              canyonCanyonNear.setCanyon(
+                  canyonRepositoryMapper.canyonEntityToSimpleCanyonEntity(canyonEntity));
+            });
+    canyonEntity
+        .getCanyonControlLevel()
+        .forEach(
+            canyonControlLevel -> {
+              canyonControlLevel.setCanyonId(canyonId);
+              if (!canyonControlLevel.getName().endsWith(".png")) {
+                canyonControlLevel.setName(canyonControlLevel.getName() + ".png");
+              }
+            });
+    return canyonEntity;
+  }
 }

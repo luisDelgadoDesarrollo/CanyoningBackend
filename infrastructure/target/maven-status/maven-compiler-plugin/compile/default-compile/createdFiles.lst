@@ -57,6 +57,7 @@ es\luis\canyoningApp\infrastructure\entity\CanyonScheduleEntity$CanyonScheduleEn
 es\luis\canyoningApp\infrastructure\mapper\MessageRepositoryMapper.class
 es\luis\canyoningApp\infrastructure\mapper\ReviewRepositoryMapper.class
 es\luis\canyoningApp\infrastructure\jpaRepository\CanyonCanyonNearEntityRepository.class
+es\luis\canyoningApp\infrastructure\jpaRepository\CanyonControlLevelEntityRepository.class
 es\luis\canyoningApp\infrastructure\mapper\BaseRepositoryMapperImpl.class
 es\luis\canyoningApp\infrastructure\mapper\CanyonRepositoryMapper.class
 es\luis\canyoningApp\infrastructure\entity\CanyonProhibitionEntity.class
