@@ -6,7 +6,7 @@ info:
     email: delgadofernandez.luis@gmail.com
   version: 0.0.1
 servers:
-  - url: http://localhost:8080
+  - url: http://200.234.229.223:8080
 tags:
   - name: User
     description: User operations
@@ -196,11 +196,16 @@ paths:
           required: true
           schema:
             type: string
-        - name: password
-          in: query
-          required: true
-          schema:
-            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: your_password
       responses:
         200:
           description: Successful operation
@@ -225,7 +230,7 @@ paths:
         400:
           $ref: '#/components/responses/400BadRequest'
   /login:
-    get:
+    post:
       tags:
         - User
       summary: Login
@@ -237,11 +242,16 @@ paths:
           required: true
           schema:
             type: string
-        - name: password
-          in: query
-          required: true
-          schema:
-            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: your_password
       responses:
         200:
           description: Successful operation

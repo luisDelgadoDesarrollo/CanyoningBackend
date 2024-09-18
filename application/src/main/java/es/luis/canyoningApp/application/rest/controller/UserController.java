@@ -3,6 +3,7 @@ package es.luis.canyoningApp.application.rest.controller;
 import es.luis.canyoningApp.application.rest.mapper.UserControllerMapper;
 import es.luis.canyoningApp.canyoningApp_application.rest.api.UserApi;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.SimpleUserDto;
+import es.luis.canyoningApp.canyoningApp_application.rest.model.UpdatePasswordRequestDto;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.UserCreateDto;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.UserOutDto;
 import es.luis.canyoningApp.domain.model.User;
@@ -60,8 +61,9 @@ public class UserController extends BaseController implements UserApi {
   }
 
   @Override
-  public ResponseEntity<Boolean> login(String email, String password) {
-    return ResponseEntity.ok(userService.login(email, password));
+  public ResponseEntity<Boolean> login(
+      String email, UpdatePasswordRequestDto updatePasswordRequestDto) {
+    return ResponseEntity.ok(userService.login(email, updatePasswordRequestDto.getPassword()));
   }
 
   @Override
@@ -72,8 +74,9 @@ public class UserController extends BaseController implements UserApi {
 
   @Override
   @CrossOrigin(origins = "http://localhost:5173")
-  public ResponseEntity<Void> updatePassword(String email, String token, String password) {
-    userService.updatePassword(email, token, password);
+  public ResponseEntity<Void> updatePassword(
+      String email, String token, UpdatePasswordRequestDto updatePasswordRequestDto) {
+    userService.updatePassword(email, token, updatePasswordRequestDto.getPassword());
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 
