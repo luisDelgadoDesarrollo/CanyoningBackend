@@ -30,11 +30,13 @@ spring:
     username: canyoningApp@hotmail.com
     password: ${PASSWORD}
     properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
 springdoc:
   api-docs:
     enabled: false
