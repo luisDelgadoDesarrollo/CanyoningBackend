@@ -2,7 +2,7 @@ properties:
   plan: 1
   host: http://localhost:5173
 logging.level:
-  ROOT: INFO
+  ROOT: ${LOG:INFO}
 
 
 spring:
