@@ -27,7 +27,7 @@ public class ImageServiceImpl implements ImageService {
             }
             if (!name.endsWith(".png")) name += ".png";
 
-            Path filePath = Paths.get(directory.getPath() + name.replace(" ", "_"));
+            Path filePath = Paths.get(directory.getPath() + canyoningAppConfiguration.getSlash() + name.replace(" ", "_"));
             Files.write(filePath, file.getBytes());
 
         } catch (Exception e) {

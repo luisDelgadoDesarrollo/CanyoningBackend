@@ -3,6 +3,7 @@ properties:
   basePath: ${BASE_PATH}
   croquis: ${CROQUIS}
   controlPoint: ${CONTROL_POINT}
+  slash: ${SLASH}
 
 management.endpoints.web.exposure.include: "*"
 
