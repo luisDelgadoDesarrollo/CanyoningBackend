@@ -8,6 +8,7 @@ import es.luis.canyoningApp.domain.model.CanyonRappeling;
 import es.luis.canyoningApp.domain.model.SimpleCanyon;
 import es.luis.canyoningApp.domain.repository.CanyonRepository;
 import jakarta.mail.MessagingException;
+import lombok.extern.java.Log;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Log
 public class CanyonServiceIpml implements CanyonService {
 
     private static final float MARGIN = 50;
@@ -326,6 +328,7 @@ public class CanyonServiceIpml implements CanyonService {
             String baseImgPath =
                     canyoningAppConfiguration.getBasePath() + canyoningAppConfiguration.getCroquis();
             String pathname = baseImgPath + "\\" + canyon.getCroquis();
+            log.info(pathname);
             File imageFile = new File(pathname);
             if (imageFile.exists()) {
                 document.addPage(page3);
