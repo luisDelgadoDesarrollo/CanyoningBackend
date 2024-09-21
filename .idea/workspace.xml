@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c847009-da88-4c19-94c9-6998b1d02a63" name="Changes" comment="all app finished">
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/es/luis/canyoningApp/common/CanyoningAppConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/es/luis/canyoningApp/common/CanyoningAppConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/ImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/ImageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,12 +227,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>89</line>
+          <line>93</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>56</line>
+          <line>60</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
