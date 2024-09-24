@@ -6,7 +6,7 @@ info:
     email: delgadofernandez.luis@gmail.com
   version: 0.0.1
 servers:
-  - url: http://localhost:8080
+  #- url: http://localhost:8080
   - url: https://misbarrancosbdesarrollo.com:8443
 tags:
   - name: User
@@ -458,8 +458,8 @@ paths:
     get:
       tags:
         - Canyon
-      summary: Download an canyon
-      description: Download canyon by id
+      summary: Download a canyon
+      description: Download canyon by id and return a PDF file
       operationId: downloadCanyon
       parameters:
         - name: canyonId
@@ -473,10 +473,19 @@ paths:
           schema:
             type: boolean
       responses:
-        200:
+        '200':
           description: Successful operation
-        400:
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '400':
           $ref: '#/components/responses/400BadRequest'
+        '404':
+          description: Canyon not found
+        '500':
+          description: Internal server error
   /reviews/canyon:
     post:
       tags:

@@ -8,6 +8,7 @@ import es.luis.canyoningApp.domain.model.SimpleCanyon;
 import es.luis.canyoningApp.domain.service.CanyonService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class CanyonController extends BaseController implements CanyonApi {
   }
 
   @Override
-  public ResponseEntity<Void> downloadCanyon(Long canyonId, Boolean email) {
+  public ResponseEntity<Resource> downloadCanyon(Long canyonId, Boolean email) {
     canyonService.downloadCanyon(canyonId, email);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
