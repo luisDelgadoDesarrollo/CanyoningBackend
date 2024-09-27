@@ -29,7 +29,7 @@ public class SendEmailImpl extends AuthenticatedUserBase implements SendEmail {
     String endpoint =
         canyoningAppConfiguration.getHost() + "/updatePassword?email=" + email + "&token=" + token;
     SimpleMailMessage message = new SimpleMailMessage();
-    message.setFrom("canyoningApp@hotmail.com");
+    message.setFrom("documentos@misbarrancosbdesarrollo.com");
     message.setTo(email);
     message.setSubject("Recuperar contrasena");
     message.setText(String.format(Objects.requireNonNull(simpleMailMessage.getText()), endpoint));
@@ -43,7 +43,7 @@ public class SendEmailImpl extends AuthenticatedUserBase implements SendEmail {
     MimeMessage message = javaMailSender.createMimeMessage();
     MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-    helper.setFrom("canyoningApp@hotmail.com");
+    helper.setFrom("documentos@misbarrancosbdesarrollo.com");
     helper.setTo(getAuthenticatedUsername());
     helper.setSubject("Ficha del barranco " + fileName.split("\\.")[0]);
     helper.setText("Documento con la informacion del barranco");

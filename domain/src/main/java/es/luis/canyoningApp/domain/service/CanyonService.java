@@ -7,16 +7,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface CanyonService {
-    Canyon createCanyon(Canyon canyon);
+  Canyon createCanyon(Canyon canyon);
 
-    Canyon getCanyonById(Long canyonId);
+  Canyon getCanyonById(Long canyonId);
 
-    Page<SimpleCanyon> getCanyons(
-            String name, String season, String river, String population, Pageable pageable);
+  Page<SimpleCanyon> getCanyons(
+      String name, String season, String river, String population, Pageable pageable);
 
-    void deleteCanyon(Long canyonId);
+  void deleteCanyon(Long canyonId);
 
-    Canyon updateCanyon(Long canyonId, Canyon canyon);
+  Canyon updateCanyon(Long canyonId, Canyon canyon);
 
-    Resource downloadCanyon(Long canyonId, Boolean email);
+  Resource downloadCanyon(Long canyonId, Boolean email);
 }

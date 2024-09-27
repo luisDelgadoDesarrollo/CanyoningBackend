@@ -13,16 +13,16 @@ public class MailConfiguration {
   @Bean
   public JavaMailSender getJavaMailSender() {
     JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-    mailSender.setHost("smtp-mail.outlook.com");
-    mailSender.setPort(587);
+    mailSender.setHost("smtp.ionos.es");
+    mailSender.setPort(465);
 
-    mailSender.setUsername("canyoningApp@hotmail.com");
-    mailSender.setPassword("puknzubgbnaqlgld");
+    mailSender.setUsername("documentos@misbarrancosbdesarrollo.com");
+    mailSender.setPassword("Luis884994??");
 
     Properties props = mailSender.getJavaMailProperties();
     props.put("mail.transport.protocol", "smtp");
     props.put("mail.smtp.auth", "true");
-    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.ssl.enable", "true");
     props.put("mail.debug", "true");
 
     return mailSender;

@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c847009-da88-4c19-94c9-6998b1d02a63" name="Changes" comment="all app finished">
+      <change afterPath="$PROJECT_DIR$/Barranco de Ameixenda.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boot/src/main/java/es/luis/canyoningApp/boot/config/boot/MailConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/boot/src/main/java/es/luis/canyoningApp/boot/config/boot/MailConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boot/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/boot/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/SendEmailImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/SendEmailImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,14 +91,14 @@
       <recent name="es.luis.canyoningApp.domain.security" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Run">
+  <component name="RunManager" selected="Maven.canyoningApp-parent [clean,install]">
     <configuration name="Run" type="Application" factoryName="Application">
       <envs>
         <env name="BASE_PATH" value="C:\Canyoning_App\webScrap" />
         <env name="CONTROL_POINT" value="\controlPoint" />
         <env name="CROQUIS" value="\croquis" />
         <env name="DB_PASSWORD" value="root" />
-        <env name="PASSWORD" value="puknzubgbnaqlgld" />
+        <env name="PASSWORD" value="Luis884994??" />
         <env name="SLASH" value="\" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="es.luis.canyoningApp.Application" />
@@ -219,11 +220,6 @@
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/CanyonRepositoryImpl.java</url>
           <line>105</line>
           <option name="timeStamp" value="26" />
@@ -237,6 +233,21 @@
           <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
           <line>56</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
+          <line>416</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

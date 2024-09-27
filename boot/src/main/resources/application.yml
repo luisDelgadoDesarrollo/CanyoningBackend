@@ -7,17 +7,17 @@ properties:
 
 management.endpoints.web.exposure.include: "*"
 
-#server:
-#  servlet.contextPath: /
-#  port: 8080
-#  max-http-header-size: 64KB
 server:
-  port: 8443
-  ssl:
-    key-store: /etc/letsencrypt/live/misbarrancosbdesarrollo.com/keystore.p12
-    key-store-password: "Luis884994"
-    key-store-type: PKCS12
-    key-alias: tomcat
+  servlet.contextPath: /
+  port: 8080
+  max-http-header-size: 64KB
+#server:
+#  port: 8443
+#  ssl:
+#    key-store: /etc/letsencrypt/live/misbarrancosbdesarrollo.com/keystore.p12
+#    key-store-password: "Luis884994"
+#    key-store-type: PKCS12
+#    key-alias: tomcat
 
 spring:
   config.name: canyoningApp
@@ -25,9 +25,9 @@ spring:
     WRITE_DATES_AS_TIMESTAMPS: false
   profiles.active: local
   mail:
-    host: smtp-mail.outlook.com
-    port: 587
-    username: canyoningApp@hotmail.com
+    host: smtp.ionos.es
+    port: 465
+    username: documentos@misbarrancosbdesarrollo.com #canyoningApp@hotmail.com
     password: ${PASSWORD}
     properties:
       mail.smtp.auth: true
