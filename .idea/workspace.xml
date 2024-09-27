@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c847009-da88-4c19-94c9-6998b1d02a63" name="Changes" comment="all app finished">
-      <change afterPath="$PROJECT_DIR$/Barranco de Ameixenda.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boot/src/main/java/es/luis/canyoningApp/boot/config/boot/MailConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/boot/src/main/java/es/luis/canyoningApp/boot/config/boot/MailConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boot/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/boot/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/SendEmailImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/SendEmailImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,27 +223,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>87</line>
+          <line>78</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>56</line>
+          <line>49</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>123</line>
+          <line>110</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>416</line>
+          <line>406</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java</url>
-          <line>42</line>
+          <line>39</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
