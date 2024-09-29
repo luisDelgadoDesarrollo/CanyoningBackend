@@ -48,6 +48,22 @@ paths:
           $ref: '#/components/responses/400BadRequest'
         409:
           $ref: '#/components/responses/409Exists'
+  /validateUser:
+    get:
+      tags:
+        - User
+      summary: Validate user
+      description: Validate an user created withour verify
+      operationId: validateUser
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Successful operation, no content
   /users:
     get:
       tags:

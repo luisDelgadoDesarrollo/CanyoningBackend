@@ -10,4 +10,6 @@ public interface SendEmail {
 
   void sendCanyonDocument(PDDocument document, String fileName)
       throws MessagingException, IOException;
+
+  void sendEmailValidatePassword(String email, String token);
 }

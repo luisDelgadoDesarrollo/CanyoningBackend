@@ -1,6 +1,7 @@
 properties:
   plan: 1
-  host: http://localhost:5173
+  recoverPassword: http://localhost:5173
+  host: http://localhost:8080
 logging.level:
   ROOT: ${LOG:INFO}
 

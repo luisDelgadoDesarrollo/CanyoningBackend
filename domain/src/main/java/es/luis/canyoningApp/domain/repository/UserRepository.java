@@ -1,5 +1,6 @@
 package es.luis.canyoningApp.domain.repository;
 
+import es.luis.canyoningApp.domain.model.Token;
 import es.luis.canyoningApp.domain.model.User;
 import java.time.OffsetDateTime;
 import org.springframework.data.domain.Page;
@@ -20,7 +21,13 @@ public interface UserRepository {
 
   void createTokenUpdatePassword(Long userId, String token, OffsetDateTime localDateTime);
 
+  void createTokenValidateUser(Long userId, String token, OffsetDateTime localDateTime);
+
   void setUsedToken(Long userId, String token, Boolean used);
 
   User findUserById(Long userId);
+
+  Token getValidateUserToken(String token);
+
+  void updateTokenValidateUser(Token validateUserToken);
 }

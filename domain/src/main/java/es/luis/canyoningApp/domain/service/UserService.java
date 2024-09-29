@@ -25,4 +25,6 @@ public interface UserService {
   List<User> getUsersFromReview(Long reviewId);
 
   User getUserById(Long userId);
+
+  void validateUser(String token);
 }

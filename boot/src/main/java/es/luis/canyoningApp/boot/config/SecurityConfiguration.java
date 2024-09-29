@@ -24,7 +24,8 @@ public class SecurityConfiguration {
     http.authorizeHttpRequests(
             (authorizeHttpRequests) ->
                 authorizeHttpRequests
-                    .requestMatchers("/login", "/updatePassword", "/createUser", "/")
+                    .requestMatchers(
+                        "/login", "/updatePassword", "/createUser", "/", "/validateUser")
                     .permitAll()
                     .anyRequest()
                     .hasAuthority(RoleUtils.ROLE_AUTHENTICATED))

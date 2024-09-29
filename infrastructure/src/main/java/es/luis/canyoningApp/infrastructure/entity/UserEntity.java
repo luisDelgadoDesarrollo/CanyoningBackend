@@ -44,6 +44,9 @@ public class UserEntity {
   @Column(name = "guia", nullable = true)
   private boolean guia;
 
+  @Column(name = "validated", nullable = false)
+  private boolean validated;
+
   @Column(name = "deleteAt", nullable = true)
   private OffsetDateTime deleteAt;
 }

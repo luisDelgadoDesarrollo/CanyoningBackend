@@ -94,6 +94,12 @@ public class UserController extends BaseController implements UserApi {
                 email, userControllerMapper.simpleUserDtoToUser(simpleUserDto))));
   }
 
+  @Override
+  public ResponseEntity<Void> validateUser(String token) {
+    userService.validateUser(token);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+  }
+
   @GetMapping("/")
   public ResponseEntity<Boolean> check() {
     return new ResponseEntity<>(true, HttpStatus.OK);

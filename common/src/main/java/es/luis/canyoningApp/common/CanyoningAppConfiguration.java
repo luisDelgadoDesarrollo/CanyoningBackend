@@ -15,6 +15,8 @@ public class CanyoningAppConfiguration {
 
   private String host;
 
+  private String recoverPassword;
+
   private String basePath;
 
   private String croquis;

@@ -31,6 +31,8 @@ public class User {
 
   private Boolean guia;
 
+  private Boolean validated;
+
   private OffsetDateTime deleteAt;
 
   public Integer getAge() {
