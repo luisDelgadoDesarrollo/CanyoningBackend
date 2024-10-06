@@ -1136,8 +1136,8 @@ components:
           type: string
         river:
           type: string
-        population:
-          type: string
+        location:
+          $ref: '#/components/schemas/CanyonLocation'
     Canyon:
       allOf:
         - $ref: '#/components/schemas/SimpleCanyon'
@@ -1188,6 +1188,19 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/CanyonControlLevel'
+    CanyonLocation:
+      type: object
+      properties:
+        canyonId:
+          $ref: '#/components/schemas/Id'
+        population:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+        zone:
+          type: string
     CanyonCanyonNear:
       type: object
       properties:

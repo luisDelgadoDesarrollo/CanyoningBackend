@@ -29,7 +29,7 @@ import org.springframework.util.ObjectUtils;
 
 @Service
 @Log
-public class CanyonServiceIpml implements CanyonService {
+public class CanyonServiceIpml extends BaseService implements CanyonService {
 
   private static final float MARGIN = 50;
   private static final float PAGE_WIDTH = 500;
@@ -46,7 +46,10 @@ public class CanyonServiceIpml implements CanyonService {
           "Campo faltante", new Throwable("Falta el nombre del barranco"));
     }
     canyon.setCroquis(canyon.getCroquis().replace(" ", "_") + "_map.png");
-    return canyonRepository.createCanyon(canyon);
+    Canyon canyonSaved = canyonRepository.createCanyon(canyon);
+    sendEmail.sendCreateCanyon(canyonSaved, getAuthenticatedUsername());
+
+    return canyonSaved;
   }
 
   @Override
@@ -112,7 +115,10 @@ public class CanyonServiceIpml implements CanyonService {
     canyon.setCanyonId(canyonSaved.getCanyonId());
     canyon.setName(canyonSaved.getName());
     canyon.setCroquis(canyon.getCroquis().trim().replace(" ", "_"));
-    return canyonRepository.updateCanyon(canyon);
+    Canyon canyonUpdated = canyonRepository.updateCanyon(canyon);
+    sendEmail.sendUpdateCanyon(canyonSaved, canyonUpdated, getAuthenticatedUsername());
+
+    return canyonUpdated;
   }
 
   @Override
@@ -153,9 +159,21 @@ public class CanyonServiceIpml implements CanyonService {
           addText(contentStream, "Rio:", "secondTitle");
           addText(contentStream, canyon.getRiver(), "text");
         }
-        if (!ObjectUtils.isEmpty(canyon.getPopulation())) {
+        if (!ObjectUtils.isEmpty(canyon.getLocation().getPopulation())) {
           addText(contentStream, "Poblacion:", "secondTitle");
-          addText(contentStream, canyon.getPopulation(), "text");
+          addText(contentStream, canyon.getLocation().getPopulation(), "text");
+        }
+        if (!ObjectUtils.isEmpty(canyon.getLocation().getZone())) {
+          addText(contentStream, "Zona:", "secondTitle");
+          addText(contentStream, canyon.getLocation().getZone(), "text");
+        }
+        if (!ObjectUtils.isEmpty(canyon.getLocation().getLatitude())) {
+          addText(contentStream, "Poblacion:", "secondTitle");
+          addText(contentStream, canyon.getLocation().getLatitude(), "text");
+        }
+        if (!ObjectUtils.isEmpty(canyon.getLocation().getLongitude())) {
+          addText(contentStream, "Poblacion:", "secondTitle");
+          addText(contentStream, canyon.getLocation().getLongitude(), "text");
         }
         if (!ObjectUtils.isEmpty(canyon.getAccess())) {
           addText(contentStream, "Acceso:", "secondTitle");

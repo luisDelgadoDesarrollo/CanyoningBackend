@@ -32,8 +32,9 @@ public class CanyonEntity {
   @Column(name = "river")
   private String river;
 
-  @Column(name = "population")
-  private String population;
+  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @JoinColumn(name = "canyonId", referencedColumnName = "canyonId")
+  private CanyonLocationEntity location;
 
   @Column(name = "access")
   private String access;

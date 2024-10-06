@@ -24,7 +24,7 @@ public class SimpleCanyon {
 
   private String river;
 
-  private String population;
+  private CanyonLocation location;
 
   private String access;
 
