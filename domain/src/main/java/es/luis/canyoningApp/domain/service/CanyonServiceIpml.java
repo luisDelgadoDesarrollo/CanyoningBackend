@@ -2,10 +2,7 @@ package es.luis.canyoningApp.domain.service;
 
 import es.luis.canyoningApp.common.CanyoningAppConfiguration;
 import es.luis.canyoningApp.domain.exception.BadRequestException;
-import es.luis.canyoningApp.domain.model.Canyon;
-import es.luis.canyoningApp.domain.model.CanyonControlLevel;
-import es.luis.canyoningApp.domain.model.CanyonRappeling;
-import es.luis.canyoningApp.domain.model.SimpleCanyon;
+import es.luis.canyoningApp.domain.model.*;
 import es.luis.canyoningApp.domain.repository.CanyonRepository;
 import jakarta.mail.MessagingException;
 import java.io.File;
@@ -167,13 +164,13 @@ public class CanyonServiceIpml extends BaseService implements CanyonService {
           addText(contentStream, "Zona:", "secondTitle");
           addText(contentStream, canyon.getLocation().getZone(), "text");
         }
-        if (!ObjectUtils.isEmpty(canyon.getLocation().getLatitude())) {
+        if (!ObjectUtils.isEmpty(canyon.getLocation().getLatitud())) {
           addText(contentStream, "Poblacion:", "secondTitle");
-          addText(contentStream, canyon.getLocation().getLatitude(), "text");
+          addText(contentStream, canyon.getLocation().getLatitud(), "text");
         }
-        if (!ObjectUtils.isEmpty(canyon.getLocation().getLongitude())) {
+        if (!ObjectUtils.isEmpty(canyon.getLocation().getLongitud())) {
           addText(contentStream, "Poblacion:", "secondTitle");
-          addText(contentStream, canyon.getLocation().getLongitude(), "text");
+          addText(contentStream, canyon.getLocation().getLongitud(), "text");
         }
         if (!ObjectUtils.isEmpty(canyon.getAccess())) {
           addText(contentStream, "Acceso:", "secondTitle");
@@ -445,6 +442,11 @@ public class CanyonServiceIpml extends BaseService implements CanyonService {
     } catch (IOException | MessagingException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  @Override
+  public List<LocationCanyon> getLocations() {
+    return canyonRepository.getLocations();
   }
 
   private static void addText(PDPageContentStream contentStream, String text, String textType)

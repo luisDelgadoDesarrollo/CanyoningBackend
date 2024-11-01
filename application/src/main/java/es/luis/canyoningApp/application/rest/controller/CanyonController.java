@@ -3,6 +3,7 @@ package es.luis.canyoningApp.application.rest.controller;
 import es.luis.canyoningApp.application.rest.mapper.CanyonControllerMapper;
 import es.luis.canyoningApp.canyoningApp_application.rest.api.CanyonApi;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.CanyonDto;
+import es.luis.canyoningApp.canyoningApp_application.rest.model.LocationCanyonDto;
 import es.luis.canyoningApp.canyoningApp_application.rest.model.SimpleCanyonDto;
 import es.luis.canyoningApp.domain.model.SimpleCanyon;
 import es.luis.canyoningApp.domain.service.CanyonService;
@@ -62,6 +63,14 @@ public class CanyonController extends BaseController implements CanyonApi {
     addPaginationHeadersToResponse(canyons);
     return ResponseEntity.ok(
         canyons.stream().map(canyonControllerMapper::simpleCanyonToSimpleCanyon).toList());
+  }
+
+  @Override
+  public ResponseEntity<List<LocationCanyonDto>> getLocations() {
+    return ResponseEntity.ok(
+        canyonService.getLocations().stream()
+            .map(canyonControllerMapper::locationCanyonToLocationCanyonDto)
+            .toList());
   }
 
   @Override

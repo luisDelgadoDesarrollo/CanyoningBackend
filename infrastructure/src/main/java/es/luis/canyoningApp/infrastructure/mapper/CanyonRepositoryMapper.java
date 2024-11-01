@@ -49,7 +49,13 @@ public interface CanyonRepositoryMapper {
 
   SimpleCanyonEntity simpleCanyonToSimpleCanyonEntity(SimpleCanyon simpleCanyon);
 
+  @Mapping(target = "location.longitud", source = "location.longitud")
+  @Mapping(target = "location.latitud", source = "location.latitud")
   CanyonEntity canyonToCanyonEntity(Canyon canyon);
 
   SimpleCanyonEntity canyonEntityToSimpleCanyonEntity(CanyonEntity canyonEntity);
+
+  @Mapping(target = "longitud", source = "location.longitud")
+  @Mapping(target = "latitud", source = "location.latitud")
+  LocationCanyon canyonEntityToLocationCanyon(CanyonEntity canyonEntity);
 }

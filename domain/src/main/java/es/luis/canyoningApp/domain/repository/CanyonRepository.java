@@ -1,7 +1,9 @@
 package es.luis.canyoningApp.domain.repository;
 
 import es.luis.canyoningApp.domain.model.Canyon;
+import es.luis.canyoningApp.domain.model.LocationCanyon;
 import es.luis.canyoningApp.domain.model.SimpleCanyon;
+import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,4 +18,6 @@ public interface CanyonRepository {
   Canyon createCanyon(Canyon canyon);
 
   Canyon updateCanyon(Canyon canyon);
+
+  List<LocationCanyon> getLocations();
 }

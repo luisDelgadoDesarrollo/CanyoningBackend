@@ -6,8 +6,8 @@ info:
     email: delgadofernandez.luis@gmail.com
   version: 0.0.1
 servers:
-  #- url: http://localhost:8080
-  - url: https://misbarrancosbdesarrollo.com:8443
+  - url: http://localhost:8080
+  #- url: https://misbarrancosbdesarrollo.com:8443
 tags:
   - name: User
     description: User operations
@@ -404,6 +404,22 @@ paths:
               $ref: '#/components/headers/X-Total-Pages'
         400:
           $ref: '#/components/responses/400BadRequest'
+  /canyons/map:
+    get:
+      tags:
+        - Canyon
+      summary: Get Locations
+      description: Get location from canyons
+      operationId: getLocations
+      responses:
+        200:
+          description: Succesfull operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LocationCanyon'
   /canyons/{canyonId}:
     get:
       tags:
@@ -1125,6 +1141,19 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Id'
+    LocationCanyon:
+      type: object
+      properties:
+        canyonId:
+          $ref: '#/components/schemas/Id'
+        name:
+          type: string
+        season:
+          type: string
+        longitud:
+          type: string
+        latitud:
+          type: string
     SimpleCanyon:
       type: object
       properties:
@@ -1136,8 +1165,8 @@ components:
           type: string
         river:
           type: string
-        location:
-          $ref: '#/components/schemas/CanyonLocation'
+        population:
+          type: string
     Canyon:
       allOf:
         - $ref: '#/components/schemas/SimpleCanyon'
@@ -1156,6 +1185,8 @@ components:
               type: string
             scape:
               type: string
+            location:
+              $ref: '#/components/schemas/CanyonLocation'
             canyonRappeling:
               type: array
               items:
@@ -1195,9 +1226,9 @@ components:
           $ref: '#/components/schemas/Id'
         population:
           type: string
-        latitude:
+        latitud:
           type: string
-        longitude:
+        longitud:
           type: string
         zone:
           type: string
