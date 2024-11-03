@@ -1,7 +1,7 @@
 properties:
   plan: 1
-  recoverPassword: http://localhost:5173
-  host: http://localhost:8080
+  recoverPassword: ${RECOVER_PASSWORD_HOST}
+  host: ${HOST}
 logging.level:
   ROOT: ${LOG:INFO}
 
