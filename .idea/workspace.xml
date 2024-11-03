@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c847009-da88-4c19-94c9-6998b1d02a63" name="Changes" comment="all app finished">
-      <change afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/model/LocationCanyon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barranco Bao da Casa.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barranco de Ameixenda.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/repository/DownloadRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/DownloadsEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/DownloadsEntityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/DownloadRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/CanyonControllerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/CanyonControllerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/resources/static/openapi/canyoningApp-openapi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/resources/static/openapi/canyoningApp-openapi.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/model/CanyonLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/model/CanyonLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/repository/CanyonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/repository/CanyonRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boot/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/boot/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/CanyonLocationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/CanyonLocationEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/SimpleCanyonEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/SimpleCanyonEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonEntityRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/SimpleCanyonEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/SimpleCanyonEntityRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/CanyonRepositoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/CanyonRepositoryMapper.java" afterDir="false" />
@@ -72,7 +72,7 @@
     &quot;Maven.canyoningApp-parent [clean,install].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/newLocationFormat&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Canyoning_App/Canyoning/infrastructure&quot;,
@@ -105,13 +105,11 @@
   <component name="RunManager" selected="Application.Run">
     <configuration name="Run" type="Application" factoryName="Application">
       <envs>
-        <env name="BASE_PATH" value="C:\Canyoning_App\webScrap" />
-        <env name="CONTROL_POINT" value="\controlPoint" />
-        <env name="CROQUIS" value="\croquis" />
-        <env name="DB_PASSWORD" value="root" />
-        <env name="PASSWORD" value="Luis884994??" />
-        <env name="SLASH" value=";RECOVER_PASSWORD_HOST=http://localhost:5173" />
+        <env name="BASE_PATH" value="C:\\Canyoning_App\\webScrap\;CONTROL_POINT=controlPoint\;CROQUIS=croquis\;DB_PASSWORD=root" />
         <env name="HOST" value="http://locahost:8080" />
+        <env name="PASSWORD" value="Luis884994??" />
+        <env name="RECOVER_PASSWORD_HOST" value="http://localhost:5173" />
+        <env name="SLASH" value=";" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="es.luis.canyoningApp.Application" />
       <module name="CanyoningApp-boot" />
@@ -222,49 +220,29 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/UserController.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/MessageRepositoryImpl.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>369</line>
-          <option name="timeStamp" value="35" />
+          <url>file://$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/CanyonRepositoryImpl.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="41" />
+          <line>63</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/CanyonRepositoryImpl.java</url>
-          <line>123</line>
-          <option name="timeStamp" value="42" />
+          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
+          <line>346</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/CanyonRepositoryImpl.java</url>
-          <line>189</line>
-          <option name="timeStamp" value="43" />
+          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
+          <line>348</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
+          <line>351</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

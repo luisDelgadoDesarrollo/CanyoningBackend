@@ -10,6 +10,8 @@ public interface CanyonRepositoryMapper {
 
   Canyon canyonEntityToCanyon(CanyonEntity canyonEntity);
 
+  SimpleCanyon canyonEntityToSimpleCanyon(CanyonEntity canyonEntity);
+
   CanyonRappeling canyonRappelingEntityToCanyonRappeling(
       CanyonRappelingEntity canyonRappelingEntity);
 

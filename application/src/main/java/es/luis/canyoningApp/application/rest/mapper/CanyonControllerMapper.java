@@ -7,6 +7,7 @@ import es.luis.canyoningApp.domain.model.Canyon;
 import es.luis.canyoningApp.domain.model.LocationCanyon;
 import es.luis.canyoningApp.domain.model.SimpleCanyon;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper
 public interface CanyonControllerMapper {
@@ -15,6 +16,7 @@ public interface CanyonControllerMapper {
 
   CanyonDto canyonToCanyonDto(Canyon canyon);
 
+  @Mapping(target = "population", source = "location.population")
   SimpleCanyonDto simpleCanyonToSimpleCanyon(SimpleCanyon canyons);
 
   LocationCanyonDto locationCanyonToLocationCanyonDto(LocationCanyon locationCanyon);

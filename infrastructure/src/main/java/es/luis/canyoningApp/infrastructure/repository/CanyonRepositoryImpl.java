@@ -54,9 +54,9 @@ public class CanyonRepositoryImpl implements CanyonRepository {
   @Override
   public Page<SimpleCanyon> getCanyons(
       String name, String season, String river, String population, Pageable pageable) {
-    return simpleCanyonEntityRepository
+    return canyonEntityRepository
         .getCanyons(name, season, river, population, pageable)
-        .map(simpleCanyonRepositoryMapper::simpleCanyonEntityToSimpleCanyon);
+        .map(canyonRepositoryMapper::canyonEntityToSimpleCanyon);
   }
 
   @Override
@@ -114,7 +114,6 @@ public class CanyonRepositoryImpl implements CanyonRepository {
 
   private CanyonEntity saveSimpleCanyonAndPrepareCanyonEntityFeatures(Canyon canyon) {
 
-    // todo fix it
     SimpleCanyonEntity save =
         simpleCanyonEntityRepository.save(
             simpleCanyonRepositoryMapper.simpleCanyonToSimpleCanyonEntity(canyon));
