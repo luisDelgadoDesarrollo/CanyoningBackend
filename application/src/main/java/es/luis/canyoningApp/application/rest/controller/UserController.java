@@ -14,7 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
@@ -76,7 +75,6 @@ public class UserController extends BaseController implements UserApi {
     }
 
     @Override
-    @CrossOrigin(origins = "https://localhost:443")
     public ResponseEntity<Void> updatePassword(
             String email, String token, UpdatePasswordRequestDto updatePasswordRequestDto) {
         userService.updatePassword(email, token, updatePasswordRequestDto.getPassword());
