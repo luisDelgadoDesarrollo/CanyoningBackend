@@ -76,7 +76,7 @@ public class UserController extends BaseController implements UserApi {
     }
 
     @Override
-    @CrossOrigin(origins = "http://localhost:443")
+    @CrossOrigin(origins = "https://localhost:443")
     public ResponseEntity<Void> updatePassword(
             String email, String token, UpdatePasswordRequestDto updatePasswordRequestDto) {
         userService.updatePassword(email, token, updatePasswordRequestDto.getPassword());
