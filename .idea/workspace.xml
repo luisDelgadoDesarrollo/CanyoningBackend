@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c847009-da88-4c19-94c9-6998b1d02a63" name="Changes" comment="all app finished">
-      <change afterPath="$PROJECT_DIR$/Barranco Bao da Casa.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Barranco de Ameixenda.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/repository/DownloadRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/DownloadsEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/DownloadsEntityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/DownloadRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/CanyonControllerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/CanyonControllerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boot/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/boot/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/SimpleCanyonEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/SimpleCanyonEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/CanyonRepositoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/CanyonRepositoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/SimpleCanyonRepositoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/SimpleCanyonRepositoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/CanyonRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/CanyonRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
