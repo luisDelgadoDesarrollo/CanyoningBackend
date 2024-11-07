@@ -11,7 +11,12 @@ public interface CanyonRepository {
   Canyon getCanyonById(Long canyonId);
 
   Page<SimpleCanyon> getCanyons(
-      String name, String season, String river, String population, Pageable pageable);
+      String name,
+      String season,
+      String river,
+      String country,
+      String population,
+      Pageable pageable);
 
   void deleteCanyon(SimpleCanyon simpleCanyon);
 

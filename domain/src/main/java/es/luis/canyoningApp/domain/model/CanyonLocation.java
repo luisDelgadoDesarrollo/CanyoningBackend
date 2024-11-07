@@ -19,4 +19,6 @@ public class CanyonLocation {
   private String longitud;
 
   private String zone;
+
+  private String country;
 }

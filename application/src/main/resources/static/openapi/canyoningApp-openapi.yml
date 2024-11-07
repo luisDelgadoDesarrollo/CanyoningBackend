@@ -352,7 +352,7 @@ paths:
           required: false
           schema:
             type: string
-        - name: location
+        - name: country
           in: query
           required: false
           schema:
@@ -1154,6 +1154,8 @@ components:
           type: string
         latitud:
           type: string
+        country:
+          type: string
     SimpleCanyon:
       type: object
       properties:
@@ -1224,6 +1226,8 @@ components:
       properties:
         canyonId:
           $ref: '#/components/schemas/Id'
+        country:
+          type: string
         population:
           type: string
         latitud:

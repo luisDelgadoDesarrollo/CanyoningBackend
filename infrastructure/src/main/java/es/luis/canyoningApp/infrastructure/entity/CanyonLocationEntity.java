@@ -26,4 +26,7 @@ public class CanyonLocationEntity {
 
   @Column(name = "zona")
   private String zone;
+
+  @Column(name = "country")
+  private String country;
 }

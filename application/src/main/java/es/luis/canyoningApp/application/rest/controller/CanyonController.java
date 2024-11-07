@@ -52,14 +52,14 @@ public class CanyonController extends BaseController implements CanyonApi {
       String name,
       String season,
       String river,
-      String location,
+      String country,
       String population,
       Integer page,
       Integer size,
       String sort,
       Pageable pageable) {
     Page<SimpleCanyon> canyons =
-        canyonService.getCanyons(name, season, river, population, pageable);
+        canyonService.getCanyons(name, season, river, country, population, pageable);
     addPaginationHeadersToResponse(canyons);
     return ResponseEntity.ok(
         canyons.stream().map(canyonControllerMapper::simpleCanyonToSimpleCanyon).toList());
