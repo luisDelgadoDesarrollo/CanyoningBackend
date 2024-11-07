@@ -164,6 +164,10 @@ public class CanyonServiceIpml extends BaseService implements CanyonService {
           addText(contentStream, "Rio:", "secondTitle");
           addText(contentStream, canyon.getRiver(), "text");
         }
+        if (!ObjectUtils.isEmpty(canyon.getLocation().getCountry())) {
+          addText(contentStream, "Pais:", "secondTitle");
+          addText(contentStream, canyon.getLocation().getCountry(), "text");
+        }
         if (!ObjectUtils.isEmpty(canyon.getLocation().getPopulation())) {
           addText(contentStream, "Poblacion:", "secondTitle");
           addText(contentStream, canyon.getLocation().getPopulation(), "text");
