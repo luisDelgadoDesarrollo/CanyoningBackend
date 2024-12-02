@@ -26,5 +26,5 @@ public interface UserService {
 
   User getUserById(Long userId);
 
-  void validateUser(String token);
+  String validateUser(String token);
 }

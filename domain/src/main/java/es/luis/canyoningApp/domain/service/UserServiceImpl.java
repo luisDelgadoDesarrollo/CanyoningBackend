@@ -131,7 +131,7 @@ public class UserServiceImpl extends BaseService implements UserService {
   }
 
   @Override
-  public void validateUser(String token) {
+  public String validateUser(String token) {
     Token validateUserToken = userRepository.getValidateUserToken(token);
     if (!ObjectUtils.isEmpty(validateUserToken)) {
       User userById = getUserById(validateUserToken.getUserId());
@@ -139,6 +139,8 @@ public class UserServiceImpl extends BaseService implements UserService {
       userRepository.updateUser(userById);
       validateUserToken.setUsed(true);
       userRepository.updateTokenValidateUser(validateUserToken);
+      return "Validacion completa!! Ya puedes volver a la app.";
     }
+    return "La validacion ha tenido al gun problema, si sigue dando problemas contacta con delgadofernandez.luisdesarrollo@gmail.com";
   }
 }
