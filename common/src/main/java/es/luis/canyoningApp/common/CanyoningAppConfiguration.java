@@ -24,4 +24,6 @@ public class CanyoningAppConfiguration {
   private String controlPoint;
 
   private String slash;
+
+  private String ad;
 }
