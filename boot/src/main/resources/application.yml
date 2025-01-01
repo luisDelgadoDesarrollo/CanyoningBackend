@@ -4,6 +4,7 @@ properties:
   croquis: ${CROQUIS}
   controlPoint: ${CONTROL_POINT}
   slash: ${SLASH}
+  ad: ${AD}
 
 management.endpoints.web.exposure.include: "*"
 
