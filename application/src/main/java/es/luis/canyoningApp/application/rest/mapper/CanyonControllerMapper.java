@@ -17,6 +17,7 @@ public interface CanyonControllerMapper {
   CanyonDto canyonToCanyonDto(Canyon canyon);
 
   @Mapping(target = "population", source = "location.population")
+  @Mapping(target = "country", source = "location.country")
   SimpleCanyonDto simpleCanyonToSimpleCanyon(SimpleCanyon canyons);
 
   LocationCanyonDto locationCanyonToLocationCanyonDto(LocationCanyon locationCanyon);

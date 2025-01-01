@@ -1173,6 +1173,8 @@ components:
           type: string
         population:
           type: string
+        country:
+          type: string
     Canyon:
       allOf:
         - $ref: '#/components/schemas/SimpleCanyon'
