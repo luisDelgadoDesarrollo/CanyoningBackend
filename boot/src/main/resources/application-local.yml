@@ -3,7 +3,7 @@ properties:
   recoverPassword: ${RECOVER_PASSWORD_HOST}
   host: ${HOST}
 logging.level:
-  ROOT: ${LOG:INFO}
+  ROOT: ${LOG:DEBUG}
 
 
 spring:
