@@ -1,6 +1,7 @@
 package es.luis.canyoningApp.infrastructure.jpaRepository;
 
 import es.luis.canyoningApp.infrastructure.entity.UserEntity;
+import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserEntityRepository
     extends CrudRepository<UserEntity, Long>, PagingAndSortingRepository<UserEntity, Long> {
-  UserEntity findUserByEmail(String email);
+  Optional<UserEntity> findUserByEmail(String email);
 
   @Query(
       "SELECT ue FROM UserEntity ue "

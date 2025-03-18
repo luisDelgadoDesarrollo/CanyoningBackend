@@ -14,16 +14,14 @@ import org.springframework.stereotype.Service;
 @Log
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserService userService;
+  @Autowired private UserService userService;
 
-    @Autowired
-    MapperUtils mapperUtils;
+  @Autowired MapperUtils mapperUtils;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.info(username);
-        User userByEmail = userService.getUserByEmail(username);
-        return mapperUtils.userToAuthenticatedUser(userByEmail);
-    }
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    log.info(username);
+    User userByEmail = userService.getUserByEmail(username);
+    return mapperUtils.userToAuthenticatedUser(userByEmail);
+  }
 }

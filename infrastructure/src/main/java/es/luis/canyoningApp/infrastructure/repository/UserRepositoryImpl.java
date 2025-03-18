@@ -1,5 +1,6 @@
 package es.luis.canyoningApp.infrastructure.repository;
 
+import es.luis.canyoningApp.domain.exception.NotFoundException;
 import es.luis.canyoningApp.domain.model.Token;
 import es.luis.canyoningApp.domain.model.User;
 import es.luis.canyoningApp.domain.repository.UserRepository;
@@ -36,7 +37,15 @@ public class UserRepositoryImpl extends BaseRepository implements UserRepository
 
   @Override
   public User findUserByEmail(String email) {
-    return userRepositoryMapper.userEntityToUser(userEntityRepository.findUserByEmail(email));
+    return userRepositoryMapper.userEntityToUser(
+        userEntityRepository
+            .findUserByEmail(email)
+            .orElseThrow(
+                () ->
+                    new NotFoundException(
+                        "Usuario no encontrado",
+                        new Throwable(
+                            "El email es incorrecto, pruebe con otro o crea una nueva cuenta"))));
   }
 
   @Override
