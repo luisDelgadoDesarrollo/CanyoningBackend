@@ -1,30 +1,33 @@
 package es.luis.canyoningApp.domain.service;
 
 import es.luis.canyoningApp.domain.model.User;
-import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface UserService {
-  User createUser(User user);
+    User createUser(User user);
 
-  User getUserByEmail(String email);
+    User getUserByEmail(String email);
 
-  Page<User> getUsers(String email, String name, String location, Pageable pageable);
+    User getUserByEmailNoException(String email);
 
-  void deleteUser(String email);
+    Page<User> getUsers(String email, String name, String location, Pageable pageable);
 
-  User updateUser(String email, User user);
+    void deleteUser(String email);
 
-  Boolean login(String email, String password);
+    User updateUser(String email, User user);
 
-  void updatePassword(String email, String token, String password);
+    Boolean login(String email, String password);
 
-  void requestUpdatePassword(String email);
+    void updatePassword(String email, String token, String password);
 
-  List<User> getUsersFromReview(Long reviewId);
+    void requestUpdatePassword(String email);
 
-  User getUserById(Long userId);
+    List<User> getUsersFromReview(Long reviewId);
 
-  String validateUser(String token);
+    User getUserById(Long userId);
+
+    String validateUser(String token);
 }
