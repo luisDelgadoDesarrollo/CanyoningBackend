@@ -99,6 +99,11 @@ public class UserRepositoryImpl extends BaseRepository implements UserRepository
     }
 
     @Override
+    public void deleteTokenValidateUser(Long userId) {
+        tokenValidateUserEntityRepository.deleteByUserId(userId);
+    }
+
+    @Override
     public void setUsedToken(Long userId, String token, Boolean used) {
         tokenUpdatePasswordEntityRepository.save(
                 TokenUpdatePasswordEntity.builder().userId(userId).token(token).used(used).build());

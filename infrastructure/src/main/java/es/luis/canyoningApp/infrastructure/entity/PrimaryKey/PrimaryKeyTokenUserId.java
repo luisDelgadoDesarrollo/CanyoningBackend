@@ -8,9 +8,9 @@ import lombok.Data;
 @Embeddable
 public class PrimaryKeyTokenUserId {
 
-  @Column(name = "userId", nullable = false, updatable = false)
-  private Long userId;
+    @Column(name = "userId", nullable = false, updatable = false)
+    private Long userId;
 
-  @Column(name = "token", nullable = false)
-  private String token;
+    @Column(name = "token", nullable = false)
+    private String token;
 }

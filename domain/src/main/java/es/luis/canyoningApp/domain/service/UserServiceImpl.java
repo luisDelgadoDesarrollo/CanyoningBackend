@@ -46,7 +46,12 @@ public class UserServiceImpl extends BaseService implements UserService {
                     "Campo faltante", new Throwable("Falta el email, contrasena o nombre"));
         }
         user.setEmail(user.getEmail().toLowerCase(Locale.ROOT));
-        if (ObjectUtils.isEmpty(getUserByEmailNoException(user.getEmail().toLowerCase(Locale.ROOT)))) {
+        User userByEmailNoException = getUserByEmailNoException(user.getEmail().toLowerCase(Locale.ROOT));
+        if (ObjectUtils.isEmpty(userByEmailNoException) || !userByEmailNoException.getValidated()) {
+            if (!ObjectUtils.isEmpty(userByEmailNoException) && !userByEmailNoException.getValidated()) {
+                userRepository.deleteTokenValidateUser(user.getUserId());
+                deleteUser(user.getEmail());
+            }
             user.setPlan(0);
             user.setGuia(false);
             user.setPassword(passwordEncoder.encode(user.getPassword()));

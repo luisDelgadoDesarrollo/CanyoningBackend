@@ -24,6 +24,8 @@ public interface UserRepository {
 
     void createTokenValidateUser(Long userId, String token, OffsetDateTime localDateTime);
 
+    void deleteTokenValidateUser(Long userId);
+
     void setUsedToken(Long userId, String token, Boolean used);
 
     User findUserById(Long userId);
