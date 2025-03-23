@@ -51,6 +51,7 @@ public interface CanyonRepositoryMapper {
 
   SimpleCanyonEntity simpleCanyonToSimpleCanyonEntity(SimpleCanyon simpleCanyon);
 
+  // todo review this, its weird
   @Mapping(target = "location.longitud", source = "location.longitud")
   @Mapping(target = "location.latitud", source = "location.latitud")
   CanyonEntity canyonToCanyonEntity(Canyon canyon);

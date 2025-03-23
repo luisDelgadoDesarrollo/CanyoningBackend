@@ -1160,6 +1160,10 @@ components:
           type: string
         country:
           type: string
+        canyonDifficulty:
+          type: array
+          items:
+            $ref: '#/components/schemas/CanyonDifficulty'
     SimpleCanyon:
       type: object
       properties:

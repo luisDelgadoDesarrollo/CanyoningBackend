@@ -1,5 +1,6 @@
 package es.luis.canyoningApp.domain.model;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,5 @@ public class LocationCanyon {
   private String season;
   private String longitud;
   private String latitud;
+  private List<CanyonDifficulty> canyonDifficulty;
 }

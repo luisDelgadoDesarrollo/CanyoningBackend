@@ -15,7 +15,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <base-package>es.luis.canyoningApp.canyoningApp-application.rest</base-package>
+        <base-package>es.luis.canyoningApp.canyoningApp.application.rest</base-package>
         <gson.version>2.11.0</gson.version>
         <swagger-annotations.version>2.2.22</swagger-annotations.version>
         <swagger-models.version>2.2.22</swagger-models.version>

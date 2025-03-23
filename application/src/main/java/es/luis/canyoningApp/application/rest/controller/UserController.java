@@ -1,11 +1,11 @@
 package es.luis.canyoningApp.application.rest.controller;
 
 import es.luis.canyoningApp.application.rest.mapper.UserControllerMapper;
-import es.luis.canyoningApp.canyoningApp_application.rest.api.UserApi;
-import es.luis.canyoningApp.canyoningApp_application.rest.model.SimpleUserDto;
-import es.luis.canyoningApp.canyoningApp_application.rest.model.UpdatePasswordRequestDto;
-import es.luis.canyoningApp.canyoningApp_application.rest.model.UserCreateDto;
-import es.luis.canyoningApp.canyoningApp_application.rest.model.UserOutDto;
+import es.luis.canyoningApp.canyoningApp.application.rest.api.UserApi;
+import es.luis.canyoningApp.canyoningApp.application.rest.model.SimpleUserDto;
+import es.luis.canyoningApp.canyoningApp.application.rest.model.UpdatePasswordRequestDto;
+import es.luis.canyoningApp.canyoningApp.application.rest.model.UserCreateDto;
+import es.luis.canyoningApp.canyoningApp.application.rest.model.UserOutDto;
 import es.luis.canyoningApp.domain.model.User;
 import es.luis.canyoningApp.domain.service.UserService;
 import java.util.List;

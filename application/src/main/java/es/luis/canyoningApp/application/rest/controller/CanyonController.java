@@ -1,10 +1,10 @@
 package es.luis.canyoningApp.application.rest.controller;
 
 import es.luis.canyoningApp.application.rest.mapper.CanyonControllerMapper;
-import es.luis.canyoningApp.canyoningApp_application.rest.api.CanyonApi;
-import es.luis.canyoningApp.canyoningApp_application.rest.model.CanyonDto;
-import es.luis.canyoningApp.canyoningApp_application.rest.model.LocationCanyonDto;
-import es.luis.canyoningApp.canyoningApp_application.rest.model.SimpleCanyonDto;
+import es.luis.canyoningApp.canyoningApp.application.rest.api.CanyonApi;
+import es.luis.canyoningApp.canyoningApp.application.rest.model.CanyonDto;
+import es.luis.canyoningApp.canyoningApp.application.rest.model.LocationCanyonDto;
+import es.luis.canyoningApp.canyoningApp.application.rest.model.SimpleCanyonDto;
 import es.luis.canyoningApp.domain.model.SimpleCanyon;
 import es.luis.canyoningApp.domain.service.CanyonService;
 import java.util.List;

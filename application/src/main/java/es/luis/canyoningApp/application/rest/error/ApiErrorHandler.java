@@ -1,6 +1,6 @@
 package es.luis.canyoningApp.application.rest.error;
 
-import es.luis.canyoningApp.canyoningApp_application.rest.model.ErrorDto;
+import es.luis.canyoningApp.canyoningApp.application.rest.model.ErrorDto;
 import es.luis.canyoningApp.domain.exception.ApplicationException;
 import java.util.NoSuchElementException;
 import lombok.extern.log4j.Log4j2;

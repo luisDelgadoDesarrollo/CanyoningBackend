@@ -1,9 +1,9 @@
 package es.luis.canyoningApp.application.rest.controller;
 
 import es.luis.canyoningApp.application.rest.mapper.ActivityControllerMapper;
-import es.luis.canyoningApp.canyoningApp_application.rest.api.ActivityApi;
-import es.luis.canyoningApp.canyoningApp_application.rest.model.ActivityDto;
-import es.luis.canyoningApp.canyoningApp_application.rest.model.SimpleActivityDto;
+import es.luis.canyoningApp.canyoningApp.application.rest.api.ActivityApi;
+import es.luis.canyoningApp.canyoningApp.application.rest.model.ActivityDto;
+import es.luis.canyoningApp.canyoningApp.application.rest.model.SimpleActivityDto;
 import es.luis.canyoningApp.domain.model.Activity;
 import es.luis.canyoningApp.domain.service.ActivityService;
 import java.time.LocalDate;
