@@ -1,10 +1,10 @@
 package es.luis.canyoningApp.application.rest.controller;
 
+import es.luis.canyoningApp.application.rest.api.MessageApi;
 import es.luis.canyoningApp.application.rest.mapper.MessageControllerMapper;
-import es.luis.canyoningApp.canyoningApp.application.rest.api.MessageApi;
-import es.luis.canyoningApp.canyoningApp.application.rest.model.ActivityTypeDto;
-import es.luis.canyoningApp.canyoningApp.application.rest.model.MessageInDto;
-import es.luis.canyoningApp.canyoningApp.application.rest.model.MessageOutDto;
+import es.luis.canyoningApp.application.rest.model.ActivityTypeDto;
+import es.luis.canyoningApp.application.rest.model.MessageInDto;
+import es.luis.canyoningApp.application.rest.model.MessageOutDto;
 import es.luis.canyoningApp.domain.model.Message;
 import es.luis.canyoningApp.domain.service.MessageService;
 import java.util.List;

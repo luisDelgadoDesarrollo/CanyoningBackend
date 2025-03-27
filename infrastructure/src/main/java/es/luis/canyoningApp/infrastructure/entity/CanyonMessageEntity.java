@@ -25,6 +25,12 @@ public class CanyonMessageEntity {
   @Column(name = "message")
   private String message;
 
+  @Column(name = "flow")
+  private Integer flow;
+
+  @Column(name = "temperature")
+  private Integer temperature;
+
   @Column(name = "sendAt")
   private OffsetDateTime sendAt;
 }

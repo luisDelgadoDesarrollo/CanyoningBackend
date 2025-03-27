@@ -1,8 +1,8 @@
 package es.luis.canyoningApp.application.rest.mapper;
 
-import es.luis.canyoningApp.canyoningApp.application.rest.model.SimpleUserDto;
-import es.luis.canyoningApp.canyoningApp.application.rest.model.UserCreateDto;
-import es.luis.canyoningApp.canyoningApp.application.rest.model.UserOutDto;
+import es.luis.canyoningApp.application.rest.model.SimpleUserDto;
+import es.luis.canyoningApp.application.rest.model.UserCreateDto;
+import es.luis.canyoningApp.application.rest.model.UserOutDto;
 import es.luis.canyoningApp.domain.model.User;
 import org.mapstruct.Mapper;
 

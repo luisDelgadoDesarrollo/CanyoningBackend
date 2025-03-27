@@ -1,10 +1,10 @@
 package es.luis.canyoningApp.application.rest.controller;
 
+import es.luis.canyoningApp.application.rest.api.CanyonApi;
 import es.luis.canyoningApp.application.rest.mapper.CanyonControllerMapper;
-import es.luis.canyoningApp.canyoningApp.application.rest.api.CanyonApi;
-import es.luis.canyoningApp.canyoningApp.application.rest.model.CanyonDto;
-import es.luis.canyoningApp.canyoningApp.application.rest.model.LocationCanyonDto;
-import es.luis.canyoningApp.canyoningApp.application.rest.model.SimpleCanyonDto;
+import es.luis.canyoningApp.application.rest.model.CanyonDto;
+import es.luis.canyoningApp.application.rest.model.LocationCanyonDto;
+import es.luis.canyoningApp.application.rest.model.SimpleCanyonDto;
 import es.luis.canyoningApp.domain.model.SimpleCanyon;
 import es.luis.canyoningApp.domain.service.CanyonService;
 import java.util.List;
@@ -28,6 +28,14 @@ public class CanyonController extends BaseController implements CanyonApi {
         .body(
             canyonControllerMapper.canyonToCanyonDto(
                 canyonService.createCanyon(canyonControllerMapper.canyonDtoToCanyon(canyonDto))));
+  }
+
+  @Override
+  public ResponseEntity<CanyonDto> updateCanyon(Long canyonId, CanyonDto canyonDto) {
+    return ResponseEntity.ok(
+        canyonControllerMapper.canyonToCanyonDto(
+            canyonService.updateCanyon(
+                canyonId, canyonControllerMapper.canyonDtoToCanyon(canyonDto))));
   }
 
   @Override
@@ -71,13 +79,5 @@ public class CanyonController extends BaseController implements CanyonApi {
         canyonService.getLocations().stream()
             .map(canyonControllerMapper::locationCanyonToLocationCanyonDto)
             .toList());
-  }
-
-  @Override
-  public ResponseEntity<CanyonDto> updateCanyon(Long canyonId, CanyonDto canyonDto) {
-    return ResponseEntity.ok(
-        canyonControllerMapper.canyonToCanyonDto(
-            canyonService.updateCanyon(
-                canyonId, canyonControllerMapper.canyonDtoToCanyon(canyonDto))));
   }
 }

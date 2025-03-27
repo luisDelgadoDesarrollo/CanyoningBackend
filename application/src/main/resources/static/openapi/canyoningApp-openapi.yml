@@ -1099,6 +1099,10 @@ components:
         date:
           type: string
           format: date-time
+        flow:
+          type: int
+        temperature:
+          type: int
     MessageIn:
       allOf:
         - $ref: '#/components/schemas/Message'

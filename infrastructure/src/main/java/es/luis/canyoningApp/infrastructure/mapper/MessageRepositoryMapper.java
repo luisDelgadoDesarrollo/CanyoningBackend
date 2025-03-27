@@ -18,5 +18,6 @@ public interface MessageRepositoryMapper {
 
   @Mapping(target = "canyon.canyonId", source = "placeId")
   @Mapping(target = "canyonMessageId", source = "messageId")
+  @Mapping(target = "sendAt", source = "date")
   CanyonMessageEntity messageToCanyonMessageEntity(Message message);
 }

@@ -17,6 +17,8 @@ public class ImageServiceImpl implements ImageService {
 
   @Autowired private CanyoningAppConfiguration canyoningAppConfiguration;
 
+  @Autowired SendEmail sendEmail;
+
   @Override
   public void postImage(MultipartFile file, String name, String dir) {
     try {
@@ -26,9 +28,9 @@ public class ImageServiceImpl implements ImageService {
       if (!directory.exists()) {
         directory.mkdirs();
       }
-      if (!name.endsWith(".png")) {
+      if (!name.endsWith(".jpg")) {
         String[] parts = name.split("\\.");
-        name = String.join(".", Arrays.copyOfRange(parts, 0, parts.length)) + ".png";
+        name = String.join(".", Arrays.copyOfRange(parts, 0, parts.length)) + ".jpg";
       }
 
       Path filePath =
@@ -36,6 +38,7 @@ public class ImageServiceImpl implements ImageService {
               directory.getPath() + canyoningAppConfiguration.getSlash() + name.replace(" ", "_"));
       Files.write(filePath, file.getBytes());
 
+      sendEmail.sendImageChange(filePath.toString());
     } catch (Exception e) {
       new Throwable(e);
     }

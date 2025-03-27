@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CanyonProhibitionEntityRepository
     extends CrudRepository<CanyonProhibitionEntity, Long> {
-  @Modifying
+  @Modifying(clearAutomatically = true)
   @Query("DELETE FROM CanyonProhibitionEntity cpe where cpe.canyon.canyonId = :canyonId")
   void deleteByCanyonId(Long canyonId);
 }

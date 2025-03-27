@@ -1,6 +1,6 @@
 package es.luis.canyoningApp.application.rest.controller;
 
-import es.luis.canyoningApp.canyoningApp.application.rest.api.ImageApi;
+import es.luis.canyoningApp.application.rest.api.ImageApi;
 import es.luis.canyoningApp.domain.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

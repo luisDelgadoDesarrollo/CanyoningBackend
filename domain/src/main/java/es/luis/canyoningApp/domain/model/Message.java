@@ -21,5 +21,9 @@ public class Message {
 
   private String message;
 
+  private Integer flow;
+
+  private Integer temperature;
+
   private OffsetDateTime date;
 }

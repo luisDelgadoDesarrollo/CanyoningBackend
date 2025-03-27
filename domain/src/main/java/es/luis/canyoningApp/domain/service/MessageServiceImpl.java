@@ -50,6 +50,8 @@ public class MessageServiceImpl extends AuthenticatedUserBase implements Message
             && canyonMessage.getTypePlace().equals(message.getTypePlace())
             && canyonMessage.getPlaceId().equals(message.getPlaceId())) {
           canyonMessage.setMessage(message.getMessage());
+          canyonMessage.setFlow(message.getFlow());
+          canyonMessage.setTemperature(message.getTemperature());
           messageRepository.updateMessage(canyonMessage);
         }
     }

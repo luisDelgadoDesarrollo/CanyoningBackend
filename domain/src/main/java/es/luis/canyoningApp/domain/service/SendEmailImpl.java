@@ -155,4 +155,28 @@ public class SendEmailImpl extends AuthenticatedUserBase implements SendEmail {
       throw new RuntimeException(e);
     }
   }
+
+  @Override
+  public void sendImageChange(String string) {
+    MimeMessage message = javaMailSender.createMimeMessage();
+
+    try {
+      // Utilizar MimeMessageHelper para configurar el mensaje con soporte HTML
+      MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+      helper.setFrom("documentos@misbarrancosbdesarrollo.com");
+      helper.setTo("delgadofernandez.luisdesarrollo@gmail.com");
+      helper.setSubject("Cambio de imagen");
+
+      // Crear el cuerpo del correo con etiquetas HTML
+
+      // Establecer el cuerpo del correo con HTML
+      helper.setText(string, true); // true para indicar que es HTML
+
+      // Enviar el correo
+      javaMailSender.send(message);
+
+    } catch (MessagingException e) {
+      e.printStackTrace(); // Manejar excepción
+    }
+  }
 }

@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CanyonCanyonNearEntityRepository
     extends CrudRepository<CanyonCanyonNearEntity, CanyonCanyonNearEntity.PrimaryKeys> {
-  @Modifying
+  @Modifying(clearAutomatically = true)
   @Query("DELETE FROM CanyonCanyonNearEntity ccne where ccne.canyon.canyonId = :canyonId")
   void deleteByCanyonId(Long canyonId);
 }

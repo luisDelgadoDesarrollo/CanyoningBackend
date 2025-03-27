@@ -61,9 +61,9 @@ public class MessageRepositoryImpl extends AuthenticatedUserBase implements Mess
 
   @Override
   public void updateMessage(Message message) {
+
     CanyonMessageEntity canyonMessageEntity =
         messageRepositoryMapper.messageToCanyonMessageEntity(message);
-    canyonMessageEntity.setSendAt(OffsetDateTime.now());
     canyonMessageEntityRepository.save(canyonMessageEntity);
   }
 

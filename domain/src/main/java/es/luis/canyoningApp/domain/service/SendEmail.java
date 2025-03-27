@@ -17,4 +17,6 @@ public interface SendEmail {
   void sendCreateCanyon(Canyon canyon, String authenticatedUsername);
 
   void sendUpdateCanyon(Canyon oldCanyon, Canyon newCanyon, String authenticatedUsername);
+
+  void sendImageChange(String string);
 }

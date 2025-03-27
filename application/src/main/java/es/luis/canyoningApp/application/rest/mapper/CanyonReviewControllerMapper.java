@@ -1,8 +1,8 @@
 package es.luis.canyoningApp.application.rest.mapper;
 
-import es.luis.canyoningApp.canyoningApp.application.rest.model.CanyonReviewDto;
-import es.luis.canyoningApp.canyoningApp.application.rest.model.CanyonReviewResponseDto;
-import es.luis.canyoningApp.canyoningApp.application.rest.model.SimpleCanyonReviewDto;
+import es.luis.canyoningApp.application.rest.model.CanyonReviewDto;
+import es.luis.canyoningApp.application.rest.model.CanyonReviewResponseDto;
+import es.luis.canyoningApp.application.rest.model.SimpleCanyonReviewDto;
 import es.luis.canyoningApp.domain.model.CanyonReview;
 import org.mapstruct.Mapper;
 
