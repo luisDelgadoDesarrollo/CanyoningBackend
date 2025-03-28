@@ -5,46 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c847009-da88-4c19-94c9-6998b1d02a63" name="Changes" comment="all app finished">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/ActivityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/ActivityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/ImageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/error/ApiErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/error/ApiErrorHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/ActivityControllerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/ActivityControllerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/BaseControllerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/BaseControllerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/CanyonControllerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/CanyonControllerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/CanyonReviewControllerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/CanyonReviewControllerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/MessageControllerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/MessageControllerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/UserControllerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/UserControllerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/resources/static/openapi/canyoningApp-openapi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/resources/static/openapi/canyoningApp-openapi.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boot/src/main/resources/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/boot/src/main/resources/application-local.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/model/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/ImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/ImageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/MessageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/SendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/SendEmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/SendEmailImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/SendEmailImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/util/AuthenticatedUserBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/util/AuthenticatedUserBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/CanyonMessageEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/CanyonMessageEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonCanyonNearEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonCanyonNearEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonControlLevelEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonControlLevelEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonDescentEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonDescentEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonDifficultyEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonDifficultyEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonLinkEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonLinkEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonProhibitionEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonProhibitionEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonRappelingEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonRappelingEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonScheduleEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonScheduleEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/MessageRepositoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/MessageRepositoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/CanyonRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/CanyonRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/MessageRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/MessageRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boot/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/boot/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,13 +204,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>163</line>
+          <line>145</line>
           <option name="timeStamp" value="142" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java</url>
           <line>53</line>
           <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/UserServiceImpl.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/UserRepositoryImpl.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="145" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
