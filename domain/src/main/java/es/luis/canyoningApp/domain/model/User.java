@@ -35,6 +35,8 @@ public class User {
 
   private OffsetDateTime deleteAt;
 
+  private LocalDate createdAt;
+
   public Integer getAge() {
     if (this.birthDay == null) {
       return null;
