@@ -5,8 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c847009-da88-4c19-94c9-6998b1d02a63" name="Changes" comment="all app finished">
+      <change afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/ArticleControllerMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/model/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/repository/ArticleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/ArticleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/ArticleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/ArticleEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/FavouritesCanyonEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/ArticleEntityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/FavouritesCanyonEntityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/ArticleRepositoryMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/ArticleRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/CanyonControllerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/mapper/CanyonControllerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/resources/static/openapi/canyoningApp-openapi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/resources/static/openapi/canyoningApp-openapi.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boot/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/boot/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/model/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/model/SimpleCanyon.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/model/SimpleCanyon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/repository/CanyonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/repository/CanyonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/MessageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/CanyonMessageEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/entity/CanyonMessageEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonEntityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonMessageEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/jpaRepository/CanyonMessageEntityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/MessageRepositoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/mapper/MessageRepositoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/CanyonRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/CanyonRepositoryImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +45,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -65,7 +90,7 @@
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/article&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Canyoning_App/Canyoning&quot;,
@@ -77,10 +102,10 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="es.luis.canyoningApp.infrastructure.mapper" />
       <recent name="es.luis.canyoningApp.domain.model" />
       <recent name="es.luis.canyoningApp.infrastructure.entity" />
       <recent name="es.luis.canyoningApp.infrastructure.entity.PrimaryKey" />
-      <recent name="es.luis.canyoningApp.infrastructure.mapper" />
       <recent name="es.luis.canyoningApp.infrastructure.jpaRepository" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -203,33 +228,21 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/CanyonServiceIpml.java</url>
-          <line>145</line>
-          <option name="timeStamp" value="142" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/CanyonController.java</url>
+          <url>file://$PROJECT_DIR$/application/src/main/java/es/luis/canyoningApp/application/rest/controller/MessageController.java</url>
           <line>53</line>
-          <option name="timeStamp" value="143" />
+          <option name="timeStamp" value="165" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/UserServiceImpl.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="144" />
+          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/MessageServiceImpl.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="166" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/infrastructure/src/main/java/es/luis/canyoningApp/infrastructure/repository/UserRepositoryImpl.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="145" />
+          <url>file://$PROJECT_DIR$/domain/src/main/java/es/luis/canyoningApp/domain/service/MessageServiceImpl.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="167" />
         </line-breakpoint>
       </breakpoints>
-      <breakpoints-dialog>
-        <breakpoints-dialog>
-          <selected-grouping-rules>
-            <grouping-rule id="XBreakpointGroupingByPackageRule" />
-          </selected-grouping-rules>
-        </breakpoints-dialog>
-      </breakpoints-dialog>
     </breakpoint-manager>
   </component>
 </project>

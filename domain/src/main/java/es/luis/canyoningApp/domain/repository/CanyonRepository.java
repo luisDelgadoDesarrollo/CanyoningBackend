@@ -25,4 +25,19 @@ public interface CanyonRepository {
   Canyon updateCanyon(Canyon canyon);
 
   List<LocationCanyon> getLocations();
+
+  Page<SimpleCanyon> getFavouritesCanyons(
+      Long userId,
+      String name,
+      String season,
+      String river,
+      String country,
+      String population,
+      Pageable pageable);
+
+  void deleteCanyonFromFavourites(Long userId, Long canyonId);
+
+  void addCanyonToFavourites(Long userId, Long canyonId);
+
+  Boolean isCanyonFavourite(Long canyonId, Long authenticatedUserId);
 }

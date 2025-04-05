@@ -4,12 +4,14 @@ import es.luis.canyoningApp.domain.model.ActivityType;
 import es.luis.canyoningApp.domain.model.Message;
 import es.luis.canyoningApp.domain.repository.MessageRepository;
 import es.luis.canyoningApp.domain.util.AuthenticatedUserBase;
+import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 @Service
 public class MessageServiceImpl extends AuthenticatedUserBase implements MessageService {
@@ -19,9 +21,16 @@ public class MessageServiceImpl extends AuthenticatedUserBase implements Message
   @Override
   public void postMessage(Message message) {
     // there is a switch because its thinked to be mor activity types like climb or dive
+    if (message.getDate() == null || message.getDate().isAfter(LocalDate.now())) {
+      message.setDate(LocalDate.now());
+    }
     switch (message.getTypePlace()) {
       case ActivityType.CANYON:
-        messageRepository.postCanyonMessage(message);
+        if (!message.getMessage().isEmpty()
+            || !ObjectUtils.isEmpty(message.getFlow())
+            || !ObjectUtils.isEmpty(message.getTemperature())) {
+          messageRepository.postCanyonMessage(message);
+        }
         break;
     }
   }

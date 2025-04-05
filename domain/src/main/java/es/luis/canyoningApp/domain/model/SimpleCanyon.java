@@ -36,5 +36,7 @@ public class SimpleCanyon {
 
   private String scape;
 
+  private Boolean favourite;
+
   private OffsetDateTime deleteAt;
 }

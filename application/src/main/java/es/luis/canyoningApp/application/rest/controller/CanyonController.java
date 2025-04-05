@@ -23,6 +23,12 @@ public class CanyonController extends BaseController implements CanyonApi {
   @Autowired private CanyonControllerMapper canyonControllerMapper;
 
   @Override
+  public ResponseEntity<Void> addCanyonToFavourites(Long canyonId) {
+    canyonService.addCanyonToFavourites(canyonId);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+  }
+
+  @Override
   public ResponseEntity<CanyonDto> createCanyon(CanyonDto canyonDto) {
     return ResponseEntity.status(HttpStatus.CREATED)
         .body(
@@ -41,6 +47,12 @@ public class CanyonController extends BaseController implements CanyonApi {
   @Override
   public ResponseEntity<Void> deleteCanyon(Long canyonId) {
     canyonService.deleteCanyon(canyonId);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+  }
+
+  @Override
+  public ResponseEntity<Void> deleteCanyonFromFavourites(Long canyonId) {
+    canyonService.deleteCanyonFromFavourites(canyonId);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 
@@ -68,6 +80,24 @@ public class CanyonController extends BaseController implements CanyonApi {
       Pageable pageable) {
     Page<SimpleCanyon> canyons =
         canyonService.getCanyons(name, season, river, country, population, pageable);
+    addPaginationHeadersToResponse(canyons);
+    return ResponseEntity.ok(
+        canyons.stream().map(canyonControllerMapper::simpleCanyonToSimpleCanyon).toList());
+  }
+
+  @Override
+  public ResponseEntity<List<SimpleCanyonDto>> getFavouriteCanyons(
+      String name,
+      String season,
+      String river,
+      String country,
+      String population,
+      Integer page,
+      Integer size,
+      String sort,
+      Pageable pageable) {
+    Page<SimpleCanyon> canyons =
+        canyonService.getFavouriteCanyons(name, season, river, country, population, pageable);
     addPaginationHeadersToResponse(canyons);
     return ResponseEntity.ok(
         canyons.stream().map(canyonControllerMapper::simpleCanyonToSimpleCanyon).toList());

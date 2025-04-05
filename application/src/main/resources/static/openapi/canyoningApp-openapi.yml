@@ -21,6 +21,8 @@ tags:
     description: CanyonMessage operations
   - name: Image
     description: Image operations
+  - name: Article
+    description: Article operations
 paths:
   /createUser:
     post:
@@ -406,6 +408,115 @@ paths:
               $ref: '#/components/headers/X-Total-Elements'
             X-Total-Pages:
               $ref: '#/components/headers/X-Total-Pages'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /canyons/favourites:
+    get:
+      tags:
+        - Canyon
+      summary: Get all canyon
+      description: Get all canyon filtering by differents fields
+      operationId: getFavouriteCanyons
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: season
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: river
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: country
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: population
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Número de página (empezando desde 0)
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Número de elementos por página
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: Criterios de ordenación en el formato propiedad(,asc|desc). El orden por defecto es ascendente.
+          required: false
+          schema:
+            type: string
+            default: "canyonId,asc"
+      x-spring-paginated: true
+      responses:
+        201:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleCanyon'
+          headers:
+            Link:
+              $ref: '#/components/headers/Link'
+            X-Page-Number:
+              $ref: '#/components/headers/X-Page-Number'
+            X-Total-Elements:
+              $ref: '#/components/headers/X-Total-Elements'
+            X-Total-Pages:
+              $ref: '#/components/headers/X-Total-Pages'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /canyons/favourites/{canyonId}:
+    post:
+      tags:
+        - Canyon
+      summary: Add canyon to favourites
+      operationId: addCanyonToFavourites
+      parameters:
+        - name: canyonId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        201:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    delete:
+      tags:
+        - Canyon
+      summary: Deletes a favourite
+      description: delete a canyon from favourites
+      operationId: deleteCanyonFromFavourites
+      parameters:
+        - name: canyonId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          description: 'Succesfull delete'
         400:
           $ref: '#/components/responses/400BadRequest'
   /canyons/map:
@@ -896,6 +1007,154 @@ paths:
           description: Successful operation
         400:
           $ref: '#/components/responses/400BadRequest'
+  /article:
+    post:
+      tags:
+        - Article
+      summary: Post an article
+      description: Post a nes article
+      operationId: createArticle
+      requestBody:
+        description: data from the article
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+        required: true
+      responses:
+        201:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    get:
+      tags:
+        - Article
+      summary: Get all articles
+      description: Return all articles paginated
+      operationId: getAtricles
+      parameters:
+        - name: title
+          in: query
+          description: title of the article
+          required: false
+          schema:
+            type: string
+        - name: location
+          in: query
+          description: it will find articles near the location
+          required: false
+          schema:
+            type: string
+        - name: organizer
+          in: query
+          description: organizer of the article
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Número de página (empezando desde 0)
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Número de elementos por página
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: Criterios de ordenación en el formato propiedad(,asc|desc). El orden por defecto es ascendente.
+          required: false
+          schema:
+            type: string
+            default: "articleId,asc"
+      x-spring-paginated: true
+      responses:
+        201:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleArticle'
+          headers:
+            Link:
+              $ref: '#/components/headers/Link'
+            X-Page-Number:
+              $ref: '#/components/headers/X-Page-Number'
+            X-Total-Elements:
+              $ref: '#/components/headers/X-Total-Elements'
+            X-Total-Pages:
+              $ref: '#/components/headers/X-Total-Pages'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+  /article/{articleId}:
+    get:
+      tags:
+        - Article
+      summary: Get an article by id
+      description: Find an article by id
+      operationId: getArticleById
+      parameters:
+        - name: articleId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: Succesful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+        404:
+          $ref: '#/components/responses/404NotFound'
+    delete:
+      tags:
+        - Article
+      summary: delete an article
+      description: delete an article
+      operationId: deleteArticle
+      parameters:
+        - name: articleId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
+    put:
+      tags:
+        - Article
+      summary: update an article
+      description: update an article
+      operationId: updateArticle
+      parameters:
+        - name: articleId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      requestBody:
+        description: data from the message
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+      responses:
+        200:
+          description: Successful operation
+        400:
+          $ref: '#/components/responses/400BadRequest'
   /messages:
     post:
       tags:
@@ -1083,6 +1342,46 @@ paths:
                     type: string
 components:
   schemas:
+    Article:
+      allOf:
+        - $ref: '#/components/schemas/SimpleArticle'
+        - properties:
+            description:
+              type: string
+            image:
+              type: string
+            price:
+              type: string
+            link:
+              type: string
+            instagram:
+              type: string
+            twitter:
+              type: string
+            tiktok:
+              type: string
+            facebook:
+              type: string
+            createdBy:
+              type: string
+    SimpleArticle:
+      type: object
+      properties:
+        articleId:
+          $ref: '#/components/schemas/Id'
+        articleType:
+          type: integer
+        organizer:
+          type: string
+        location:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        articleDate:
+          type: string
+          format: date-time
     UserIdsRequest:
       type: array
       items:
@@ -1098,11 +1397,11 @@ components:
           type: string
         date:
           type: string
-          format: date-time
+          format: date
         flow:
-          type: int
+          type: integer
         temperature:
-          type: int
+          type: integer
     MessageIn:
       allOf:
         - $ref: '#/components/schemas/Message'
@@ -1181,10 +1480,14 @@ components:
           type: string
         population:
           type: string
+        country:
+          type: string
     Canyon:
       allOf:
         - $ref: '#/components/schemas/SimpleCanyon'
         - properties:
+            favourite:
+              type: boolean
             description:
               type: string
             croquis:

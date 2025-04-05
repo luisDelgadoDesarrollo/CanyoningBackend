@@ -11,6 +11,7 @@ public interface CanyonMessageEntityRepository
     extends CrudRepository<CanyonMessageEntity, Long>,
         PagingAndSortingRepository<CanyonMessageEntity, Long> {
 
-  @Query("SELECT cme FROM CanyonMessageEntity cme where cme.canyon.canyonId = :canyonId ")
+  @Query(
+      "SELECT cme FROM CanyonMessageEntity cme where cme.canyon.canyonId = :canyonId order by cme.date desc")
   Page<CanyonMessageEntity> findAllByCanyon(Long canyonId, Pageable pageable);
 }

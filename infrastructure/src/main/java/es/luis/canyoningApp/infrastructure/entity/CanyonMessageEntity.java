@@ -1,6 +1,7 @@
 package es.luis.canyoningApp.infrastructure.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import lombok.Data;
 
@@ -30,6 +31,9 @@ public class CanyonMessageEntity {
 
   @Column(name = "temperature")
   private Integer temperature;
+
+  @Column(name = "date")
+  private LocalDate date;
 
   @Column(name = "sendAt")
   private OffsetDateTime sendAt;
