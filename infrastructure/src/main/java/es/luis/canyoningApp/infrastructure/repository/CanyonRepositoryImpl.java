@@ -10,74 +10,61 @@ import es.luis.canyoningApp.infrastructure.entity.SimpleCanyonEntity;
 import es.luis.canyoningApp.infrastructure.jpaRepository.*;
 import es.luis.canyoningApp.infrastructure.mapper.CanyonRepositoryMapper;
 import es.luis.canyoningApp.infrastructure.mapper.SimpleCanyonRepositoryMapper;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Repository
 public class CanyonRepositoryImpl implements CanyonRepository {
 
-    @Autowired
-    private CanyonEntityRepository canyonEntityRepository;
-    @Autowired
-    private SimpleCanyonEntityRepository simpleCanyonEntityRepository;
+  @Autowired private CanyonEntityRepository canyonEntityRepository;
+  @Autowired private SimpleCanyonEntityRepository simpleCanyonEntityRepository;
 
-    @Autowired
-    private CanyonRepositoryMapper canyonRepositoryMapper;
+  @Autowired private CanyonRepositoryMapper canyonRepositoryMapper;
 
-    @Autowired
-    private SimpleCanyonRepositoryMapper simpleCanyonRepositoryMapper;
+  @Autowired private SimpleCanyonRepositoryMapper simpleCanyonRepositoryMapper;
 
-    @Autowired
-    private CanyonDescentEntityRepository canyonDescentEntityRepository;
+  @Autowired private CanyonDescentEntityRepository canyonDescentEntityRepository;
 
-    @Autowired
-    private CanyonDifficultyEntityRepository canyonDifficultyEntityRepository;
+  @Autowired private CanyonDifficultyEntityRepository canyonDifficultyEntityRepository;
 
-    @Autowired
-    private CanyonLinkEntityRepository canyonLinkEntityRepository;
+  @Autowired private CanyonLinkEntityRepository canyonLinkEntityRepository;
 
-    @Autowired
-    private CanyonProhibitionEntityRepository canyonProhibitionEntityRepository;
+  @Autowired private CanyonProhibitionEntityRepository canyonProhibitionEntityRepository;
 
-    @Autowired
-    private CanyonRappelingEntityRepository canyonRappelingEntityRepository;
+  @Autowired private CanyonRappelingEntityRepository canyonRappelingEntityRepository;
 
-    @Autowired
-    private CanyonScheduleEntityRepository canyonScheduleEntityRepository;
+  @Autowired private CanyonScheduleEntityRepository canyonScheduleEntityRepository;
 
-    @Autowired
-    private CanyonCanyonNearEntityRepository canyonCanyonNearEntityRepository;
+  @Autowired private CanyonCanyonNearEntityRepository canyonCanyonNearEntityRepository;
 
-    @Autowired
-    private CanyonControlLevelEntityRepository canyonControlLevelEntityRepository;
+  @Autowired private CanyonControlLevelEntityRepository canyonControlLevelEntityRepository;
 
   @Autowired FavouritesCanyonEntityRepository favouritesCanyonEntityRepository;
 
   @Autowired CanyonLocationEntityRepository canyonLocationEntityRepository;
 
-    @Override
-    public Canyon getCanyonById(Long canyonId) {
-        return canyonRepositoryMapper.canyonEntityToCanyon(
-                canyonEntityRepository.findById(canyonId).orElseThrow());
-    }
+  @Override
+  public Canyon getCanyonById(Long canyonId) {
+    return canyonRepositoryMapper.canyonEntityToCanyon(
+        canyonEntityRepository.findById(canyonId).orElseThrow());
+  }
 
-    @Override
-    public Page<SimpleCanyon> getCanyons(
-            String name,
-            String season,
-            String river,
-            String country,
-            String population,
-            Pageable pageable) {
-        return canyonEntityRepository
-                .getCanyons(name, season, river, country, population, pageable)
-                .map(canyonRepositoryMapper::canyonEntityToSimpleCanyon);
-    }
+  @Override
+  public Page<SimpleCanyon> getCanyons(
+      String name,
+      String season,
+      String river,
+      String country,
+      String population,
+      Pageable pageable) {
+    return canyonEntityRepository
+        .getCanyons(name, season, river, country, population, pageable)
+        .map(canyonRepositoryMapper::canyonEntityToSimpleCanyon);
+  }
 
   @Override
   public void deleteCanyon(SimpleCanyon simpleCanyon) {
@@ -175,8 +162,7 @@ public class CanyonRepositoryImpl implements CanyonRepository {
 
     SimpleCanyonEntity save =
         simpleCanyonEntityRepository.save(
-                canyonRepositoryMapper.simpleCanyonToSimpleCanyonEntity(simpleCanyon));
-    }
+            canyonRepositoryMapper.simpleCanyonToSimpleCanyonEntity(canyon));
 
     Long canyonId = save.getCanyonId();
     canyon.setCanyonId(canyonId);
