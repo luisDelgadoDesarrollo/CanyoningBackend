@@ -13,11 +13,9 @@ public interface MessageRepositoryMapper {
   @Mapping(
       target = "typePlace",
       expression = "java(es.luis.canyoningApp.domain.model.ActivityType.CANYON)")
-  @Mapping(target = "date", source = "sendAt")
   Message canyonMessageEntityToMessage(CanyonMessageEntity canyonMessageEntity);
 
   @Mapping(target = "canyon.canyonId", source = "placeId")
   @Mapping(target = "canyonMessageId", source = "messageId")
-  @Mapping(target = "sendAt", source = "date")
   CanyonMessageEntity messageToCanyonMessageEntity(Message message);
 }

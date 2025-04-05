@@ -28,4 +28,16 @@ public interface CanyonService {
   Resource downloadCanyon(Long canyonId, Boolean email);
 
   List<LocationCanyon> getLocations();
+
+  Page<SimpleCanyon> getFavouriteCanyons(
+      String name,
+      String season,
+      String river,
+      String country,
+      String population,
+      Pageable pageable);
+
+  void addCanyonToFavourites(Long canyonId);
+
+  void deleteCanyonFromFavourites(Long canyonId);
 }

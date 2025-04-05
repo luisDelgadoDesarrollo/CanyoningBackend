@@ -10,8 +10,8 @@ management.endpoints.web.exposure.include: "*"
 server:
   servlet.contextPath: /
   port: 8080
-#  tomcat.connection-timeout: 60000
-#  max-http-header-size: 64KB
+  tomcat.connection-timeout: 60000
+  max-http-header-size: 64KB
 #server:
 #  port: 8443
 #  ssl:

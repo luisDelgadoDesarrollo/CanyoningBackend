@@ -85,7 +85,7 @@ public class CanyonServiceIpml extends BaseService implements CanyonService {
         .bodyToMono(Void.class) // Ignora la respuesta
         .subscribe();
     Canyon canyon = canyonRepository.getCanyonById(canyonId);
-
+    canyon.setFavourite(canyonRepository.isCanyonFavourite(canyonId, getAuthenticatedUserId()));
     // Asegúrate de que canyonRappeling no sea null
     List<CanyonRappeling> rappelingList = canyon.getCanyonRappeling();
     if (rappelingList != null) {
@@ -135,6 +135,33 @@ public class CanyonServiceIpml extends BaseService implements CanyonService {
       String population,
       Pageable pageable) {
     return canyonRepository.getCanyons(name, season, river, country, population, pageable);
+  }
+
+  @Override
+  public List<LocationCanyon> getLocations() {
+    return canyonRepository.getLocations();
+  }
+
+  @Override
+  public Page<SimpleCanyon> getFavouriteCanyons(
+      String name,
+      String season,
+      String river,
+      String country,
+      String population,
+      Pageable pageable) {
+    return canyonRepository.getFavouritesCanyons(
+        getAuthenticatedUserId(), name, season, river, country, population, pageable);
+  }
+
+  @Override
+  public void addCanyonToFavourites(Long canyonId) {
+    canyonRepository.addCanyonToFavourites(getAuthenticatedUserId(), canyonId);
+  }
+
+  @Override
+  public void deleteCanyonFromFavourites(Long canyonId) {
+    canyonRepository.deleteCanyonFromFavourites(getAuthenticatedUserId(), canyonId);
   }
 
   @Override
@@ -492,11 +519,6 @@ public class CanyonServiceIpml extends BaseService implements CanyonService {
     } catch (IOException | MessagingException e) {
       throw new RuntimeException(e);
     }
-  }
-
-  @Override
-  public List<LocationCanyon> getLocations() {
-    return canyonRepository.getLocations();
   }
 
   private static void addText(PDPageContentStream contentStream, String text, String textType)

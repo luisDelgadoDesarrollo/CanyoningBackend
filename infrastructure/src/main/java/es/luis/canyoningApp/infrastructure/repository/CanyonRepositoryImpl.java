@@ -5,6 +5,7 @@ import es.luis.canyoningApp.domain.model.LocationCanyon;
 import es.luis.canyoningApp.domain.model.SimpleCanyon;
 import es.luis.canyoningApp.domain.repository.CanyonRepository;
 import es.luis.canyoningApp.infrastructure.entity.CanyonEntity;
+import es.luis.canyoningApp.infrastructure.entity.FavouritesCanyonEntity;
 import es.luis.canyoningApp.infrastructure.entity.SimpleCanyonEntity;
 import es.luis.canyoningApp.infrastructure.jpaRepository.*;
 import es.luis.canyoningApp.infrastructure.mapper.CanyonRepositoryMapper;
@@ -41,6 +42,8 @@ public class CanyonRepositoryImpl implements CanyonRepository {
   @Autowired private CanyonCanyonNearEntityRepository canyonCanyonNearEntityRepository;
 
   @Autowired private CanyonControlLevelEntityRepository canyonControlLevelEntityRepository;
+
+  @Autowired FavouritesCanyonEntityRepository favouritesCanyonEntityRepository;
 
   @Autowired CanyonLocationEntityRepository canyonLocationEntityRepository;
 
@@ -104,6 +107,41 @@ public class CanyonRepositoryImpl implements CanyonRepository {
     return canyonEntityRepository.findAllCanyons().stream()
         .map(canyonRepositoryMapper::canyonEntityToLocationCanyon)
         .toList();
+  }
+
+  @Override
+  public Page<SimpleCanyon> getFavouritesCanyons(
+      Long userId,
+      String name,
+      String season,
+      String river,
+      String country,
+      String population,
+      Pageable pageable) {
+    return canyonEntityRepository
+        .getFavouriteCanyons(userId, name, season, river, country, population, pageable)
+        .map(canyonRepositoryMapper::canyonEntityToSimpleCanyon);
+  }
+
+  @Override
+  public void deleteCanyonFromFavourites(Long userId, Long canyonId) {
+    favouritesCanyonEntityRepository.deleteById(
+        new FavouritesCanyonEntity.PrimaryKeys(userId, canyonId));
+  }
+
+  @Override
+  public void addCanyonToFavourites(Long userId, Long canyonId) {
+    FavouritesCanyonEntity favouritesCanyonEntity = new FavouritesCanyonEntity();
+    favouritesCanyonEntity.setUserId(userId);
+    favouritesCanyonEntity.setCanyonId(canyonId);
+    favouritesCanyonEntityRepository.save(favouritesCanyonEntity);
+  }
+
+  @Override
+  public Boolean isCanyonFavourite(Long canyonId, Long userId) {
+    return favouritesCanyonEntityRepository
+        .findById(new FavouritesCanyonEntity.PrimaryKeys(userId, canyonId))
+        .isPresent();
   }
 
   @Transactional
@@ -200,7 +238,6 @@ public class CanyonRepositoryImpl implements CanyonRepository {
         .forEach(
             canyonControlLevel -> {
               canyonControlLevel.setCanyonId(canyonId);
-              canyonControlLevel.setName(canyonControlLevel.getName().trim().replace(" ", "_"));
               if (!canyonControlLevel.getControlPoint().endsWith(".jpg")) {
                 canyonControlLevel.setControlPoint(canyonControlLevel.getControlPoint() + ".jpg");
               }

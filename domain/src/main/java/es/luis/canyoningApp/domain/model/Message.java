@@ -1,5 +1,6 @@
 package es.luis.canyoningApp.domain.model;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,5 +26,7 @@ public class Message {
 
   private Integer temperature;
 
-  private OffsetDateTime date;
+  private LocalDate date;
+
+  private OffsetDateTime sendAt;
 }
