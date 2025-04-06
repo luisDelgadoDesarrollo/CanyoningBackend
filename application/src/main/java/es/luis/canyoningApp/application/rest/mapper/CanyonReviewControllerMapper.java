@@ -9,9 +9,9 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface CanyonReviewControllerMapper {
 
-  CanyonReview canyonReviewDtoToCanyonReview(CanyonReviewDto canyonReviewDto);
+    CanyonReview canyonReviewDtoToCanyonReview(CanyonReviewDto canyonReviewDto);
 
-  CanyonReviewResponseDto canyonReviewToCanyonReviewResponseDto(CanyonReview review);
+    CanyonReviewResponseDto canyonReviewToCanyonReviewResponseDto(CanyonReview review);
 
-  SimpleCanyonReviewDto canyonReviewToSimpleCanyonReviewDto(CanyonReview canyonReview);
+    SimpleCanyonReviewDto canyonReviewToSimpleCanyonReviewDto(CanyonReview canyonReview);
 }

@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface ActivityRepositoryMapper {
-  ActivityEntity activityToActivityEntity(Activity activity);
+    ActivityEntity activityToActivityEntity(Activity activity);
 
-  Activity activityEntityToActivity(ActivityEntity save);
+    Activity activityEntityToActivity(ActivityEntity save);
 }

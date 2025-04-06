@@ -8,18 +8,18 @@ import lombok.Data;
 @Table(name = "canyonlink")
 public class CanyonLinkEntity {
 
-  @Id
-  @Column(name = "canyonlinkId")
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long canyonLinkId;
+    @Id
+    @Column(name = "canyonlinkId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long canyonLinkId;
 
-  @ManyToOne
-  @JoinColumn(name = "canyonId", nullable = false)
-  private SimpleCanyonEntity canyon;
+    @ManyToOne
+    @JoinColumn(name = "canyonId", nullable = false)
+    private SimpleCanyonEntity canyon;
 
-  @Column(name = "link")
-  private String link;
+    @Column(name = "link")
+    private String link;
 
-  @Column(name = "title")
-  private String title;
+    @Column(name = "title")
+    private String title;
 }

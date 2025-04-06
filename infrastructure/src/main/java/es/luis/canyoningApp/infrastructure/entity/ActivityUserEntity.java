@@ -15,10 +15,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ActivityUserEntity {
 
-  @EmbeddedId private ActivityUserId id;
+    @EmbeddedId
+    private ActivityUserId id;
 
-  @ManyToOne
-  @MapsId("userId")
-  @JoinColumn(name = "userId", nullable = false)
-  private UserEntity user;
+    @ManyToOne
+    @MapsId("userId")
+    @JoinColumn(name = "userId", nullable = false)
+    private UserEntity user;
 }

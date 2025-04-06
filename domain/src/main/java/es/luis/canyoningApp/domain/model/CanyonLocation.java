@@ -10,15 +10,15 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CanyonLocation {
-  private Long canyonId;
+    private Long canyonId;
 
-  private String population;
+    private String population;
 
-  private String latitud;
+    private String latitud;
 
-  private String longitud;
+    private String longitud;
 
-  private String zone;
+    private String zone;
 
-  private String country;
+    private String country;
 }

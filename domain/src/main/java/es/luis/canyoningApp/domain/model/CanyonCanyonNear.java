@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CanyonCanyonNear {
 
-  private Long principalCanyon;
+    private Long principalCanyon;
 
-  private String nearCanyon;
+    private String nearCanyon;
 }

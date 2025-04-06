@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface MapperUtils {
 
-  AuthenticatedUser userToAuthenticatedUser(User userByEmail);
+    AuthenticatedUser userToAuthenticatedUser(User userByEmail);
 }

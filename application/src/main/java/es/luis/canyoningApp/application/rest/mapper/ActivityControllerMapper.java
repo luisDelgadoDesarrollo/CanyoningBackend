@@ -7,9 +7,9 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface ActivityControllerMapper {
-  Activity activityDtoToActivity(ActivityDto activityDto);
+    Activity activityDtoToActivity(ActivityDto activityDto);
 
-  ActivityDto activityToActivityDto(Activity activity);
+    ActivityDto activityToActivityDto(Activity activity);
 
-  SimpleActivityDto activityToSimpleActivityDto(Activity activity);
+    SimpleActivityDto activityToSimpleActivityDto(Activity activity);
 }

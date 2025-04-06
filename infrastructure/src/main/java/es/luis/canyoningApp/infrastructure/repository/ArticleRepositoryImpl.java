@@ -12,38 +12,40 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ArticleRepositoryImpl implements ArticleRepository {
 
-  @Autowired private ArticleEntityRepository articleEntityRepository;
+    @Autowired
+    private ArticleEntityRepository articleEntityRepository;
 
-  @Autowired private ArticleRepositoryMapper articleRepositoryMapper;
+    @Autowired
+    private ArticleRepositoryMapper articleRepositoryMapper;
 
-  @Override
-  public void createArticle(Article article) {
-    articleEntityRepository.save(articleRepositoryMapper.articleToArticleEntity(article));
-  }
+    @Override
+    public void createArticle(Article article) {
+        articleEntityRepository.save(articleRepositoryMapper.articleToArticleEntity(article));
+    }
 
-  @Override
-  public void deleteArticle(Long articleId) {
-    articleEntityRepository.deleteById(articleId);
-  }
+    @Override
+    public void deleteArticle(Long articleId) {
+        articleEntityRepository.deleteById(articleId);
+    }
 
-  @Override
-  public Article getArticleById(Long articleId) {
-    return articleEntityRepository
-        .findById(articleId)
-        .map(articleRepositoryMapper::articleEntityToArticle)
-        .orElseThrow();
-  }
+    @Override
+    public Article getArticleById(Long articleId) {
+        return articleEntityRepository
+                .findById(articleId)
+                .map(articleRepositoryMapper::articleEntityToArticle)
+                .orElseThrow();
+    }
 
-  @Override
-  public Page<Article> getArticles(
-      String title, String location, String organizer, Pageable pageable) {
-    return articleEntityRepository
-        .getArticles(title, location, organizer, pageable)
-        .map(articleRepositoryMapper::articleEntityToArticle);
-  }
+    @Override
+    public Page<Article> getArticles(
+            String title, String location, String organizer, Pageable pageable) {
+        return articleEntityRepository
+                .getArticles(title, location, organizer, pageable)
+                .map(articleRepositoryMapper::articleEntityToArticle);
+    }
 
-  @Override
-  public void updateArticle(Article article) {
-    articleEntityRepository.save(articleRepositoryMapper.articleToArticleEntity(article));
-  }
+    @Override
+    public void updateArticle(Article article) {
+        articleEntityRepository.save(articleRepositoryMapper.articleToArticleEntity(article));
+    }
 }

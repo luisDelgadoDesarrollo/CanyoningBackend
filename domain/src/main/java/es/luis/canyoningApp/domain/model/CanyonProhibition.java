@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CanyonProhibition {
-  private Long canyonProhibitionId;
+    private Long canyonProhibitionId;
 
-  private Long canyonId;
+    private Long canyonId;
 
-  private String description;
+    private String description;
 }

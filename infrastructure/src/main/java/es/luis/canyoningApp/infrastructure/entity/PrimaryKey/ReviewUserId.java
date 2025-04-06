@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReviewUserId {
-  private Long canyonReviewId;
-  private Long userId;
+    private Long canyonReviewId;
+    private Long userId;
 }

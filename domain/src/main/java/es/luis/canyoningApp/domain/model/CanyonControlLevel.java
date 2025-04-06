@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CanyonControlLevel {
-  private Long canyonId;
-  private String caudalLevel;
-  private String name;
-  private String controlPoint;
+    private Long canyonId;
+    private String caudalLevel;
+    private String name;
+    private String controlPoint;
 }

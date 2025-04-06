@@ -11,14 +11,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class EntityManagerContextHolder {
 
-  private static EntityManager entityManager;
+    private static EntityManager entityManager;
 
-  @Autowired
-  public EntityManagerContextHolder(EntityManager entityManager) {
-    EntityManagerContextHolder.entityManager = entityManager;
-  }
+    @Autowired
+    public EntityManagerContextHolder(EntityManager entityManager) {
+        EntityManagerContextHolder.entityManager = entityManager;
+    }
 
-  public static EntityManager getInstance() {
-    return entityManager;
-  }
+    public static EntityManager getInstance() {
+        return entityManager;
+    }
 }

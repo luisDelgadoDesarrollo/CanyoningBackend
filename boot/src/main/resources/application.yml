@@ -7,18 +7,18 @@ properties:
 
 management.endpoints.web.exposure.include: "*"
 
-#server:
-#  servlet.contextPath: /
-#  port: 8080
-#  tomcat.connection-timeout: 60000
-#  max-http-header-size: 64KB
 server:
-  port: 8443
-  ssl:
-    key-store: /etc/letsencrypt/live/misbarrancosbdesarrollo.com/keystore.p12
-    key-store-password: "Luis884994"
-    key-store-type: PKCS12
-    key-alias: tomcat
+  servlet.contextPath: /
+  port: 8080
+  tomcat.connection-timeout: 60000
+  max-http-header-size: 64KB
+#server:
+#  port: 8443
+#  ssl:
+#    key-store: /etc/letsencrypt/live/misbarrancosbdesarrollo.com/keystore.p12
+#    key-store-password: "Luis884994"
+#    key-store-type: PKCS12
+#    key-alias: tomcat
 
 spring:
   config.name: canyoningApp

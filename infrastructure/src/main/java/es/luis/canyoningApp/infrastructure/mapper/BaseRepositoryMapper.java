@@ -5,4 +5,5 @@ import org.mapstruct.MapperConfig;
 
 @Mapper
 @MapperConfig(componentModel = "spring")
-public interface BaseRepositoryMapper {}
+public interface BaseRepositoryMapper {
+}

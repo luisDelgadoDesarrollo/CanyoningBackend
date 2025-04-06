@@ -10,15 +10,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CanyonSchedule {
-  private Long canyonId;
+    private Long canyonId;
 
-  private Integer car;
+    private Integer car;
 
-  private Integer descentNumber;
+    private Integer descentNumber;
 
-  private String approach;
+    private String approach;
 
-  private String descent;
+    private String descent;
 
-  private String _return;
+    private String _return;
 }

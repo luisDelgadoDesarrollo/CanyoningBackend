@@ -6,7 +6,7 @@ package es.luis.canyoningApp.infrastructure.util;
  */
 public interface EnumEntity {
 
-  Long getId();
+    Long getId();
 
-  String getName();
+    String getName();
 }

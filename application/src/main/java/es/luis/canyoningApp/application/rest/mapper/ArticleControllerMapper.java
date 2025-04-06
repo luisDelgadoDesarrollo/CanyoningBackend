@@ -8,9 +8,9 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface ArticleControllerMapper {
 
-  ArticleDto articleToArticleDto(Article article);
+    ArticleDto articleToArticleDto(Article article);
 
-  Article articleDtoToArticle(ArticleDto articleDto);
+    Article articleDtoToArticle(ArticleDto articleDto);
 
-  SimpleArticleDto articleToSimpleArticleDto(Article article);
+    SimpleArticleDto articleToSimpleArticleDto(Article article);
 }

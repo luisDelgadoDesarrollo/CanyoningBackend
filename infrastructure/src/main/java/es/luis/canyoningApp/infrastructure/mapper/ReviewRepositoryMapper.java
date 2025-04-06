@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface ReviewRepositoryMapper {
 
-  CanyonReviewEntity reviewToReviewEntity(CanyonReview canyonReview);
+    CanyonReviewEntity reviewToReviewEntity(CanyonReview canyonReview);
 
-  CanyonReview reviewEntityToReview(CanyonReviewEntity save);
+    CanyonReview reviewEntityToReview(CanyonReviewEntity save);
 }

@@ -15,10 +15,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CanyonReviewUserEntity {
 
-  @EmbeddedId private ReviewUserId id;
+    @EmbeddedId
+    private ReviewUserId id;
 
-  @ManyToOne
-  @MapsId("userId")
-  @JoinColumn(name = "userId", nullable = false)
-  private UserEntity user;
+    @ManyToOne
+    @MapsId("userId")
+    @JoinColumn(name = "userId", nullable = false)
+    private UserEntity user;
 }

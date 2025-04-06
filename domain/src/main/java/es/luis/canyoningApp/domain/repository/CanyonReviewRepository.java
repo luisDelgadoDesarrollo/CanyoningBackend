@@ -2,26 +2,27 @@ package es.luis.canyoningApp.domain.repository;
 
 import es.luis.canyoningApp.domain.model.CanyonReview;
 import es.luis.canyoningApp.domain.model.User;
-import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface CanyonReviewRepository {
-  CanyonReview createReview(CanyonReview requestCanyonReview);
+    CanyonReview createReview(CanyonReview requestCanyonReview);
 
-  void createReviewUser(Long reviewId, User user);
+    void createReviewUser(Long reviewId, User user);
 
-  CanyonReview getReviewById(Long reviewId);
+    CanyonReview getReviewById(Long reviewId);
 
-  Page<CanyonReview> getCanyonReviews(Long canyonId, Pageable pageable);
+    Page<CanyonReview> getCanyonReviews(Long canyonId, Pageable pageable);
 
-  void deleteReview(CanyonReview canyonReview);
+    void deleteReview(CanyonReview canyonReview);
 
-  CanyonReview updateReview(CanyonReview canyonReview);
+    CanyonReview updateReview(CanyonReview canyonReview);
 
-  void deleteReviewUserByReview(Long reviewId);
+    void deleteReviewUserByReview(Long reviewId);
 
-  List<User> getUsers(Long reviewId);
+    List<User> getUsers(Long reviewId);
 
-  void insertUserIntoCanyonReview(Long reviewId, List<Long> users);
+    void insertUserIntoCanyonReview(Long reviewId, List<Long> users);
 }

@@ -1,13 +1,14 @@
 package es.luis.canyoningApp.domain.model;
 
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -15,25 +16,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Activity {
 
-  private Long activityId;
+    private Long activityId;
 
-  private User user;
+    private User user;
 
-  private LocalDate date;
+    private LocalDate date;
 
-  private String meetingPlace;
+    private String meetingPlace;
 
-  private String activityType;
+    private String activityType;
 
-  private Integer capacity;
+    private Integer capacity;
 
-  private String meetingTime;
+    private String meetingTime;
 
-  private String description;
+    private String description;
 
-  private String qr;
+    private String qr;
 
-  private List<Long> participants = new ArrayList<>();
+    private List<Long> participants = new ArrayList<>();
 
-  private OffsetDateTime deleteAt;
+    private OffsetDateTime deleteAt;
 }

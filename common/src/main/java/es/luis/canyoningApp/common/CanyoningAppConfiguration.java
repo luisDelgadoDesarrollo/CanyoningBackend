@@ -9,19 +9,20 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("properties")
 public class CanyoningAppConfiguration {
 
-  public CanyoningAppConfiguration() {}
+    public CanyoningAppConfiguration() {
+    }
 
-  private String plan;
+    private String plan;
 
-  private String host;
+    private String host;
 
-  private String recoverPassword;
+    private String recoverPassword;
 
-  private String basePath;
+    private String basePath;
 
-  private String croquis;
+    private String croquis;
 
-  private String controlPoint;
+    private String controlPoint;
 
-  private String slash;
+    private String slash;
 }
