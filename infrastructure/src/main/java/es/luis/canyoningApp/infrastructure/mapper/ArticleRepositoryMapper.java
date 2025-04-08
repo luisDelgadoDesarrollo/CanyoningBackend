@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface ArticleRepositoryMapper extends BaseRepositoryMapper {
-    Article articleEntityToArticle(ArticleEntity articleEntity);
+  Article articleEntityToArticle(ArticleEntity articleEntity);
 
-    ArticleEntity articleToArticleEntity(Article article);
+  ArticleEntity articleToArticleEntity(Article article);
 }

@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CanyonLink {
 
-    private Long canyonLinkId;
+  private Long canyonLinkId;
 
-    private Long canyonId;
+  private Long canyonId;
 
-    private String link;
+  private String link;
 
-    private String title;
+  private String title;
 }

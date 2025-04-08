@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface MessageControllerMapper extends BaseControllerMapper {
-    Message messageInDtoToMessage(MessageInDto messageInDto);
+  Message messageInDtoToMessage(MessageInDto messageInDto);
 
-    MessageOutDto messageToMessageOutDto(Message message);
+  MessageOutDto messageToMessageOutDto(Message message);
 }

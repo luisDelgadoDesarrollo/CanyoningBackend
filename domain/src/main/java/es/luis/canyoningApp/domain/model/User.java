@@ -1,10 +1,9 @@
 package es.luis.canyoningApp.domain.model;
 
-import lombok.experimental.SuperBuilder;
-
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.Period;
+import lombok.experimental.SuperBuilder;
 
 @lombok.NoArgsConstructor
 @lombok.AllArgsConstructor
@@ -12,40 +11,40 @@ import java.time.Period;
 @lombok.Data
 public class User {
 
-    private Long userId;
+  private Long userId;
 
-    private String password;
+  private String password;
 
-    private String email;
+  private String email;
 
-    private String name;
+  private String name;
 
-    private String lastName;
+  private String lastName;
 
-    private LocalDate birthDay;
+  private LocalDate birthDay;
 
-    private String location;
+  private String location;
 
-    private String description;
+  private String description;
 
-    private Integer plan;
+  private Integer plan;
 
-    private Boolean guia;
+  private Boolean guia;
 
-    private Boolean validated;
+  private Boolean validated;
 
-    private OffsetDateTime deleteAt;
+  private OffsetDateTime deleteAt;
 
-    private LocalDate createdAt;
+  private LocalDate createdAt;
 
-    public Integer getAge() {
-        if (this.birthDay == null) {
-            return null;
-        }
-        LocalDate currentDate = LocalDate.now();
-        if (this.birthDay.isAfter(currentDate)) {
-            return null;
-        }
-        return Period.between(this.birthDay, currentDate).getYears();
+  public Integer getAge() {
+    if (this.birthDay == null) {
+      return null;
     }
+    LocalDate currentDate = LocalDate.now();
+    if (this.birthDay.isAfter(currentDate)) {
+      return null;
+    }
+    return Period.between(this.birthDay, currentDate).getYears();
+  }
 }

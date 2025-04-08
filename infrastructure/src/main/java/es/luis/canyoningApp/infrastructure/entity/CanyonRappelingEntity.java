@@ -1,12 +1,11 @@
 package es.luis.canyoningApp.infrastructure.entity;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
 
 @Data
 @Entity
@@ -17,40 +16,40 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CanyonRappelingEntity {
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class PrimaryKeys implements Serializable {
-        private Long canyonId;
-        private Integer descentNumber;
-        private String step;
-    }
-
-    @Id
-    @Column(name = "canyonId", nullable = false)
+  @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class PrimaryKeys implements Serializable {
     private Long canyonId;
-
-    @Id
-    @Column(name = "descentNumber", nullable = false)
     private Integer descentNumber;
-
-    @Id
-    @Column(name = "step", nullable = false)
     private String step;
+  }
 
-    @ManyToOne
-    @JoinColumn(name = "canyonId", nullable = false, insertable = false, updatable = false)
-    private SimpleCanyonEntity canyon;
+  @Id
+  @Column(name = "canyonId", nullable = false)
+  private Long canyonId;
 
-    @Column(name = "stepType")
-    private String stepType;
+  @Id
+  @Column(name = "descentNumber", nullable = false)
+  private Integer descentNumber;
 
-    @Column(name = "length")
-    private String length;
+  @Id
+  @Column(name = "step", nullable = false)
+  private String step;
 
-    @Column(name = "location")
-    private String location;
+  @ManyToOne
+  @JoinColumn(name = "canyonId", nullable = false, insertable = false, updatable = false)
+  private SimpleCanyonEntity canyon;
 
-    @Column(name = "description")
-    private String description;
+  @Column(name = "stepType")
+  private String stepType;
+
+  @Column(name = "length")
+  private String length;
+
+  @Column(name = "location")
+  private String location;
+
+  @Column(name = "description")
+  private String description;
 }

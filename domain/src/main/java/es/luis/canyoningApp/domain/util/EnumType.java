@@ -6,25 +6,25 @@ package es.luis.canyoningApp.domain.util;
  */
 public interface EnumType {
 
-    Long getId();
+  Long getId();
 
-    String getName();
+  String getName();
 
-    static <T extends EnumType> T fromId(Long id) {
-        // Implement this method in the class
-        // return EnumType.fromId(id, T.class);
-        throw new UnsupportedOperationException();
+  static <T extends EnumType> T fromId(Long id) {
+    // Implement this method in the class
+    // return EnumType.fromId(id, T.class);
+    throw new UnsupportedOperationException();
+  }
+
+  static <T extends EnumType> T fromId(Long id, Class<T> enumType) {
+    if (!enumType.isEnum()) {
+      throw new IllegalArgumentException("Provided class is not an enum");
     }
-
-    static <T extends EnumType> T fromId(Long id, Class<T> enumType) {
-        if (!enumType.isEnum()) {
-            throw new IllegalArgumentException("Provided class is not an enum");
-        }
-        for (T value : enumType.getEnumConstants()) {
-            if (value.getId().equals(id)) {
-                return value;
-            }
-        }
-        throw new IllegalArgumentException(String.format("id=%s not found for enum %s", id, enumType));
+    for (T value : enumType.getEnumConstants()) {
+      if (value.getId().equals(id)) {
+        return value;
+      }
     }
+    throw new IllegalArgumentException(String.format("id=%s not found for enum %s", id, enumType));
+  }
 }

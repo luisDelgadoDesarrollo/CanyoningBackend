@@ -8,12 +8,12 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ArticleEntityRepository extends JpaRepository<ArticleEntity, Long> {
 
-    @Query(
-            "SELECT ae FROM ArticleEntity ae "
-                    + "WHERE (LOWER(ae.title) LIKE LOWER(CONCAT('%', :title, '%')) OR :title IS NULL) "
-                    + "AND (LOWER(ae.location) LIKE LOWER(CONCAT('%', :location, '%')) OR :location IS NULL) "
-                    + "AND (LOWER(ae.organizer) LIKE LOWER(CONCAT('%', :organizer, '%')) OR :organizer IS NULL) "
-                    + "order by ae.articleId desc")
-    Page<ArticleEntity> getArticles(
-            String title, String location, String organizer, Pageable pageable);
+  @Query(
+      "SELECT ae FROM ArticleEntity ae "
+          + "WHERE (LOWER(ae.title) LIKE LOWER(CONCAT('%', :title, '%')) OR :title IS NULL) "
+          + "AND (LOWER(ae.location) LIKE LOWER(CONCAT('%', :location, '%')) OR :location IS NULL) "
+          + "AND (LOWER(ae.organizer) LIKE LOWER(CONCAT('%', :organizer, '%')) OR :organizer IS NULL) "
+          + "order by ae.articleId desc")
+  Page<ArticleEntity> getArticles(
+      String title, String location, String organizer, Pageable pageable);
 }

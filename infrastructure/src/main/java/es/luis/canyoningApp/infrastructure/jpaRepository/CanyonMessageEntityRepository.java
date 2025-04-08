@@ -8,10 +8,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface CanyonMessageEntityRepository
-        extends CrudRepository<CanyonMessageEntity, Long>,
+    extends CrudRepository<CanyonMessageEntity, Long>,
         PagingAndSortingRepository<CanyonMessageEntity, Long> {
 
-    @Query(
-            "SELECT cme FROM CanyonMessageEntity cme where cme.canyon.canyonId = :canyonId order by cme.date desc")
-    Page<CanyonMessageEntity> findAllByCanyon(Long canyonId, Pageable pageable);
+  @Query(
+      "SELECT cme FROM CanyonMessageEntity cme where cme.canyon.canyonId = :canyonId order by cme.date desc")
+  Page<CanyonMessageEntity> findAllByCanyon(Long canyonId, Pageable pageable);
 }

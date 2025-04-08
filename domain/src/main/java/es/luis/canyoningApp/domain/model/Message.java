@@ -1,33 +1,32 @@
 package es.luis.canyoningApp.domain.model;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Message {
-    private Long messageId;
+  private Long messageId;
 
-    private ActivityType typePlace;
+  private ActivityType typePlace;
 
-    private Long placeId;
+  private Long placeId;
 
-    private User user;
+  private User user;
 
-    private String message;
+  private String message;
 
-    private Integer flow;
+  private Integer flow;
 
-    private Integer temperature;
+  private Integer temperature;
 
-    private LocalDate date;
+  private LocalDate date;
 
-    private OffsetDateTime sendAt;
+  private OffsetDateTime sendAt;
 }

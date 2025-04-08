@@ -1,11 +1,10 @@
 package es.luis.canyoningApp.domain.model;
 
+import java.time.OffsetDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
-import java.time.OffsetDateTime;
 
 @Data
 @SuperBuilder
@@ -13,31 +12,33 @@ import java.time.OffsetDateTime;
 @AllArgsConstructor
 public class SimpleCanyon {
 
-    private Long canyonId;
+  private Long canyonId;
 
-    private String name;
+  private String name;
 
-    private String croquis;
+  private String croquis;
 
-    private String description;
+  private String description;
 
-    private String season;
+  private String season;
 
-    private String river;
+  private String river;
 
-    private CanyonLocation location;
+  private CanyonLocation location;
 
-    private String access;
+  private String access;
 
-    private String approach;
+  private String approach;
 
-    private String descent;
+  private String coverage;
 
-    private String _return;
+  private String descent;
 
-    private String scape;
+  private String _return;
 
-    private Boolean favourite;
+  private String scape;
 
-    private OffsetDateTime deleteAt;
+  private Boolean favourite;
+
+  private OffsetDateTime deleteAt;
 }

@@ -9,11 +9,11 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface UserRepositoryMapper extends BaseRepositoryMapper {
 
-    UserEntity userToUserEntity(User user);
+  UserEntity userToUserEntity(User user);
 
-    User userEntityToUser(UserEntity userEntity);
+  User userEntityToUser(UserEntity userEntity);
 
-    Token tokenValidateUserEntityToToken(TokenValidateUserEntity byToken);
+  Token tokenValidateUserEntityToToken(TokenValidateUserEntity byToken);
 
-    TokenValidateUserEntity tokenToTokenValidateUser(Token token);
+  TokenValidateUserEntity tokenToTokenValidateUser(Token token);
 }

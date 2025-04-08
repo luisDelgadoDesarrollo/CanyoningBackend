@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CanyonDifficulty {
 
-    private Long canyonId;
+  private Long canyonId;
 
-    private Integer descentNumber;
+  private Integer descentNumber;
 
-    private String difficultyDesc;
+  private String difficultyDesc;
 }

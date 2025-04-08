@@ -7,11 +7,11 @@ import org.springframework.data.domain.Pageable;
 
 public interface MessageService {
 
-    void postMessage(Message message);
+  void postMessage(Message message);
 
-    Page<Message> getMessage(ActivityType activityType, Long activityId, Pageable pageable);
+  Page<Message> getMessage(ActivityType activityType, Long activityId, Pageable pageable);
 
-    void updateMessage(Long messageId, Message message);
+  void updateMessage(Long messageId, Message message);
 
-    void deleteMessage(Long messageId, ActivityType activityType);
+  void deleteMessage(Long messageId, ActivityType activityType);
 }

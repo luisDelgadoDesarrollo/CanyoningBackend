@@ -12,13 +12,13 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface CanyonControllerMapper {
 
-    Canyon canyonDtoToCanyon(CanyonDto canyonDto);
+  Canyon canyonDtoToCanyon(CanyonDto canyonDto);
 
-    CanyonDto canyonToCanyonDto(Canyon canyon);
+  CanyonDto canyonToCanyonDto(Canyon canyon);
 
-    @Mapping(target = "population", source = "location.population")
-    @Mapping(target = "country", source = "location.country")
-    SimpleCanyonDto simpleCanyonToSimpleCanyon(SimpleCanyon canyons);
+  @Mapping(target = "population", source = "location.population")
+  @Mapping(target = "country", source = "location.country")
+  SimpleCanyonDto simpleCanyonToSimpleCanyon(SimpleCanyon canyons);
 
-    LocationCanyonDto locationCanyonToLocationCanyonDto(LocationCanyon locationCanyon);
+  LocationCanyonDto locationCanyonToLocationCanyonDto(LocationCanyon locationCanyon);
 }

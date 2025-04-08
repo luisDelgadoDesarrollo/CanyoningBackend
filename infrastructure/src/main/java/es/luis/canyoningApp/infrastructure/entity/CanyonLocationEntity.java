@@ -11,22 +11,22 @@ import lombok.Data;
 @Table(name = "canyonlocation")
 public class CanyonLocationEntity {
 
-    @Id
-    @Column(name = "canyonId")
-    private Long canyonId;
+  @Id
+  @Column(name = "canyonId")
+  private Long canyonId;
 
-    @Column(name = "poblacion")
-    private String population;
+  @Column(name = "poblacion")
+  private String population;
 
-    @Column(name = "latitud")
-    private String latitud;
+  @Column(name = "latitud")
+  private String latitud;
 
-    @Column(name = "longitud")
-    private String longitud;
+  @Column(name = "longitud")
+  private String longitud;
 
-    @Column(name = "zona")
-    private String zone;
+  @Column(name = "zona")
+  private String zone;
 
-    @Column(name = "country")
-    private String country;
+  @Column(name = "country")
+  private String country;
 }

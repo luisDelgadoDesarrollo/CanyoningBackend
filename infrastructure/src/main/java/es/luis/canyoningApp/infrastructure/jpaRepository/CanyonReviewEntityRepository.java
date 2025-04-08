@@ -8,10 +8,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface CanyonReviewEntityRepository
-        extends CrudRepository<CanyonReviewEntity, Long>,
+    extends CrudRepository<CanyonReviewEntity, Long>,
         PagingAndSortingRepository<CanyonReviewEntity, Long> {
 
-    @Query(
-            "SELECT cre FROM CanyonReviewEntity cre WHERE (cre.canyon.canyonId = :canyonId or :canyonId is null)")
-    Page<CanyonReviewEntity> getCanyonReviews(Long canyonId, Pageable pageable);
+  @Query(
+      "SELECT cre FROM CanyonReviewEntity cre WHERE (cre.canyon.canyonId = :canyonId or :canyonId is null)")
+  Page<CanyonReviewEntity> getCanyonReviews(Long canyonId, Pageable pageable);
 }

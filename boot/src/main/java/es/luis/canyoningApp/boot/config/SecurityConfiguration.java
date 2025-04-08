@@ -14,31 +14,30 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity(/*debug = true*/)
+@EnableWebSecurity(/*debug = true*/ )
 public class SecurityConfiguration {
 
-    @Autowired
-    private CustomUserDetailsService userDetailsService;
+  @Autowired private CustomUserDetailsService userDetailsService;
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(
-                        (authorizeHttpRequests) ->
-                                authorizeHttpRequests
-                                        .requestMatchers(
-                                                "/login", "/updatePassword", "/createUser", "/", "/validateUser")
-                                        .permitAll()
-                                        .anyRequest()
-                                        .hasAuthority(RoleUtils.ROLE_AUTHENTICATED))
-                .csrf(AbstractHttpConfigurer::disable)
-                .httpBasic(Customizer.withDefaults())
-                .cors(Customizer.withDefaults());
-        return http.build();
-    }
+  @Bean
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http.authorizeHttpRequests(
+            (authorizeHttpRequests) ->
+                authorizeHttpRequests
+                    .requestMatchers(
+                        "/login", "/updatePassword", "/createUser", "/", "/validateUser")
+                    .permitAll()
+                    .anyRequest()
+                    .hasAuthority(RoleUtils.ROLE_AUTHENTICATED))
+        .csrf(AbstractHttpConfigurer::disable)
+        .httpBasic(Customizer.withDefaults())
+        .cors(Customizer.withDefaults());
+    return http.build();
+  }
 
-    @Bean
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
+  @Bean
+  public AuthenticationManager authenticationManager(
+      AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    return authenticationConfiguration.getAuthenticationManager();
+  }
 }

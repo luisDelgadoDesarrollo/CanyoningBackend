@@ -8,14 +8,14 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface MessageRepositoryMapper {
 
-    @Mapping(target = "placeId", source = "canyon.canyonId")
-    @Mapping(target = "messageId", source = "canyonMessageId")
-    @Mapping(
-            target = "typePlace",
-            expression = "java(es.luis.canyoningApp.domain.model.ActivityType.CANYON)")
-    Message canyonMessageEntityToMessage(CanyonMessageEntity canyonMessageEntity);
+  @Mapping(target = "placeId", source = "canyon.canyonId")
+  @Mapping(target = "messageId", source = "canyonMessageId")
+  @Mapping(
+      target = "typePlace",
+      expression = "java(es.luis.canyoningApp.domain.model.ActivityType.CANYON)")
+  Message canyonMessageEntityToMessage(CanyonMessageEntity canyonMessageEntity);
 
-    @Mapping(target = "canyon.canyonId", source = "placeId")
-    @Mapping(target = "canyonMessageId", source = "messageId")
-    CanyonMessageEntity messageToCanyonMessageEntity(Message message);
+  @Mapping(target = "canyon.canyonId", source = "placeId")
+  @Mapping(target = "canyonMessageId", source = "messageId")
+  CanyonMessageEntity messageToCanyonMessageEntity(Message message);
 }

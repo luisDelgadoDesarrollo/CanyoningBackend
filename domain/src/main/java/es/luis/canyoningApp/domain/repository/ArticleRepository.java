@@ -6,13 +6,13 @@ import org.springframework.data.domain.Pageable;
 
 public interface ArticleRepository {
 
-    void createArticle(Article article);
+  void createArticle(Article article);
 
-    void deleteArticle(Long articleId);
+  void deleteArticle(Long articleId);
 
-    Article getArticleById(Long articleId);
+  Article getArticleById(Long articleId);
 
-    Page<Article> getArticles(String title, String location, String organizer, Pageable pageable);
+  Page<Article> getArticles(String title, String location, String organizer, Pageable pageable);
 
-    void updateArticle(Article article);
+  void updateArticle(Article article);
 }

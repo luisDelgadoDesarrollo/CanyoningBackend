@@ -1,41 +1,40 @@
 package es.luis.canyoningApp.infrastructure.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "canyonmessages")
 public class CanyonMessageEntity {
 
-    @Id
-    @Column(name = "canyonMessageId")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long canyonMessageId;
+  @Id
+  @Column(name = "canyonMessageId")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long canyonMessageId;
 
-    @ManyToOne
-    @JoinColumn(name = "canyonId", nullable = false)
-    private SimpleCanyonEntity canyon;
+  @ManyToOne
+  @JoinColumn(name = "canyonId", nullable = false)
+  private SimpleCanyonEntity canyon;
 
-    @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
-    private UserEntity user;
+  @ManyToOne
+  @JoinColumn(name = "userId", nullable = false)
+  private UserEntity user;
 
-    @Column(name = "message")
-    private String message;
+  @Column(name = "message")
+  private String message;
 
-    @Column(name = "flow")
-    private Integer flow;
+  @Column(name = "flow")
+  private Integer flow;
 
-    @Column(name = "temperature")
-    private Integer temperature;
+  @Column(name = "temperature")
+  private Integer temperature;
 
-    @Column(name = "date")
-    private LocalDate date;
+  @Column(name = "date")
+  private LocalDate date;
 
-    @Column(name = "sendAt")
-    private OffsetDateTime sendAt;
+  @Column(name = "sendAt")
+  private OffsetDateTime sendAt;
 }

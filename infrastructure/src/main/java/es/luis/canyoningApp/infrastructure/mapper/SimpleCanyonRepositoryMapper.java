@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface SimpleCanyonRepositoryMapper {
 
-    SimpleCanyonEntity simpleCanyonToSimpleCanyonEntity(SimpleCanyon simpleCanyon);
+  SimpleCanyonEntity simpleCanyonToSimpleCanyonEntity(SimpleCanyon simpleCanyon);
 }

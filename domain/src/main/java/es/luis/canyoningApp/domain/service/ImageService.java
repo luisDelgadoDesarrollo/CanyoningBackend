@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface ImageService {
 
-    void postImage(MultipartFile file, String name, String dir);
+  void postImage(MultipartFile file, String name, String dir);
 
-    Resource getImage(String image, String dir);
+  Resource getImage(String image, String dir);
 }

@@ -2,37 +2,36 @@ package es.luis.canyoningApp.domain.repository;
 
 import es.luis.canyoningApp.domain.model.Token;
 import es.luis.canyoningApp.domain.model.User;
+import java.time.OffsetDateTime;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.time.OffsetDateTime;
-
 public interface UserRepository {
-    User createUser(User user);
+  User createUser(User user);
 
-    User findUserByEmail(String email);
+  User findUserByEmail(String email);
 
-    Page<User> getUsers(String email, String name, String location, Pageable pageable);
+  Page<User> getUsers(String email, String name, String location, Pageable pageable);
 
-    void deleteUser(User user);
+  void deleteUser(User user);
 
-    User updateUser(User databaseUser);
+  User updateUser(User databaseUser);
 
-    boolean validatePasswordResetToken(Long userId, String token);
+  boolean validatePasswordResetToken(Long userId, String token);
 
-    void createTokenUpdatePassword(Long userId, String token, OffsetDateTime localDateTime);
+  void createTokenUpdatePassword(Long userId, String token, OffsetDateTime localDateTime);
 
-    void createTokenValidateUser(Long userId, String token, OffsetDateTime localDateTime);
+  void createTokenValidateUser(Long userId, String token, OffsetDateTime localDateTime);
 
-    void deleteTokenValidateUser(Long userId);
+  void deleteTokenValidateUser(Long userId);
 
-    void setUsedToken(Long userId, String token, Boolean used);
+  void setUsedToken(Long userId, String token, Boolean used);
 
-    User findUserById(Long userId);
+  User findUserById(Long userId);
 
-    Token getValidateUserToken(String token);
+  Token getValidateUserToken(String token);
 
-    void updateTokenValidateUser(Token validateUserToken);
+  void updateTokenValidateUser(Token validateUserToken);
 
-    User findUserByEmailNoException(String email);
+  User findUserByEmailNoException(String email);
 }

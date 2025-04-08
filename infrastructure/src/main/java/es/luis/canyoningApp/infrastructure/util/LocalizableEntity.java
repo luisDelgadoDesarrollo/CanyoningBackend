@@ -9,18 +9,18 @@ package es.luis.canyoningApp.infrastructure.util;
  */
 public interface LocalizableEntity {
 
-    /**
-     * Class of the entity that have the localized fields.
-     *
-     * @return The entity class to search the localized entity.
-     */
-    Class<?> getLocalizedClass();
+  /**
+   * Class of the entity that have the localized fields.
+   *
+   * @return The entity class to search the localized entity.
+   */
+  Class<?> getLocalizedClass();
 
-    /**
-     * Returns the primary key of the localized class by language.
-     *
-     * @param languageId The language identifier.
-     * @return The PrimaryKey class to search the entity.
-     */
-    Object getPrimaryKey(Long languageId);
+  /**
+   * Returns the primary key of the localized class by language.
+   *
+   * @param languageId The language identifier.
+   * @return The PrimaryKey class to search the entity.
+   */
+  Object getPrimaryKey(Long languageId);
 }

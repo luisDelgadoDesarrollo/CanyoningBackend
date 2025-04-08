@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface BaseControllerMapper {
 
-    ActivityType activityTypeDtoToActivityType(ActivityTypeDto activityTypeDto);
+  ActivityType activityTypeDtoToActivityType(ActivityTypeDto activityTypeDto);
 }

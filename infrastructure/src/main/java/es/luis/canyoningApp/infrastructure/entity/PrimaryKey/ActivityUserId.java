@@ -1,11 +1,10 @@
 package es.luis.canyoningApp.infrastructure.entity.PrimaryKey;
 
 import jakarta.persistence.Embeddable;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
 
 @Data
 @Embeddable
@@ -13,6 +12,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ActivityUserId implements Serializable {
 
-    private Long activityId;
-    private Long userId;
+  private Long activityId;
+  private Long userId;
 }

@@ -8,54 +8,54 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface CanyonRepositoryMapper {
 
-    Canyon canyonEntityToCanyon(CanyonEntity canyonEntity);
+  Canyon canyonEntityToCanyon(CanyonEntity canyonEntity);
 
-    SimpleCanyon canyonEntityToSimpleCanyon(CanyonEntity canyonEntity);
+  SimpleCanyon canyonEntityToSimpleCanyon(CanyonEntity canyonEntity);
 
-    CanyonRappeling canyonRappelingEntityToCanyonRappeling(
-            CanyonRappelingEntity canyonRappelingEntity);
+  CanyonRappeling canyonRappelingEntityToCanyonRappeling(
+      CanyonRappelingEntity canyonRappelingEntity);
 
-    CanyonRappelingEntity canyonRappelingToCanyonRappelingEntity(CanyonRappeling canyonRappeling);
+  CanyonRappelingEntity canyonRappelingToCanyonRappelingEntity(CanyonRappeling canyonRappeling);
 
-    CanyonDescent canyonDescentEntityToCanyonDescent(CanyonDescentEntity canyonDescentEntity);
+  CanyonDescent canyonDescentEntityToCanyonDescent(CanyonDescentEntity canyonDescentEntity);
 
-    CanyonDescentEntity canyonDescentToCanyonDescentEntity(CanyonDescent canyonDescent);
+  CanyonDescentEntity canyonDescentToCanyonDescentEntity(CanyonDescent canyonDescent);
 
-    CanyonSchedule canyonScheduleEntityToCanyonSchedule(CanyonScheduleEntity canyonScheduleEntity);
+  CanyonSchedule canyonScheduleEntityToCanyonSchedule(CanyonScheduleEntity canyonScheduleEntity);
 
-    CanyonScheduleEntity canyonScheduleToCanyonScheduleEntity(CanyonSchedule canyonSchedule);
+  CanyonScheduleEntity canyonScheduleToCanyonScheduleEntity(CanyonSchedule canyonSchedule);
 
-    CanyonDifficulty canyonDifficultyEntityToCanyonDifficulty(
-            CanyonDifficultyEntity canyonDifficultyEntity);
+  CanyonDifficulty canyonDifficultyEntityToCanyonDifficulty(
+      CanyonDifficultyEntity canyonDifficultyEntity);
 
-    CanyonDifficultyEntity canyonDifficultyToCanyonDifficultyEntity(
-            CanyonDifficulty canyonDifficulty);
+  CanyonDifficultyEntity canyonDifficultyToCanyonDifficultyEntity(
+      CanyonDifficulty canyonDifficulty);
 
-    @Mapping(target = "canyonId", source = "canyon.canyonId")
-    CanyonProhibition canyonProhibitionEntityToCanyonProhibition(
-            CanyonProhibitionEntity canyonProhibitionEntity);
+  @Mapping(target = "canyonId", source = "canyon.canyonId")
+  CanyonProhibition canyonProhibitionEntityToCanyonProhibition(
+      CanyonProhibitionEntity canyonProhibitionEntity);
 
-    CanyonProhibitionEntity canyonProhibitionEntityToCanyonProhibition(
-            CanyonProhibition canyonProhibition);
+  CanyonProhibitionEntity canyonProhibitionEntityToCanyonProhibition(
+      CanyonProhibition canyonProhibition);
 
-    @Mapping(target = "canyonId", source = "canyon.canyonId")
-    CanyonLink canyonLinkEntityToCanyonLink(CanyonLinkEntity canyonLinkEntity);
+  @Mapping(target = "canyonId", source = "canyon.canyonId")
+  CanyonLink canyonLinkEntityToCanyonLink(CanyonLinkEntity canyonLinkEntity);
 
-    CanyonLinkEntity canyonLinkToCanyonLinkEntity(CanyonLink canyonLink);
+  CanyonLinkEntity canyonLinkToCanyonLinkEntity(CanyonLink canyonLink);
 
-    CanyonCanyonNear canyonCanyonNearEntityToCanyonCanyonNear(
-            CanyonCanyonNearEntity canyonCanyonNearEntity);
+  CanyonCanyonNear canyonCanyonNearEntityToCanyonCanyonNear(
+      CanyonCanyonNearEntity canyonCanyonNearEntity);
 
-    CanyonCanyonNearEntity canyonCanyonNearToCanyonCanyonNearEntity(
-            CanyonCanyonNear canyonCanyonNear);
+  CanyonCanyonNearEntity canyonCanyonNearToCanyonCanyonNearEntity(
+      CanyonCanyonNear canyonCanyonNear);
 
-    SimpleCanyonEntity simpleCanyonToSimpleCanyonEntity(SimpleCanyon simpleCanyon);
+  SimpleCanyonEntity simpleCanyonToSimpleCanyonEntity(SimpleCanyon simpleCanyon);
 
-    CanyonEntity canyonToCanyonEntity(Canyon canyon);
+  CanyonEntity canyonToCanyonEntity(Canyon canyon);
 
-    SimpleCanyonEntity canyonEntityToSimpleCanyonEntity(CanyonEntity canyonEntity);
+  SimpleCanyonEntity canyonEntityToSimpleCanyonEntity(CanyonEntity canyonEntity);
 
-    @Mapping(target = "longitud", source = "location.longitud")
-    @Mapping(target = "latitud", source = "location.latitud")
-    LocationCanyon canyonEntityToLocationCanyon(CanyonEntity canyonEntity);
+  @Mapping(target = "longitud", source = "location.longitud")
+  @Mapping(target = "latitud", source = "location.latitud")
+  LocationCanyon canyonEntityToLocationCanyon(CanyonEntity canyonEntity);
 }

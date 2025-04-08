@@ -18,15 +18,15 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface Localize {
 
-    /**
-     * The name of the field of the localized class that have the translation of the annotated field.
-     * If not provided, the value will be equal to the field name.
-     */
-    String fieldName() default "";
+  /**
+   * The name of the field of the localized class that have the translation of the annotated field.
+   * If not provided, the value will be equal to the field name.
+   */
+  String fieldName() default "";
 
-    /**
-     * If true, the value of the localized class will not be copied if it is null. If false, the value
-     * of the localized class will be copied regardless of whether the value is null.
-     */
-    boolean ignoreNull() default true;
+  /**
+   * If true, the value of the localized class will not be copied if it is null. If false, the value
+   * of the localized class will be copied regardless of whether the value is null.
+   */
+  boolean ignoreNull() default true;
 }

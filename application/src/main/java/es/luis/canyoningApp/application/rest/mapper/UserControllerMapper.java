@@ -8,11 +8,11 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface UserControllerMapper {
-    User userCreateDtoTuUser(UserCreateDto userCreateDto);
+  User userCreateDtoTuUser(UserCreateDto userCreateDto);
 
-    UserOutDto userToUserOutDto(User user);
-    
-    SimpleUserDto userToSimpleUserDto(User user);
+  UserOutDto userToUserOutDto(User user);
 
-    User simpleUserDtoToUser(SimpleUserDto simpleUserDto);
+  SimpleUserDto userToSimpleUserDto(User user);
+
+  User simpleUserDtoToUser(SimpleUserDto simpleUserDto);
 }

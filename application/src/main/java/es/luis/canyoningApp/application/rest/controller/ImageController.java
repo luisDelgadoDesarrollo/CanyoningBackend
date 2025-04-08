@@ -12,17 +12,16 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class ImageController extends BaseController implements ImageApi {
 
-    @Autowired
-    private ImageService imageService;
+  @Autowired private ImageService imageService;
 
-    @Override
-    public ResponseEntity<Resource> imagesImageDirGet(String image, String dir) {
-        return ResponseEntity.ok(imageService.getImage(image, dir));
-    }
+  @Override
+  public ResponseEntity<Resource> imagesImageDirGet(String image, String dir) {
+    return ResponseEntity.ok(imageService.getImage(image, dir));
+  }
 
-    @Override
-    public ResponseEntity<Void> postImage(MultipartFile file, String name, String dir) {
-        imageService.postImage(file, name, dir);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
+  @Override
+  public ResponseEntity<Void> postImage(MultipartFile file, String name, String dir) {
+    imageService.postImage(file, name, dir);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+  }
 }
